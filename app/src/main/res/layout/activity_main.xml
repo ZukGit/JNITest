@@ -1,0 +1,838 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <!--  Boolean -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_boolean"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:text="tx_boolean" />
+
+                    <Button
+                        android:id="@+id/btn_boolean"
+                        android:layout_height="wrap_content"
+                        android:layout_width="150dp"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_boolean" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+            <!--  byte -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_byte"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:text="tx_byte" />
+
+                    <Button
+                        android:id="@+id/btn_byte"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_byte" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+            <!--  char -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_char"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:text="tx_char" />
+
+                    <Button
+                        android:id="@+id/btn_char"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_char" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+            <!--  char -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_short"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:text="tx_short" />
+
+                    <Button
+                        android:id="@+id/btn_short"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_short" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+            <!--  int -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_int"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:text="tx_int" />
+
+                    <Button
+                        android:id="@+id/btn_int"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_int" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+
+
+
+            <!--  long -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_long"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:text="tx_long" />
+
+                    <Button
+                        android:id="@+id/btn_long"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_long" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+
+            <!--  double -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_double"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:text="tx_double" />
+
+                    <Button
+                        android:id="@+id/btn_double"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_double" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+
+            <!--  float -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_float"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:text="tx_float" />
+
+                    <Button
+                        android:id="@+id/btn_float"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_byte" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+            <!--  Object -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_object"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:ellipsize="end"
+                        android:paddingTop="3dp"
+                        android:text="tx_object" />
+
+                    <Button
+                        android:id="@+id/btn_object"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_object" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+ <!--                        String    ==============Begin                         -->
+
+
+            <!--  String 00 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_string00"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_string00" />
+
+                    <Button
+                        android:id="@+id/btn_string00"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_string00" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+            <!--  String 01 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_string01"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_string01" />
+
+                    <Button
+                        android:id="@+id/btn_string01"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_string01" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+
+            <!--  String 10 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_string10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_string10" />
+
+                    <Button
+                        android:id="@+id/btn_string10"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_string10" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+            <!--  String 11 -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_string11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_string11" />
+
+                    <Button
+                        android:id="@+id/btn_string11"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_string11" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+            <!-- Static-String  Begin-->
+
+            <!--  Static=String 00 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_staticstring00"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_staticstring00" />
+
+                    <Button
+                        android:id="@+id/btn_staticstring00"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_string00_s" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+            <!--  String 01 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_staticstring01"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_staticstring01" />
+
+                    <Button
+                        android:id="@+id/btn_staticstring01"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_string01_s" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+
+            <!--  Static String 10 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_staticstring10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_staticstring10" />
+
+                    <Button
+                        android:id="@+id/btn_staticstring10"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_string10_s" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+            <!--  String 11 -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_staticstring11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_staticstring11" />
+
+                    <Button
+                        android:id="@+id/btn_staticstring11"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_string11_s" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+            <!--                        String    ==============End                         -->
+
+
+
+            <!--  ArrayList<Object> -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp">
+
+                    <TextView
+                        android:id="@+id/tx_listobject"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:maxLines="10"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_listobject" />
+
+                    <Button
+                        android:id="@+id/btn_listobject"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_listobject" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+
+
+
+
+            <!--  ArrayList<String>  -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp">
+
+                    <TextView
+                        android:id="@+id/tx_liststring"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:maxLines="10"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_liststring" />
+
+                    <Button
+                        android:id="@+id/btn_liststring"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_liststring" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+
+
+            <!--  ArrayMap<String,String> stringMap  -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp">
+
+                    <TextView
+                        android:id="@+id/tx_mapstring"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:maxLines="10"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_mapstring" />
+
+                    <Button
+                        android:id="@+id/btn_mapstring"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_mapstring" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+
+
+
+
+            <!-- Content end  -->
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>
