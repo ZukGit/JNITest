@@ -179,7 +179,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void DataInit() {
-        util = new JniUtil();
+        util = new JniUtil(this);
 
 
         tx_boolean = (TextView) findViewById(R.id.tx_boolean);

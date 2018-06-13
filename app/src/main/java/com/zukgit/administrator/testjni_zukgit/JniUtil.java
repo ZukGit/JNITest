@@ -1,6 +1,8 @@
 package com.zukgit.administrator.testjni_zukgit;
 
+import android.content.Context;
 import android.util.ArrayMap;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -29,8 +31,9 @@ public class JniUtil {
 
     public ArrayMap<String,String> stringMapValue;
 
-
-    public    JniUtil(){
+    public Context mContext;
+    public    JniUtil(Context mContext){
+        this.mContext = mContext;
         booleanValue = false;
         byteValue = 0x02;
         charValue = 'b';
@@ -56,6 +59,31 @@ public class JniUtil {
         }
 
 
+    }
+
+
+    public void callbyJNIString00(){
+        android.util.Log.i("zukgit"," JniUtil.callbyJNIString00  被JNI调用");
+        Toast.makeText(mContext.getApplicationContext(), "JniUtil.callbyJNIString00  被JNI调用", Toast.LENGTH_SHORT).show();
+    }
+
+
+    public void callbyJNIString01(String str){
+        android.util.Log.i("zukgit"," JniUtil.callbyJNIString01  被JNI调用 ");
+        Toast.makeText(mContext.getApplicationContext(), "JniUtil.callbyJNIString01  被JNI调用"+str, Toast.LENGTH_SHORT).show();
+    }
+
+    public String  callbyJNIString10() {
+        android.util.Log.i("zukgit"," JniUtil.callbyJNIString10  被JNI调用 ");
+        Toast.makeText(mContext.getApplicationContext(), "JniUtil.callbyJNIString10  被JNI调用", Toast.LENGTH_SHORT).show();
+        return "callbyJNIString10 method from JuiUtil";
+    }
+
+    public String  callbyJNIString11( String str) {
+        android.util.Log.i("zukgit"," JniUtil.callbyJNIString11  被JNI调用 ");
+        String value = str+"JniUtil.java";
+        Toast.makeText(mContext.getApplicationContext(), "JniUtil.callbyJNIString11  被JNI调用 返回值:"+value, Toast.LENGTH_SHORT).show();
+        return value;
     }
 
 
