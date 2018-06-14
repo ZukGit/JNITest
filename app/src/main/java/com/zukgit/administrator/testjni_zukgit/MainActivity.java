@@ -109,7 +109,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             //  String ---Begin
             case R.id.btn_string00:
-                Toast.makeText(getApplicationContext(), "string-jni-00 修改 util.StringValue值", Toast.LENGTH_SHORT).show();
                 // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
                 String old =util.getStringValue();
                 util.stringNvMethod00();
@@ -118,47 +117,45 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 break;
             case R.id.btn_string01:
-                Toast.makeText(getApplicationContext(), "string-jni-01", Toast.LENGTH_SHORT).show();
                 // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
-                util.stringNvMethod01("zukgit");
-                tx_string01.setText("无返回值 有参数 调用JNI");
+                util.stringNvMethod01("javaString");
+                tx_string01.setText(util.getStringValue());
                 break;
             case R.id.btn_string10:
-                Toast.makeText(getApplicationContext(), "string-jni-10", Toast.LENGTH_SHORT).show();
                 // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
-                tx_string10.setText("有返无参:"+util.stringNvMethod10());
+                tx_string10.setText(util.stringNvMethod10());
                 break;
             case R.id.btn_string11:
-                Toast.makeText(getApplicationContext(), "string-jni-11", Toast.LENGTH_SHORT).show();
                 // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
-                tx_string11.setText("有返有参:"+util.stringNvMethod11("zukgit"));
+                tx_string11.setText(util.stringNvMethod11("javaString"));
                 break;
             case R.id.btn_staticstring00:
-                Toast.makeText(getApplicationContext(), "string-jni-static00", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "native stringStaticNvMethod00 JNI be called", Toast.LENGTH_SHORT).show();
                 // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
 
                 String oldValue_00s =util.getStringStaticValue();
                 util.stringStaticNvMethod00();
                 String newValue_00s = util.getStringStaticValue();
-                tx_staticstring00.setText("静 old:"+oldValue_00s+" new:"+newValue_00s);
+                tx_staticstring00.setText(" old:"+oldValue_00s+" ==new:"+newValue_00s);
 
 
                 break;
             case R.id.btn_staticstring01:
-                Toast.makeText(getApplicationContext(), "string-jni-static01 静无返回值调JNI  ", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), " native stringStaticNvMethod01 JNI be called ", Toast.LENGTH_SHORT).show();
                 // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
-                util.stringStaticNvMethod01("zukgit");
-                tx_staticstring01.setText(" stringValue="+util.getStringValue()+"   StringStaticValue="+ util.getStringStaticValue());
+
+                util.stringStaticNvMethod01("javaStaticString");
+                tx_staticstring01.setText("StringStaticValue="+ util.getStringStaticValue());
                 break;
             case R.id.btn_staticstring10:
-                Toast.makeText(getApplicationContext(), "string-jni-static10", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), " native stringStaticNvMethod10 JNI be called", Toast.LENGTH_SHORT).show();
                 // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
-                tx_staticstring10.setText("静有返无参:"+util.stringStaticNvMethod10());
+                tx_staticstring10.setText(util.stringStaticNvMethod10());
                 break;
             case R.id.btn_staticstring11:
-                Toast.makeText(getApplicationContext(), "静有返有参 string-jni-static11", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "native stringStaticNvMethod11 JNI be called", Toast.LENGTH_SHORT).show();
                 // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
-                tx_staticstring11.setText(" "+util.stringStaticNvMethod11("zukgit"));
+                tx_staticstring11.setText(util.stringStaticNvMethod11("javaStaticString"));
                 break;
 
             // String - end

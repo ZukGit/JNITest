@@ -43,7 +43,7 @@ public class JniUtil {
         floatValue = 6.28f;
         doubleValue = 6.2883826;
         objectValue = new Object();
-        stringValue = new String("stingvalue in JniUtil");
+        stringValue = new String("JavaValue");
         stringListValue = new  ArrayList<String>(10);
         objectListValue = new  ArrayList<Object>(10);
         stringMapValue =  new ArrayMap<String,String>(10);
@@ -80,50 +80,51 @@ public class JniUtil {
     public static native String stringStaticNvMethod11( String str);
 
     public void callbyJNIString00(){
-        android.util.Log.i("zukgit"," Java@JniUtil.callbyJNIString00  被JNI调用");
-        Toast.makeText(mContext.getApplicationContext(), "JniUtil.callbyJNIString00  被JNI调用", Toast.LENGTH_SHORT).show();
+        android.util.Log.i("zukgit"," Java@@callbyJNIString00() call by JNI ");
+        Toast.makeText(mContext.getApplicationContext(), "callbyJNIString00() call by JNI", Toast.LENGTH_SHORT).show();
     }
 
 
     public void callbyJNIString01(String str){
-        android.util.Log.i("zukgit"," Java@JniUtil.callbyJNIString01  被JNI调用 ");
-        Toast.makeText(mContext.getApplicationContext(), "JniUtil.callbyJNIString01  被JNI调用"+str, Toast.LENGTH_SHORT).show();
+        android.util.Log.i("zukgit"," callbyJNIString01() call by JNI param="+str);
+        Toast.makeText(mContext.getApplicationContext(), " Java@@ccallbyJNIString01() call by JNI param="+str, Toast.LENGTH_SHORT).show();
+        stringValue = str;
     }
 
     public String  callbyJNIString10() {
-        android.util.Log.i("zukgit"," Java@JniUtil.callbyJNIString10  被JNI调用 ");
-        Toast.makeText(mContext.getApplicationContext(), "JniUtil.callbyJNIString10  被JNI调用", Toast.LENGTH_SHORT).show();
-        return "callbyJNIString10 method from JuiUtil";
+        android.util.Log.i("zukgit","Java@@callbyJNIString10() call by JNI ");
+        Toast.makeText(mContext.getApplicationContext(), "callbyJNIString10() call by JNI", Toast.LENGTH_SHORT).show();
+        return "callbyJNIString10() call by JNI";
     }
 
     public String  callbyJNIString11( String str) {
-        android.util.Log.i("zukgit"," Java@@JniUtil.callbyJNIString11  被JNI调用 ");
-        String value = str+"JniUtil.java";
-        Toast.makeText(mContext.getApplicationContext(), "JniUtil.callbyJNIString11  被JNI调用 返回值:"+value, Toast.LENGTH_SHORT).show();
+        android.util.Log.i("zukgit","Java@@callbyJNIString10() call by JNI "+str);
+        Toast.makeText(mContext.getApplicationContext(), "callbyJNIString11() call by JNI param="+str, Toast.LENGTH_SHORT).show();
+        String value = str+" callbyJNIString11()";
         return value;
     }
 
 
     public static  void callbyJNIStaticString00() {
 
-        android.util.Log.i("zukgit","Java@@static void callbyJNIStaticString00()  静态方法被JNI执行！");
+        android.util.Log.i("zukgit","Java@@callbyJNIStaticString00() call by JNIStatic ");
     }
 
     public static void callbyJNIStaticString01( String str) {
 
-        android.util.Log.i("zukgit","Java@@static void callbyJNIStaticString01( String str) 静态方法被JNI执行！");
-        android.util.Log.i("zukgit","Java@@ 从JNI.c 传递过来的值为:"+ str);
+        android.util.Log.i("zukgit","Java@@callbyJNIStaticString01() call by JNIStatic param=\"+jmChar");
 
+        stringStaticValue = str;
     }
 
     public static  String callbyJNIStaticString10() {
-        android.util.Log.i("zukgit","Java@@static  String callbyJNIStaticString10()  静态方法被JNI执行！");
-        return " 在java中定义的值 返回到JNI.c中 Java@method-callbyJNIStaticString10";
+        android.util.Log.i("zukgit"," Java@@callbyJNIStaticString10() call by JNIStatic");
+        return "callbyJNIStaticString10() call by JNIStatic";
     }
 
     public static String  callbyJNIStaticString11( String str) {
-        android.util.Log.i("zukgit","Java@@static String  callbyJNIStaticString11( String str)  静态方法被JNI执行！");
-        return  str+" this is static methid ！" ;
+        android.util.Log.i("zukgit"," Java@@callbyJNIStaticString11() call by JNIStatic");
+        return  str+"callbyJNIStaticString11()" ;
     }
 
 
