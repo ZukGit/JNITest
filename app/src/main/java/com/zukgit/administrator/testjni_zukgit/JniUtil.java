@@ -24,7 +24,7 @@ public class JniUtil {
     public float floatValue;
     public double doubleValue;
     public Object objectValue;
-    public String stringValue;
+
 
     public ArrayList<Object> objectListValue;
     public ArrayList<String> stringListValue;
@@ -61,30 +61,73 @@ public class JniUtil {
 
     }
 
+//==============================String Begin ================================
+
+    public String stringValue;
+    public static String stringStaticValue;
+
+    // String Native  Object Method
+    public native void stringNvMethod00();
+    public native void stringNvMethod01( String str);
+    public native String stringNvMethod10();
+    public native String stringNvMethod11( String str);
+
+
+    // String Native Class Method
+    public static native  void stringStaticNvMethod00();
+    public static native void  stringStaticNvMethod01( String str);
+    public static native String stringStaticNvMethod10();
+    public static native String stringStaticNvMethod11( String str);
 
     public void callbyJNIString00(){
-        android.util.Log.i("zukgit"," JniUtil.callbyJNIString00  被JNI调用");
+        android.util.Log.i("zukgit"," Java@JniUtil.callbyJNIString00  被JNI调用");
         Toast.makeText(mContext.getApplicationContext(), "JniUtil.callbyJNIString00  被JNI调用", Toast.LENGTH_SHORT).show();
     }
 
 
     public void callbyJNIString01(String str){
-        android.util.Log.i("zukgit"," JniUtil.callbyJNIString01  被JNI调用 ");
+        android.util.Log.i("zukgit"," Java@JniUtil.callbyJNIString01  被JNI调用 ");
         Toast.makeText(mContext.getApplicationContext(), "JniUtil.callbyJNIString01  被JNI调用"+str, Toast.LENGTH_SHORT).show();
     }
 
     public String  callbyJNIString10() {
-        android.util.Log.i("zukgit"," JniUtil.callbyJNIString10  被JNI调用 ");
+        android.util.Log.i("zukgit"," Java@JniUtil.callbyJNIString10  被JNI调用 ");
         Toast.makeText(mContext.getApplicationContext(), "JniUtil.callbyJNIString10  被JNI调用", Toast.LENGTH_SHORT).show();
         return "callbyJNIString10 method from JuiUtil";
     }
 
     public String  callbyJNIString11( String str) {
-        android.util.Log.i("zukgit"," JniUtil.callbyJNIString11  被JNI调用 ");
+        android.util.Log.i("zukgit"," Java@@JniUtil.callbyJNIString11  被JNI调用 ");
         String value = str+"JniUtil.java";
         Toast.makeText(mContext.getApplicationContext(), "JniUtil.callbyJNIString11  被JNI调用 返回值:"+value, Toast.LENGTH_SHORT).show();
         return value;
     }
+
+
+    public static  void callbyJNIStaticString00() {
+
+        android.util.Log.i("zukgit","Java@@static void callbyJNIStaticString00()  静态方法被JNI执行！");
+    }
+
+    public static void callbyJNIStaticString01( String str) {
+
+        android.util.Log.i("zukgit","Java@@static void callbyJNIStaticString01( String str) 静态方法被JNI执行！");
+        android.util.Log.i("zukgit","Java@@ 从JNI.c 传递过来的值为:"+ str);
+
+    }
+
+    public static  String callbyJNIStaticString10() {
+        android.util.Log.i("zukgit","Java@@static  String callbyJNIStaticString10()  静态方法被JNI执行！");
+        return " 在java中定义的值 返回到JNI.c中 Java@method-callbyJNIStaticString10";
+    }
+
+    public static String  callbyJNIStaticString11( String str) {
+        android.util.Log.i("zukgit","Java@@static String  callbyJNIStaticString11( String str)  静态方法被JNI执行！");
+        return  str+" this is static methid ！" ;
+    }
+
+
+    //==============================String End ================================
 
 
     //-------------------Object Property Getter and Setter
@@ -241,11 +284,7 @@ public class JniUtil {
 
     public native Object objectNvMethod();
 
-    // String
-    public native void stringNvMethod00();
-    public native void stringNvMethod01( String str);
-    public native String stringNvMethod10();
-    public native String stringNvMethod11( String str);
+
 
 
 
@@ -276,39 +315,39 @@ public class JniUtil {
     public static float floatStaticValue;
     public static double doubleStaticValue;
     public static Object objectStaticValue;
-    public static String stringStaticValue;
+
 
     public static ArrayList<String> stringListStaticValue;
     public static ArrayList<Object> objectListStaticValue;
     public static ArrayMap<String,String>  stringMapStaticValue;
 
 
-static{
-    booleanStaticValue = true;
-    byteStaticValue = 0x01;
-    charStaticValue = 'a';
-    shortStaticValue = 1;
-    intStaticValue = 100;
-    longStaticValue = 10000;
-    floatStaticValue = 3.14f;
-    doubleStaticValue = 3.1415926;
-    objectStaticValue = new Object();
-    stringStaticValue = new String("Util's Value");
-    stringListStaticValue = new  ArrayList<String>(10);
-    objectListStaticValue = new  ArrayList<Object>(10);
-    stringMapStaticValue = new ArrayMap<String,String>(10);
-    for (int i=0; i < stringListStaticValue.size(); i++){
-        stringListStaticValue.add("staticString"+i);
-    }
-    for (int i=0; i < objectListStaticValue.size(); i++){
-        objectListStaticValue.add(new ObjectA(i));
-    }
+    static{
+        booleanStaticValue = true;
+        byteStaticValue = 0x01;
+        charStaticValue = 'a';
+        shortStaticValue = 1;
+        intStaticValue = 100;
+        longStaticValue = 10000;
+        floatStaticValue = 3.14f;
+        doubleStaticValue = 3.1415926;
+        objectStaticValue = new Object();
+        stringStaticValue = new String("Util's Value");
+        stringListStaticValue = new  ArrayList<String>(10);
+        objectListStaticValue = new  ArrayList<Object>(10);
+        stringMapStaticValue = new ArrayMap<String,String>(10);
+        for (int i=0; i < stringListStaticValue.size(); i++){
+            stringListStaticValue.add("staticString"+i);
+        }
+        for (int i=0; i < objectListStaticValue.size(); i++){
+            objectListStaticValue.add(new ObjectA(i));
+        }
 
-    for (int i=0; i < stringMapStaticValue.size(); i++){
-        stringMapStaticValue.put(""+i," static-map-value-"+i);
-    }
+        for (int i=0; i < stringMapStaticValue.size(); i++){
+            stringMapStaticValue.put(""+i," static-map-value-"+i);
+        }
 
-}
+    }
 
     //-------------------Class Static  Property Getter and Setter
 
@@ -415,59 +454,55 @@ static{
 
     //------------------- Class Static Native Method
 
-    public native void voidStaticNvMethod();
+    public static native void voidStaticNvMethod();
 
-    public native boolean booleanStaticNvMethod();
+    public static native boolean booleanStaticNvMethod();
 
-    public native byte byteStaticNvMethod();
+    public static native byte byteStaticNvMethod();
 
-    public native char charStaticNvMethod();
+    public static native char charStaticNvMethod();
 
-    public native short shortStaticNvMethod();
+    public static native short shortStaticNvMethod();
 
-    public native int intStaticNvMethod();
+    public static native int intStaticNvMethod();
 
-    public native long longStaticNvMethod();
+    public static native long longStaticNvMethod();
 
-    public native float floatStaticNvMethod();
+    public static native float floatStaticNvMethod();
 
-    public native double doubleStaticNvMethod();
-
-
-    public native boolean[] booleanArrayStaticNvMethod();
-
-    public native byte[] byteArrayStaticNvMethod();
-
-    public native char[] charArrayStaticNvMethod();
-
-    public native short[] shortArrayStaticNvMethod();
-
-    public native int[] intArrayStaticNvMethod();
-
-    public native long[] longArrayStaticNvMethod();
-
-    public native float[] floatArrayStaticNvMethod();
-
-    public native double[] doubleArrayStaticNvMethod();
+    public static native double doubleStaticNvMethod();
 
 
-    public native Object objectStaticNvMethod();
+    public static native boolean[] booleanArrayStaticNvMethod();
+
+    public static native byte[] byteArrayStaticNvMethod();
+
+    public static native char[] charArrayStaticNvMethod();
+
+    public static native short[] shortArrayStaticNvMethod();
+
+    public static native int[] intArrayStaticNvMethod();
+
+    public static native long[] longArrayStaticNvMethod();
+
+    public static native float[] floatArrayStaticNvMethod();
+
+    public static native double[] doubleArrayStaticNvMethod();
 
 
-    // String
-    public native void stringStaticNvMethod00();
-    public native void stringStaticNvMethod01( String str);
-    public native String stringStaticNvMethod10();
-    public native String stringStaticNvMethod11( String str);
+    public static native Object objectStaticNvMethod();
 
 
-    public native ArrayList<String> stringListStaticNvMethod();
 
-    public native ArrayList<Object> objectListStaticNvMethod();
 
-    public native ArrayMap<String,String> stringMapStaticNvMethod();
 
-    public native void allStaticNvMethod(
+    public static native ArrayList<String> stringListStaticNvMethod();
+
+    public static native ArrayList<Object> objectListStaticNvMethod();
+
+    public static  native ArrayMap<String,String> stringMapStaticNvMethod();
+
+    public static native void allStaticNvMethod(
             boolean booleanValue, byte byteValue, char charValue, short shortValue, int intValue,
             long longValue, float floatValue, double doubleValue,
             ArrayList<Object> objectListValue ,   ArrayList<String> stringListValue, ArrayMap<String,String> stringMapValue);

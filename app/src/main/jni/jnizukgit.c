@@ -12,6 +12,215 @@
 #define LOGI(...) __android_log_print(ANDROID_LOG_INFO, LOG_TAG, __VA_ARGS__)
 
 
+
+
+
+/************************************Java-Begin*************************************/
+// 静态方法和对象方法的不同就在于
+// 实例对象方法JNI方法的第二个参数为 jobject(JNIEnv *env, jobject jobj)
+// 静态方法 JNI方法 第二个参数为 jclass   (JNIEnv *env, jclass jcls);
+JNIEXPORT void JNICALL Java_com_zukgit_administrator_testjni_1zukgit_JniUtil_stringNvMethod00
+        (JNIEnv *env, jobject jobj) {
+
+    jclass jcla = (*env)->GetObjectClass(env, jobj);
+
+    jfieldID fid = (*env)->GetFieldID(env, jcla, "stringValue", "Ljava/lang/String;");
+
+
+    jstring jstr = (*env)->GetObjectField(env, jobj, fid);
+
+    char *c_str = (*env)->GetStringUTFChars(env, jstr, 0);  // 读取到 stringValue的值
+
+    char text[100] = "stringValue change in JNI ";
+
+    strcat(text, c_str);  // 创建新的值
+
+    jstring new_str = (*env)->NewStringUTF(env, text);
+
+    (*env)->SetObjectField(env, jobj, fid, new_str);  // 设置 stringValue新的值
+
+    jmethodID mid = (*env)->GetMethodID(env, jcla, "callbyJNIString00", "()V");
+    (*env)->CallVoidMethod(env, jobj, mid); // 调用 Java的Object 函数   void callbyJNIString00()
+
+    return;
+}
+
+
+JNIEXPORT void JNICALL Java_com_zukgit_administrator_testjni_1zukgit_JniUtil_stringNvMethod01
+        (JNIEnv *env, jobject jobj, jstring str) {
+
+    jclass jcla = (*env)->GetObjectClass(env, jobj);
+    const char *cStr = (*env)->GetStringUTFChars(env, str, 0);  // jstring 转为 C语言 char* 类型
+
+    LOGI(" ......From C..... Zukgit stringNvMethod01 %s", cStr);
+
+    char *mChar = "JIN前缀";
+    char *result = (char *) malloc(strlen(cStr) + strlen(mChar) + 1);
+    if (result == NULL)
+        return ;
+    strcpy(result, mChar);
+    strcat(result, cStr);   // 完成字符的拼接
+
+    jstring new_str = (*env)->NewStringUTF(env, result);
+    jmethodID mid = (*env)->GetMethodID(env, jcla, "callbyJNIString01", "(Ljava/lang/String;)V");
+    (*env)->CallVoidMethod(env, jobj, mid,new_str); // 调用 Java的Object 函数   void callbyJNIString00()
+    return;
+}
+
+
+/*
+ * Class:     com_zukgit_administrator_testjni_zukgit_JniUtil
+ * Method:    stringNvMethod
+ * Signature: ()Ljava/lang/String;
+ */
+JNIEXPORT jstring JNICALL Java_com_zukgit_administrator_testjni_1zukgit_JniUtil_stringNvMethod10
+        (JNIEnv *env, jobject jobj) {
+    jclass jcla = (*env)->GetObjectClass(env, jobj);
+    char *mChar = "stringNvMethod10().cpp JNI执行";
+    LOGI(" %s", mChar);
+
+    jmethodID mid = (*env)->GetMethodID(env, jcla, "callbyJNIString10", "()Ljava/lang/String;");
+    jstring return_str = (*env)->CallObjectMethod(env, jobj, mid);
+    const char *cStr = (*env)->GetStringUTFChars(env, return_str, 0);  // jstring 转为 C语言 char* 类型
+    char *cStr1 ="从JniUtil.java 返回的字符串:";
+    LOGI("从JniUtil.java 返回的字符串: %s", cStr);
+
+    char *result = (char *) malloc(strlen(cStr) + strlen(cStr1) + 1);
+    LOGI("strlen(cStr)=%d strlen(cStr1)=%d ", strlen(cStr),strlen(cStr1));
+    if (result == NULL)
+        return NULL;
+    strcpy(result, cStr1);
+    LOGI("result1 : %s", result);
+    strcat(result, cStr);   // 完成字符的拼接
+    LOGI("result2 : %s", result);
+    jstring result_str = (*env)->NewStringUTF(env, result);
+    LOGI("result3 : %s", result);
+
+    //return (*env)->NewStringUTF(env, return_str); // ▲ 为什么会报错  尼玛 忘了 第二个参数是 C字符  不是 jstring
+    //return (*env)->NewStringUTF(env, result_str);         // ▲ 为什么会报错   尼玛 忘了 第二个参数是 C字符  不是 jstring
+    //return (*env)->NewStringUTF(env, "OK");
+    return result_str;
+}
+
+
+JNIEXPORT jstring  JNICALL Java_com_zukgit_administrator_testjni_1zukgit_JniUtil_stringNvMethod11
+        (JNIEnv *env, jobject jobj, jstring str) {
+    const char *cStr = (*env)->GetStringUTFChars(env, str, 0);  // jstring 转为 C语言 char* 类型
+    LOGI("stringNvMethod11正在JNI被执行  从Java 传来的值 : %s", cStr);
+    char *mChar = "stringNvMethod11 from JNI";
+
+
+    char *result = (char *) malloc(strlen(cStr) + strlen(mChar) + 1);
+    if (result == NULL)
+        return NULL;
+    strcpy(result, cStr);
+    strcat(result, mChar);   // 完成字符的拼接
+    jstring  jstring_result = (*env)->NewStringUTF(env, result);
+
+    jclass jcla = (*env)->GetObjectClass(env, jobj);
+    jmethodID mid = (*env)->GetMethodID(env, jcla, "callbyJNIString11", "(Ljava/lang/String;)Ljava/lang/String;");
+
+    jstring return_str = (*env)->CallObjectMethod(env, jobj, mid,jstring_result);
+    const char *cStr_return = (*env)->GetStringUTFChars(env, return_str, 0);
+    LOGI("从 Java类方法stringNvMethod11返回的字符串: %s", cStr_return);
+
+    return jstring_result;
+
+}
+
+
+
+JNIEXPORT void JNICALL Java_com_zukgit_administrator_testjni_1zukgit_JniUtil_stringStaticNvMethod00
+        (JNIEnv *env, jclass jcla) {
+    char *c_strLog  ="Jni.c@@- method -stringStaticNvMethod00";
+    LOGI(" %s", c_strLog);
+    jfieldID fid = (*env)->GetStaticFieldID(env, jcla, "stringStaticValue", "Ljava/lang/String;");
+    jstring jstr = (*env)->GetStaticObjectField(env, jcla, fid);  // 获得 静态属性
+    char *c_str = (*env)->GetStringUTFChars(env, jstr, 0);
+    char text[150] = "Jni.c@@stringStaticValue change in JNI ";
+    //strcat(text, c_str);
+    jstring new_str = (*env)->NewStringUTF(env, text);
+    (*env)->SetStaticObjectField(env, jcla, fid, new_str);    // 设置 静态属性
+
+    LOGI("Jni.c@@ stringStaticNvMethod00 1 ");
+    jmethodID mid = (*env)->GetStaticMethodID(env, jcla, "callbyJNIStaticString00", "()V"); // 指定静态方法
+    (*env)->CallStaticVoidMethod(env, jcla, mid);  // 调用返回值为空的静态方法
+
+    // 调用 方法
+    LOGI("Jni.c@@ stringStaticNvMethod00 2 ");
+    return;
+}
+
+JNIEXPORT void JNICALL Java_com_zukgit_administrator_testjni_1zukgit_JniUtil_stringStaticNvMethod01
+        (JNIEnv *env,jclass jcla, jstring str) {
+    char *c_str  ="Jni.c- method -stringStaticNvMethod01";
+    LOGI(" %s", c_str);
+
+    const char *cstr_value = (*env)->GetStringUTFChars(env, str, 0);
+
+    LOGI("Jni.c@@  从Java传来的值 %s", c_str);
+
+    char *c_str1  ="这是定义在JNI.c 传递给Java的字符串！";
+    jmethodID mid = (*env)->GetStaticMethodID(env, jcla, "callbyJNIStaticString01", "(Ljava/lang/String;)V");
+    jstring mReturnStr =  (*env)->NewStringUTF(env, c_str1);
+    (*env)->CallStaticVoidMethod(env, jcla, mid, mReturnStr);  // 调用返回值为空的静态方法
+
+    return;
+}
+
+
+/*
+ * Class:     com_zukgit_administrator_testjni_zukgit_JniUtil
+ * Method:    stringStaticNvMethod
+ * Signature: ()Ljava/lang/String;
+ */
+JNIEXPORT jstring JNICALL
+Java_com_zukgit_administrator_testjni_1zukgit_JniUtil_stringStaticNvMethod10
+        (JNIEnv *env, jclass jcla) {
+    char *c_strLog  ="Jni.c@@- method -stringStaticNvMethod01";
+    LOGI(" %s", c_strLog);
+
+    jmethodID mid = (*env)->GetStaticMethodID(env, jcla, "callbyJNIStaticString10", "()Ljava/lang/String;");
+    jstring mReturnStr =  (*env)->CallStaticObjectMethod(env, jcla, mid);  // 调用返回值为空的静态方法
+
+
+    const char *cstr_value = (*env)->GetStringUTFChars(env, mReturnStr, 0);
+    LOGI("Jni.c@@ 从java 返回到JNI的字符串 %s", cstr_value);
+    return mReturnStr;
+}
+
+JNIEXPORT jstring JNICALL
+Java_com_zukgit_administrator_testjni_1zukgit_JniUtil_stringStaticNvMethod11
+        (JNIEnv *env, jclass jcla, jstring str) {
+
+
+    char *c_strLog  ="Jni.c@@- method -stringStaticNvMethod11";
+    LOGI(" %s", c_strLog);
+
+
+    const char *cStr = (*env)->GetStringUTFChars(env, str, 0);  // jstring 转为 C语言 char* 类型
+    LOGI("Jni.c@@ 从java 传递到JNI的 String 值: %s", cStr);
+
+
+    char *mChar = "--Java>|C-hi|<Java--";
+    char *result = (char *) malloc(strlen(cStr) + strlen(mChar) + 1);
+    if (result == NULL)
+        return NULL ;
+    strcpy(result, cStr);
+    strcat(result, mChar);   // 完成字符的拼接
+    LOGI("Jni.c@@  拼接前字符串 %s", result);
+    jstring txt = (*env)->NewStringUTF(env, result);
+
+    jmethodID mid = (*env)->GetStaticMethodID(env, jcla, "callbyJNIStaticString11", "(Ljava/lang/String;)Ljava/lang/String;");
+    jstring mReturnStr =  (*env)->CallStaticObjectMethod(env, jcla , mid , txt);  //  调用 java的静态方法 来完成字符串的 拼接
+
+    const char *txt1 = (*env)->GetStringUTFChars(env, mReturnStr, 0);  // jstring 转为 C语言 char* 类型
+    LOGI("Jni.c@@  拼接后字符串 %s", txt1);
+
+    return (*env)->NewStringUTF(env, txt1);
+}
+/************************************Java-End*************************************/
+
 JNIEXPORT void JNICALL Java_com_zukgit_administrator_testjni_1zukgit_JniUtil_voidNvMethod
         (JNIEnv *env, jobject obj) {
 
@@ -214,163 +423,6 @@ JNIEXPORT jobject JNICALL Java_com_zukgit_administrator_testjni_1zukgit_JniUtil_
     return NULL;
 }
 
-/************************************Java-Begin*************************************/
-JNIEXPORT void JNICALL Java_com_zukgit_administrator_testjni_1zukgit_JniUtil_stringNvMethod00
-        (JNIEnv *env, jobject jobj) {
-
-    jclass jcla = (*env)->GetObjectClass(env, jobj);
-
-    jfieldID fid = (*env)->GetFieldID(env, jcla, "stringValue", "Ljava/lang/String;");
-
-
-    jstring jstr = (*env)->GetObjectField(env, jobj, fid);
-
-    char *c_str = (*env)->GetStringUTFChars(env, jstr, NULL);  // 读取到 stringValue的值
-
-    char text[100] = "stringValue change in JNI ";
-
-    strcat(text, c_str);  // 创建新的值
-
-    jstring new_str = (*env)->NewStringUTF(env, text);
-
-    (*env)->SetObjectField(env, jobj, fid, new_str);  // 设置 stringValue新的值
-
-    jmethodID mid = (*env)->GetMethodID(env, jcla, "callbyJNIString00", "()V");
-    (*env)->CallVoidMethod(env, jobj, mid); // 调用 Java的Object 函数   void callbyJNIString00()
-
-    return;
-}
-
-
-JNIEXPORT void JNICALL Java_com_zukgit_administrator_testjni_1zukgit_JniUtil_stringNvMethod01
-        (JNIEnv *env, jobject jobj, jstring str) {
-
-    jclass jcla = (*env)->GetObjectClass(env, jobj);
-    const char *cStr = (*env)->GetStringUTFChars(env, str, 0);  // jstring 转为 C语言 char* 类型
-
-    LOGI(" ......From C..... Zukgit stringNvMethod01 %s", cStr);
-
-    char *mChar = "JIN前缀";
-    char *result = (char *) malloc(strlen(cStr) + strlen(mChar) + 1);
-    if (result == NULL)
-        return ;
-    strcpy(result, mChar);
-    strcat(result, cStr);   // 完成字符的拼接
-
-    jstring new_str = (*env)->NewStringUTF(env, result);
-    jmethodID mid = (*env)->GetMethodID(env, jcla, "callbyJNIString01", "(Ljava/lang/String;)V");
-    (*env)->CallVoidMethod(env, jobj, mid,new_str); // 调用 Java的Object 函数   void callbyJNIString00()
-    return;
-}
-
-
-/*
- * Class:     com_zukgit_administrator_testjni_zukgit_JniUtil
- * Method:    stringNvMethod
- * Signature: ()Ljava/lang/String;
- */
-JNIEXPORT jstring JNICALL Java_com_zukgit_administrator_testjni_1zukgit_JniUtil_stringNvMethod10
-        (JNIEnv *env, jobject jobj) {
-    jclass jcla = (*env)->GetObjectClass(env, jobj);
-    char *mChar = "stringNvMethod10().cpp JNI执行";
-    LOGI(" %s", mChar);
-
-    jmethodID mid = (*env)->GetMethodID(env, jcla, "callbyJNIString10", "()Ljava/lang/String;");
-    jstring return_str = (*env)->CallObjectMethod(env, jobj, mid);
-    const char *cStr = (*env)->GetStringUTFChars(env, return_str, 0);  // jstring 转为 C语言 char* 类型
-    char *cStr1 ="从JniUtil.java 返回的字符串:";
-    LOGI("从JniUtil.java 返回的字符串: %s", cStr);
-
-    char *result = (char *) malloc(strlen(cStr) + strlen(cStr1) + 1);
-    LOGI("strlen(cStr)=%d strlen(cStr1)=%d ", strlen(cStr),strlen(cStr1));
-    if (result == NULL)
-        return NULL;
-    strcpy(result, cStr1);
-    LOGI("result1 : %s", result);
-    strcat(result, cStr);   // 完成字符的拼接
-    LOGI("result2 : %s", result);
-    jstring result_str = (*env)->NewStringUTF(env, result);
-    LOGI("result3 : %s", result);
-   //return (*env)->NewStringUTF(env, result_str);         // ▲ 为什么会报错
-    return (*env)->NewStringUTF(env, "OK");
-}
-
-
-JNIEXPORT jstring  JNICALL Java_com_zukgit_administrator_testjni_1zukgit_JniUtil_stringNvMethod11
-        (JNIEnv *env, jobject jobj, jstring str) {
-    const char *cStr = (*env)->GetStringUTFChars(env, str, 0);  // jstring 转为 C语言 char* 类型
-    LOGI("stringNvMethod11正在JNI被执行  从Java 传来的值 : %s", cStr);
-    char *mChar = "stringNvMethod11 from JNI";
-
-
-    char *result = (char *) malloc(strlen(cStr) + strlen(mChar) + 1);
-    if (result == NULL)
-        return NULL;
-    strcpy(result, cStr);
-    strcat(result, mChar);   // 完成字符的拼接
-    jstring  jstring_result = (*env)->NewStringUTF(env, result);
-
-    jclass jcla = (*env)->GetObjectClass(env, jobj);
-    jmethodID mid = (*env)->GetMethodID(env, jcla, "callbyJNIString11", "(Ljava/lang/String;)Ljava/lang/String;");
-
-    jstring return_str = (*env)->CallObjectMethod(env, jobj, mid,jstring_result);
-    const char *cStr_return = (*env)->GetStringUTFChars(env, return_str, 0);
-    LOGI("从 Java类方法stringNvMethod11返回的字符串: %s", cStr_return);
-
-    return jstring_result;
-
-}
-
-
-
-JNIEXPORT void JNICALL Java_com_zukgit_administrator_testjni_1zukgit_JniUtil_stringStaticNvMethod00
-        (JNIEnv *env, jobject jobj) {
-
-
-    jclass jcla = (*env)->GetObjectClass(env, jobj);
-    jfieldID fid = (*env)->GetStaticFieldID(env, jcla, "stringStaticValue", "Ljava/lang/String;");
-    jstring jstr = (*env)->GetStaticObjectField(env, jcla, fid);
-    char *c_str = (*env)->GetStringUTFChars(env, jstr, NULL);
-    char text[100] = "stringStaticValue change in JNI ";
-    strcat(text, c_str);
-    jstring new_str = (*env)->NewStringUTF(env, text);
-    (*env)->SetStaticObjectField(env, jcla, fid, new_str);
-
-    return;
-}
-
-JNIEXPORT void JNICALL Java_com_zukgit_administrator_testjni_1zukgit_JniUtil_stringStaticNvMethod01
-        (JNIEnv *env, jobject obj , jstring str) {
-    return;
-}
-
-
-/*
- * Class:     com_zukgit_administrator_testjni_zukgit_JniUtil
- * Method:    stringStaticNvMethod
- * Signature: ()Ljava/lang/String;
- */
-JNIEXPORT jstring JNICALL
-Java_com_zukgit_administrator_testjni_1zukgit_JniUtil_stringStaticNvMethod10
-        (JNIEnv *env, jobject obj) {
-    return (*env)->NewStringUTF(env, "staticstring_10 from JNI");
-}
-
-JNIEXPORT jstring JNICALL
-Java_com_zukgit_administrator_testjni_1zukgit_JniUtil_stringStaticNvMethod11
-        (JNIEnv *env, jobject obj, jstring str) {
-    char buf[128];
-    const char *cStr = (*env)->GetStringUTFChars(env, str, 0);  // jstring 转为 C语言 char* 类型
-    printf("%s", cStr);
-    char *mChar = "staticstring_11 from JNI";
-    char *result = (char *) malloc(strlen(cStr) + strlen(mChar) + 1);
-    if (result == NULL)
-        return NULL;
-    strcpy(result, cStr);
-    strcat(result, mChar);   // 完成字符的拼接
-    return (*env)->NewStringUTF(env, result);
-}
-/************************************Java-End*************************************/
 
 /*
  * Class:     com_zukgit_administrator_testjni_zukgit_JniUtil
