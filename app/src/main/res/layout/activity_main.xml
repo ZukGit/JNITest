@@ -16,7 +16,10 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <!--  Boolean -->
+            <!--                        boolean    ==============Begin                         -->
+
+
+            <!--  boolean 00 -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -30,334 +33,21 @@
                     android:layout_height="40dp">
 
                     <TextView
-                        android:id="@+id/tx_boolean"
+                        android:id="@+id/tx_boolean00"
                         android:layout_width="wrap_content"
                         android:layout_height="30dp"
                         android:layout_alignParentLeft="true"
                         android:layout_margin="10dp"
                         android:paddingTop="3dp"
-                        android:text="tx_boolean" />
-
-                    <Button
-                        android:id="@+id/btn_boolean"
-                        android:layout_height="wrap_content"
-                        android:layout_width="150dp"
-                        android:layout_alignParentRight="true"
-                        android:text="btn_boolean" />
-                </RelativeLayout>
-
-                <ImageView
-                    android:layout_width="fill_parent"
-                    android:layout_height="1dp"
-                    android:background="#000000" />
-            </LinearLayout>
-
-
-            <!--  byte -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:divider="@drawable/divide"
-                android:orientation="vertical"
-                android:showDividers="middle">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-
-                    android:layout_height="40dp">
-
-                    <TextView
-                        android:id="@+id/tx_byte"
-                        android:layout_width="wrap_content"
-                        android:layout_height="30dp"
-                        android:layout_alignParentLeft="true"
-                        android:layout_margin="10dp"
-                        android:paddingTop="3dp"
-                        android:text="tx_byte" />
-
-                    <Button
-                        android:id="@+id/btn_byte"
-                        android:layout_width="150dp"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:text="btn_byte" />
-                </RelativeLayout>
-
-                <ImageView
-                    android:layout_width="fill_parent"
-                    android:layout_height="1dp"
-                    android:background="#000000" />
-            </LinearLayout>
-
-
-
-
-            <!--  char -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:divider="@drawable/divide"
-                android:orientation="vertical"
-                android:showDividers="middle">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-
-                    android:layout_height="40dp">
-
-                    <TextView
-                        android:id="@+id/tx_char"
-                        android:layout_width="wrap_content"
-                        android:layout_height="30dp"
-                        android:layout_alignParentLeft="true"
-                        android:layout_margin="10dp"
-                        android:paddingTop="3dp"
-                        android:text="tx_char" />
-
-                    <Button
-                        android:id="@+id/btn_char"
-                        android:layout_width="150dp"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:text="btn_char" />
-                </RelativeLayout>
-
-                <ImageView
-                    android:layout_width="fill_parent"
-                    android:layout_height="1dp"
-                    android:background="#000000" />
-            </LinearLayout>
-
-
-
-            <!--  char -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:divider="@drawable/divide"
-                android:orientation="vertical"
-                android:showDividers="middle">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-
-                    android:layout_height="40dp">
-
-                    <TextView
-                        android:id="@+id/tx_short"
-                        android:layout_width="wrap_content"
-                        android:layout_height="30dp"
-                        android:layout_alignParentLeft="true"
-                        android:layout_margin="10dp"
-                        android:paddingTop="3dp"
-                        android:text="tx_short" />
-
-                    <Button
-                        android:id="@+id/btn_short"
-                        android:layout_width="150dp"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:text="btn_short" />
-                </RelativeLayout>
-
-                <ImageView
-                    android:layout_width="fill_parent"
-                    android:layout_height="1dp"
-                    android:background="#000000" />
-            </LinearLayout>
-
-
-
-            <!--  int -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:divider="@drawable/divide"
-                android:orientation="vertical"
-                android:showDividers="middle">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-
-                    android:layout_height="40dp">
-
-                    <TextView
-                        android:id="@+id/tx_int"
-                        android:layout_width="wrap_content"
-                        android:layout_height="30dp"
-                        android:layout_alignParentLeft="true"
-                        android:layout_margin="10dp"
-                        android:paddingTop="3dp"
-                        android:text="tx_int" />
-
-                    <Button
-                        android:id="@+id/btn_int"
-                        android:layout_width="150dp"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:text="btn_int" />
-                </RelativeLayout>
-
-                <ImageView
-                    android:layout_width="fill_parent"
-                    android:layout_height="1dp"
-                    android:background="#000000" />
-            </LinearLayout>
-
-
-
-
-
-
-
-            <!--  long -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:divider="@drawable/divide"
-                android:orientation="vertical"
-                android:showDividers="middle">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-
-                    android:layout_height="40dp">
-
-                    <TextView
-                        android:id="@+id/tx_long"
-                        android:layout_width="wrap_content"
-                        android:layout_height="30dp"
-                        android:layout_alignParentLeft="true"
-                        android:layout_margin="10dp"
-                        android:paddingTop="3dp"
-                        android:text="tx_long" />
-
-                    <Button
-                        android:id="@+id/btn_long"
-                        android:layout_width="150dp"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:text="btn_long" />
-                </RelativeLayout>
-
-                <ImageView
-                    android:layout_width="fill_parent"
-                    android:layout_height="1dp"
-                    android:background="#000000" />
-            </LinearLayout>
-
-
-
-
-
-            <!--  double -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:divider="@drawable/divide"
-                android:orientation="vertical"
-                android:showDividers="middle">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-
-                    android:layout_height="40dp">
-
-                    <TextView
-                        android:id="@+id/tx_double"
-                        android:layout_width="wrap_content"
-                        android:layout_height="30dp"
-                        android:layout_alignParentLeft="true"
-                        android:layout_margin="10dp"
-                        android:paddingTop="3dp"
-                        android:text="tx_double" />
-
-                    <Button
-                        android:id="@+id/btn_double"
-                        android:layout_width="150dp"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:text="btn_double" />
-                </RelativeLayout>
-
-                <ImageView
-                    android:layout_width="fill_parent"
-                    android:layout_height="1dp"
-                    android:background="#000000" />
-            </LinearLayout>
-
-
-
-
-
-            <!--  float -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:divider="@drawable/divide"
-                android:orientation="vertical"
-                android:showDividers="middle">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-
-                    android:layout_height="40dp">
-
-                    <TextView
-                        android:id="@+id/tx_float"
-                        android:layout_width="wrap_content"
-                        android:layout_height="30dp"
-                        android:layout_alignParentLeft="true"
-                        android:layout_margin="10dp"
-                        android:paddingTop="3dp"
-                        android:text="tx_float" />
-
-                    <Button
-                        android:id="@+id/btn_float"
-                        android:layout_width="150dp"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:text="btn_byte" />
-                </RelativeLayout>
-
-                <ImageView
-                    android:layout_width="fill_parent"
-                    android:layout_height="1dp"
-                    android:background="#000000" />
-            </LinearLayout>
-
-
-
-
-            <!--  Object -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:divider="@drawable/divide"
-                android:orientation="vertical"
-                android:showDividers="middle">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-
-                    android:layout_height="40dp">
-
-                    <TextView
-                        android:id="@+id/tx_object"
-                        android:layout_width="wrap_content"
-                        android:layout_height="30dp"
-                        android:layout_alignParentLeft="true"
-                        android:layout_margin="10dp"
                         android:ellipsize="end"
-                        android:paddingTop="3dp"
-                        android:text="tx_object" />
+                        android:text="tx_boolean00" />
 
                     <Button
-                        android:id="@+id/btn_object"
-                        android:layout_width="150dp"
+                        android:id="@+id/btn_boolean00"
+                        android:layout_width="180dp"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:text="btn_object" />
+                        android:text="btn_boolean00" />
                 </RelativeLayout>
 
                 <ImageView
@@ -369,7 +59,2930 @@
 
 
 
- <!--                        String    ==============Begin                         -->
+            <!--  boolean 01 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_boolean01"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_boolean01" />
+
+                    <Button
+                        android:id="@+id/btn_boolean01"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_boolean01" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+
+            <!--  boolean 10 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_boolean10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_boolean10" />
+
+                    <Button
+                        android:id="@+id/btn_boolean10"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_boolean10" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+            <!--  boolean 11 -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_boolean11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_boolean11" />
+
+                    <Button
+                        android:id="@+id/btn_boolean11"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_boolean11" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+            <!-- Static-boolean  Begin-->
+
+            <!--  Static=boolean 00 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_staticboolean00"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_staticboolean00" />
+
+                    <Button
+                        android:id="@+id/btn_staticboolean00"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_boolean00_s" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+            <!--  boolean 01 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_staticboolean01"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_staticboolean01" />
+
+                    <Button
+                        android:id="@+id/btn_staticboolean01"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_boolean01_s" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+
+            <!--  Static boolean 10 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_staticboolean10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_staticboolean10" />
+
+                    <Button
+                        android:id="@+id/btn_staticboolean10"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_boolean10_s" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+            <!--  boolean 11 -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_staticboolean11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_staticboolean11" />
+
+                    <Button
+                        android:id="@+id/btn_staticboolean11"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_boolean11_s" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+            <!--                        boolean    ==============End                         -->
+
+
+            <!--                        byte    ==============Begin                         -->
+
+
+            <!--  byte 00 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_byte00"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_byte00" />
+
+                    <Button
+                        android:id="@+id/btn_byte00"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_byte00" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+            <!--  byte 01 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_byte01"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_byte01" />
+
+                    <Button
+                        android:id="@+id/btn_byte01"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_byte01" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+
+            <!--  byte 10 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_byte10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_byte10" />
+
+                    <Button
+                        android:id="@+id/btn_byte10"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_byte10" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+            <!--  byte 11 -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_byte11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_byte11" />
+
+                    <Button
+                        android:id="@+id/btn_byte11"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_byte11" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+            <!-- Static-byte  Begin-->
+
+            <!--  Static=byte 00 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_staticbyte00"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_staticbyte00" />
+
+                    <Button
+                        android:id="@+id/btn_staticbyte00"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_byte00_s" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+            <!--  byte 01 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_staticbyte01"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_staticbyte01" />
+
+                    <Button
+                        android:id="@+id/btn_staticbyte01"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_byte01_s" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+
+            <!--  Static byte 10 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_staticbyte10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_staticbyte10" />
+
+                    <Button
+                        android:id="@+id/btn_staticbyte10"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_byte10_s" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+            <!--  byte 11 -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_staticbyte11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_staticbyte11" />
+
+                    <Button
+                        android:id="@+id/btn_staticbyte11"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_byte11_s" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+            <!--                        byte    ==============End                         -->
+
+
+
+            <!--                        char    ==============Begin                         -->
+
+
+            <!--  char 00 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_char00"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_char00" />
+
+                    <Button
+                        android:id="@+id/btn_char00"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_char00" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+            <!--  char 01 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_char01"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_char01" />
+
+                    <Button
+                        android:id="@+id/btn_char01"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_char01" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+
+            <!--  char 10 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_char10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_char10" />
+
+                    <Button
+                        android:id="@+id/btn_char10"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_char10" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+            <!--  char 11 -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_char11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_char11" />
+
+                    <Button
+                        android:id="@+id/btn_char11"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_char11" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+            <!-- Static-char  Begin-->
+
+            <!--  Static=char 00 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_staticchar00"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_staticchar00" />
+
+                    <Button
+                        android:id="@+id/btn_staticchar00"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_char00_s" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+            <!--  char 01 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_staticchar01"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_staticchar01" />
+
+                    <Button
+                        android:id="@+id/btn_staticchar01"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_char01_s" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+
+            <!--  Static char 10 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_staticchar10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_staticchar10" />
+
+                    <Button
+                        android:id="@+id/btn_staticchar10"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_char10_s" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+            <!--  char 11 -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_staticchar11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_staticchar11" />
+
+                    <Button
+                        android:id="@+id/btn_staticchar11"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_char11_s" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+            <!--                        char    ==============End                         -->
+
+            <!--                        short    ==============Begin                         -->
+
+
+            <!--  short 00 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_short00"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_short00" />
+
+                    <Button
+                        android:id="@+id/btn_short00"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_short00" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+            <!--  short 01 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_short01"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_short01" />
+
+                    <Button
+                        android:id="@+id/btn_short01"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_short01" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+
+            <!--  short 10 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_short10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_short10" />
+
+                    <Button
+                        android:id="@+id/btn_short10"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_short10" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+            <!--  short 11 -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_short11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_short11" />
+
+                    <Button
+                        android:id="@+id/btn_short11"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_short11" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+            <!-- Static-short  Begin-->
+
+            <!--  Static=short 00 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_staticshort00"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_staticshort00" />
+
+                    <Button
+                        android:id="@+id/btn_staticshort00"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_short00_s" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+            <!--  short 01 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_staticshort01"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_staticshort01" />
+
+                    <Button
+                        android:id="@+id/btn_staticshort01"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_short01_s" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+
+            <!--  Static short 10 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_staticshort10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_staticshort10" />
+
+                    <Button
+                        android:id="@+id/btn_staticshort10"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_short10_s" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+            <!--  short 11 -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_staticshort11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_staticshort11" />
+
+                    <Button
+                        android:id="@+id/btn_staticshort11"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_short11_s" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+            <!--                        short    ==============End                         -->
+
+
+
+            <!--                        int    ==============Begin                         -->
+
+
+            <!--  int 00 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_int00"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_int00" />
+
+                    <Button
+                        android:id="@+id/btn_int00"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_int00" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+            <!--  int 01 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_int01"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_int01" />
+
+                    <Button
+                        android:id="@+id/btn_int01"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_int01" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+
+            <!--  int 10 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_int10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_int10" />
+
+                    <Button
+                        android:id="@+id/btn_int10"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_int10" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+            <!--  int 11 -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_int11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_int11" />
+
+                    <Button
+                        android:id="@+id/btn_int11"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_int11" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+            <!-- Static-int  Begin-->
+
+            <!--  Static=int 00 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_staticint00"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_staticint00" />
+
+                    <Button
+                        android:id="@+id/btn_staticint00"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_int00_s" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+            <!--  int 01 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_staticint01"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_staticint01" />
+
+                    <Button
+                        android:id="@+id/btn_staticint01"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_int01_s" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+
+            <!--  Static int 10 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_staticint10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_staticint10" />
+
+                    <Button
+                        android:id="@+id/btn_staticint10"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_int10_s" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+            <!--  int 11 -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_staticint11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_staticint11" />
+
+                    <Button
+                        android:id="@+id/btn_staticint11"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_int11_s" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+            <!--                        int    ==============End                         -->
+
+
+
+
+
+
+
+            <!--                        long    ==============Begin                         -->
+
+
+            <!--  long 00 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_long00"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_long00" />
+
+                    <Button
+                        android:id="@+id/btn_long00"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_long00" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+            <!--  long 01 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_long01"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_long01" />
+
+                    <Button
+                        android:id="@+id/btn_long01"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_long01" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+
+            <!--  long 10 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_long10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_long10" />
+
+                    <Button
+                        android:id="@+id/btn_long10"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_long10" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+            <!--  long 11 -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_long11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_long11" />
+
+                    <Button
+                        android:id="@+id/btn_long11"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_long11" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+            <!-- Static-long  Begin-->
+
+            <!--  Static=long 00 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_staticlong00"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_staticlong00" />
+
+                    <Button
+                        android:id="@+id/btn_staticlong00"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_long00_s" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+            <!--  long 01 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_staticlong01"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_staticlong01" />
+
+                    <Button
+                        android:id="@+id/btn_staticlong01"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_long01_s" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+
+            <!--  Static long 10 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_staticlong10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_staticlong10" />
+
+                    <Button
+                        android:id="@+id/btn_staticlong10"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_long10_s" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+            <!--  long 11 -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_staticlong11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_staticlong11" />
+
+                    <Button
+                        android:id="@+id/btn_staticlong11"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_long11_s" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+            <!--                        long    ==============End                         -->
+
+
+            <!--                        float    ==============Begin                         -->
+
+
+            <!--  float 00 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_float00"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_float00" />
+
+                    <Button
+                        android:id="@+id/btn_float00"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_float00" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+            <!--  float 01 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_float01"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_float01" />
+
+                    <Button
+                        android:id="@+id/btn_float01"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_float01" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+
+            <!--  float 10 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_float10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_float10" />
+
+                    <Button
+                        android:id="@+id/btn_float10"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_float10" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+            <!--  float 11 -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_float11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_float11" />
+
+                    <Button
+                        android:id="@+id/btn_float11"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_float11" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+            <!-- Static-float  Begin-->
+
+            <!--  Static=float 00 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_staticfloat00"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_staticfloat00" />
+
+                    <Button
+                        android:id="@+id/btn_staticfloat00"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_float00_s" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+            <!--  float 01 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_staticfloat01"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_staticfloat01" />
+
+                    <Button
+                        android:id="@+id/btn_staticfloat01"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_float01_s" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+
+            <!--  Static float 10 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_staticfloat10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_staticfloat10" />
+
+                    <Button
+                        android:id="@+id/btn_staticfloat10"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_float10_s" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+            <!--  float 11 -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_staticfloat11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_staticfloat11" />
+
+                    <Button
+                        android:id="@+id/btn_staticfloat11"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_float11_s" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+            <!--                        float    ==============End                         -->
+
+            <!--                        double    ==============Begin                         -->
+
+
+            <!--  double 00 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_double00"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_double00" />
+
+                    <Button
+                        android:id="@+id/btn_double00"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_double00" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+            <!--  double 01 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_double01"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_double01" />
+
+                    <Button
+                        android:id="@+id/btn_double01"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_double01" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+
+            <!--  double 10 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_double10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_double10" />
+
+                    <Button
+                        android:id="@+id/btn_double10"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_double10" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+            <!--  double 11 -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_double11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_double11" />
+
+                    <Button
+                        android:id="@+id/btn_double11"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_double11" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+            <!-- Static-double  Begin-->
+
+            <!--  Static=double 00 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_staticdouble00"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_staticdouble00" />
+
+                    <Button
+                        android:id="@+id/btn_staticdouble00"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_double00_s" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+            <!--  double 01 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_staticdouble01"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_staticdouble01" />
+
+                    <Button
+                        android:id="@+id/btn_staticdouble01"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_double01_s" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+
+            <!--  Static double 10 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_staticdouble10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_staticdouble10" />
+
+                    <Button
+                        android:id="@+id/btn_staticdouble10"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_double10_s" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+            <!--  double 11 -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_staticdouble11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_staticdouble11" />
+
+                    <Button
+                        android:id="@+id/btn_staticdouble11"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_double11_s" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+            <!--                        double    ==============End                         -->
+
+            <!--                        Object    ==============Begin                         -->
+
+
+            <!--  Object 00 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_Object00"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_Object00" />
+
+                    <Button
+                        android:id="@+id/btn_Object00"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_Object00" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+            <!--  Object 01 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_Object01"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_Object01" />
+
+                    <Button
+                        android:id="@+id/btn_Object01"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_Object01" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+
+            <!--  Object 10 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_Object10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_Object10" />
+
+                    <Button
+                        android:id="@+id/btn_Object10"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_Object10" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+            <!--  Object 11 -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_Object11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_Object11" />
+
+                    <Button
+                        android:id="@+id/btn_Object11"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_Object11" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+            <!-- Static-Object  Begin-->
+
+            <!--  Static=Object 00 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_staticObject00"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_staticObject00" />
+
+                    <Button
+                        android:id="@+id/btn_staticObject00"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_Object00_s" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+            <!--  Object 01 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_staticObject01"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_staticObject01" />
+
+                    <Button
+                        android:id="@+id/btn_staticObject01"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_Object01_s" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+
+            <!--  Static Object 10 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_staticObject10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_staticObject10" />
+
+                    <Button
+                        android:id="@+id/btn_staticObject10"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_Object10_s" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+            <!--  Object 11 -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_staticObject11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_staticObject11" />
+
+                    <Button
+                        android:id="@+id/btn_staticObject11"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_Object11_s" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+            <!--                        Object    ==============End                         -->
+
+
+
+            <!--                        String    ==============Begin                         -->
 
 
             <!--  String 00 -->
@@ -397,7 +3010,7 @@
 
                     <Button
                         android:id="@+id/btn_string00"
-                        android:layout_width="150dp"
+                        android:layout_width="180dp"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:text="btn_string00" />
@@ -437,7 +3050,7 @@
 
                     <Button
                         android:id="@+id/btn_string01"
-                        android:layout_width="150dp"
+                        android:layout_width="180dp"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:text="btn_string01" />
@@ -478,7 +3091,7 @@
 
                     <Button
                         android:id="@+id/btn_string10"
-                        android:layout_width="150dp"
+                        android:layout_width="180dp"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:text="btn_string10" />
@@ -518,7 +3131,7 @@
 
                     <Button
                         android:id="@+id/btn_string11"
-                        android:layout_width="150dp"
+                        android:layout_width="180dp"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:text="btn_string11" />
@@ -560,7 +3173,7 @@
 
                     <Button
                         android:id="@+id/btn_staticstring00"
-                        android:layout_width="150dp"
+                        android:layout_width="180dp"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:text="btn_string00_s" />
@@ -600,7 +3213,7 @@
 
                     <Button
                         android:id="@+id/btn_staticstring01"
-                        android:layout_width="150dp"
+                        android:layout_width="180dp"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:text="btn_string01_s" />
@@ -641,7 +3254,7 @@
 
                     <Button
                         android:id="@+id/btn_staticstring10"
-                        android:layout_width="150dp"
+                        android:layout_width="180dp"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:text="btn_string10_s" />
@@ -681,7 +3294,7 @@
 
                     <Button
                         android:id="@+id/btn_staticstring11"
-                        android:layout_width="150dp"
+                        android:layout_width="180dp"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:text="btn_string11_s" />
@@ -699,7 +3312,10 @@
 
 
 
-            <!--  ArrayList<Object> -->
+            <!--                        listobject    ==============Begin                         -->
+
+
+            <!--  listobject 00 -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -709,25 +3325,65 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="100dp">
+
+                    android:layout_height="40dp">
 
                     <TextView
-                        android:id="@+id/tx_listobject"
+                        android:id="@+id/tx_listobject00"
                         android:layout_width="wrap_content"
                         android:layout_height="30dp"
-                        android:maxLines="10"
                         android:layout_alignParentLeft="true"
                         android:layout_margin="10dp"
                         android:paddingTop="3dp"
                         android:ellipsize="end"
-                        android:text="tx_listobject" />
+                        android:text="tx_listobject00" />
 
                     <Button
-                        android:id="@+id/btn_listobject"
-                        android:layout_width="150dp"
+                        android:id="@+id/btn_listobject00"
+                        android:layout_width="180dp"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:text="btn_listobject" />
+                        android:text="btn_listobject00" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+            <!--  listobject 01 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_listobject01"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_listobject01" />
+
+                    <Button
+                        android:id="@+id/btn_listobject01"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_listobject01" />
                 </RelativeLayout>
 
                 <ImageView
@@ -740,10 +3396,7 @@
 
 
 
-
-
-
-            <!--  ArrayList<String>  -->
+            <!--  listobject 10 -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -753,25 +3406,147 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="100dp">
+
+                    android:layout_height="40dp">
 
                     <TextView
-                        android:id="@+id/tx_liststring"
+                        android:id="@+id/tx_listobject10"
                         android:layout_width="wrap_content"
                         android:layout_height="30dp"
-                        android:maxLines="10"
                         android:layout_alignParentLeft="true"
                         android:layout_margin="10dp"
                         android:paddingTop="3dp"
                         android:ellipsize="end"
-                        android:text="tx_liststring" />
+                        android:text="tx_listobject10" />
 
                     <Button
-                        android:id="@+id/btn_liststring"
-                        android:layout_width="150dp"
+                        android:id="@+id/btn_listobject10"
+                        android:layout_width="180dp"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:text="btn_liststring" />
+                        android:text="btn_listobject10" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+            <!--  listobject 11 -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_listobject11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_listobject11" />
+
+                    <Button
+                        android:id="@+id/btn_listobject11"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_listobject11" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+            <!-- Static-listobject  Begin-->
+
+            <!--  Static=listobject 00 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_staticlistobject00"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_staticlistobject00" />
+
+                    <Button
+                        android:id="@+id/btn_staticlistobject00"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_listobject00_s" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+            <!--  listobject 01 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_staticlistobject01"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_staticlistobject01" />
+
+                    <Button
+                        android:id="@+id/btn_staticlistobject01"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_listobject01_s" />
                 </RelativeLayout>
 
                 <ImageView
@@ -784,8 +3559,7 @@
 
 
 
-
-            <!--  ArrayMap<String,String> stringMap  -->
+            <!--  Static listobject 10 -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -795,25 +3569,25 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="100dp">
+
+                    android:layout_height="40dp">
 
                     <TextView
-                        android:id="@+id/tx_mapstring"
+                        android:id="@+id/tx_staticlistobject10"
                         android:layout_width="wrap_content"
                         android:layout_height="30dp"
-                        android:maxLines="10"
                         android:layout_alignParentLeft="true"
                         android:layout_margin="10dp"
                         android:paddingTop="3dp"
                         android:ellipsize="end"
-                        android:text="tx_mapstring" />
+                        android:text="tx_staticlistobject10" />
 
                     <Button
-                        android:id="@+id/btn_mapstring"
-                        android:layout_width="150dp"
+                        android:id="@+id/btn_staticlistobject10"
+                        android:layout_width="180dp"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:text="btn_mapstring" />
+                        android:text="btn_listobject10_s" />
                 </RelativeLayout>
 
                 <ImageView
@@ -822,6 +3596,715 @@
                     android:background="#000000" />
             </LinearLayout>
 
+
+
+            <!--  listobject 11 -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_staticlistobject11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_staticlistobject11" />
+
+                    <Button
+                        android:id="@+id/btn_staticlistobject11"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_listobject11_s" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+            <!--                        listobject    ==============End                         -->
+
+
+
+
+
+
+
+            <!--                        liststring    ==============Begin                         -->
+
+
+            <!--  liststring 00 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_liststring00"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_liststring00" />
+
+                    <Button
+                        android:id="@+id/btn_liststring00"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_liststring00" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+            <!--  liststring 01 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_liststring01"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_liststring01" />
+
+                    <Button
+                        android:id="@+id/btn_liststring01"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_liststring01" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+
+            <!--  liststring 10 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_liststring10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_liststring10" />
+
+                    <Button
+                        android:id="@+id/btn_liststring10"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_liststring10" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+            <!--  liststring 11 -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_liststring11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_liststring11" />
+
+                    <Button
+                        android:id="@+id/btn_liststring11"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_liststring11" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+            <!-- Static-liststring  Begin-->
+
+            <!--  Static=liststring 00 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_staticliststring00"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_staticliststring00" />
+
+                    <Button
+                        android:id="@+id/btn_staticliststring00"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_liststring00_s" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+            <!--  liststring 01 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_staticliststring01"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_staticliststring01" />
+
+                    <Button
+                        android:id="@+id/btn_staticliststring01"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_liststring01_s" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+
+            <!--  Static liststring 10 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_staticliststring10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_staticliststring10" />
+
+                    <Button
+                        android:id="@+id/btn_staticliststring10"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_liststring10_s" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+            <!--  liststring 11 -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_staticliststring11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_staticliststring11" />
+
+                    <Button
+                        android:id="@+id/btn_staticliststring11"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_liststring11_s" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+            <!--                        liststring    ==============End                         -->
+
+
+
+
+
+            <!--                        mapstring    ==============Begin                         -->
+
+
+            <!--  mapstring 00 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_mapstring00"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_mapstring00" />
+
+                    <Button
+                        android:id="@+id/btn_mapstring00"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_mapstring00" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+            <!--  mapstring 01 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_mapstring01"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_mapstring01" />
+
+                    <Button
+                        android:id="@+id/btn_mapstring01"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_mapstring01" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+
+            <!--  mapstring 10 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_mapstring10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_mapstring10" />
+
+                    <Button
+                        android:id="@+id/btn_mapstring10"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_mapstring10" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+            <!--  mapstring 11 -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_mapstring11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_mapstring11" />
+
+                    <Button
+                        android:id="@+id/btn_mapstring11"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_mapstring11" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+            <!-- Static-mapstring  Begin-->
+
+            <!--  Static=mapstring 00 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_staticmapstring00"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_staticmapstring00" />
+
+                    <Button
+                        android:id="@+id/btn_staticmapstring00"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_mapstring00_s" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+            <!--  mapstring 01 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_staticmapstring01"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_staticmapstring01" />
+
+                    <Button
+                        android:id="@+id/btn_staticmapstring01"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_mapstring01_s" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+
+
+            <!--  Static mapstring 10 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_staticmapstring10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_staticmapstring10" />
+
+                    <Button
+                        android:id="@+id/btn_staticmapstring10"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_mapstring10_s" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+            <!--  mapstring 11 -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divide"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tx_staticmapstring11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="10dp"
+                        android:paddingTop="3dp"
+                        android:ellipsize="end"
+                        android:text="tx_staticmapstring11" />
+
+                    <Button
+                        android:id="@+id/btn_staticmapstring11"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="btn_mapstring11_s" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+            </LinearLayout>
+
+
+
+            <!--                        mapstring    ==============End                         -->
 
 
 
