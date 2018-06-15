@@ -32,21 +32,55 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (view.getId()) {
             //  ==================================== boolean Begin
             case R.id.btn_boolean00:
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                boolean old_boolean =util.isBooleanValue();
+                util.booleanNvMethod00();
+                boolean new_boolean = util.isBooleanValue();
+                tx_boolean00.setText("old:"+old_boolean  +" new:"+ new_boolean);
 
                 break;
             case R.id.btn_boolean01:
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                boolean boolean01_value = false;
+                util.booleanNvMethod01(boolean01_value);
+                tx_boolean01.setText(""+util.isBooleanValue());
                 break;
             case R.id.btn_boolean10:
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                tx_boolean10.setText(""+util.booleanNvMethod10());
                 break;
             case R.id.btn_boolean11:
+                boolean boolean11_value = true;
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                tx_boolean11.setText(""+util.booleanNvMethod11(boolean11_value));
                 break;
             case R.id.btn_staticboolean00:
+                Toast.makeText(getApplicationContext(), "native booleanStaticNvMethod00 JNI be called", Toast.LENGTH_SHORT).show();
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+
+                boolean old_booleanValue00s =util.isBooleanStaticValue();
+                util.booleanStaticNvMethod00();
+                boolean new_booleanValue00s = util.isBooleanStaticValue();
+                tx_staticboolean00.setText("old:"+old_booleanValue00s  +" new:"+ new_booleanValue00s);
+
                 break;
             case R.id.btn_staticboolean01:
+                Toast.makeText(getApplicationContext(), " native booleanStaticNvMethod01 JNI be called ", Toast.LENGTH_SHORT).show();
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                boolean boolean01s_value = false;
+                util.booleanStaticNvMethod01(boolean01s_value);
+                tx_staticboolean01.setText("booleanStaticValue="+ util.isBooleanStaticValue());
                 break;
             case R.id.btn_staticboolean10:
+                Toast.makeText(getApplicationContext(), " native booleanStaticNvMethod10 JNI be called", Toast.LENGTH_SHORT).show();
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                tx_staticboolean10.setText(""+ util.booleanStaticNvMethod10());
                 break;
             case R.id.btn_staticboolean11:
+                Toast.makeText(getApplicationContext(), "native booleanStaticNvMethod11 JNI be called", Toast.LENGTH_SHORT).show();
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                boolean boolean11s_value = true;
+                tx_staticboolean11.setText(""+util.booleanStaticNvMethod11(boolean11s_value));
                 break;
 
             //==================================== boolean - end
@@ -54,21 +88,56 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             //  ==================================== byte Begin
             case R.id.btn_byte00:
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                byte old_byte =util.getByteValue();
+                util.byteNvMethod00();
+                byte new_byte = util.getByteValue();
+                tx_byte00.setText("old:"+"0x"+Integer.toHexString((old_byte & 0xFF))+" new:"+"0x"+Integer.toHexString((new_byte & 0xFF)));
 
                 break;
             case R.id.btn_byte01:
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                byte byte01_value = (byte)0x0A;
+                util.byteNvMethod01(byte01_value);
+                tx_byte01.setText(""+"0x"+Integer.toHexString((util.getByteValue() & 0xFF)));
                 break;
             case R.id.btn_byte10:
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                tx_byte10.setText(""+"0x"+Integer.toHexString((util.byteNvMethod10() & 0xFF)));
                 break;
             case R.id.btn_byte11:
+                byte byte11_value = (byte)0x0C;
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                tx_byte11.setText(""+"0x"+Integer.toHexString((util.byteNvMethod11(byte11_value) & 0xFF)));
                 break;
             case R.id.btn_staticbyte00:
+                Toast.makeText(getApplicationContext(), "native byteStaticNvMethod00 JNI be called", Toast.LENGTH_SHORT).show();
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+
+                byte old_byteValue00s =util.getByteStaticValue();
+                util.byteStaticNvMethod00();
+                byte new_byteValue00s = util.getByteStaticValue();
+                tx_staticbyte00.setText("old:"+"0x"+Integer.toHexString((old_byteValue00s & 0xFF))+" new:"+"0x"+Integer.toHexString((new_byteValue00s & 0xFF)));
+
+
                 break;
             case R.id.btn_staticbyte01:
+                Toast.makeText(getApplicationContext(), " native byteStaticNvMethod01 JNI be called ", Toast.LENGTH_SHORT).show();
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                byte byte01s_value = (byte)0x13;
+                util.byteStaticNvMethod01(byte01s_value);
+                tx_staticbyte01.setText("byteStaticValue="+"0x"+Integer.toHexString((util.getByteStaticValue() & 0xFF)));
                 break;
             case R.id.btn_staticbyte10:
+                Toast.makeText(getApplicationContext(), " native byteStaticNvMethod10 JNI be called", Toast.LENGTH_SHORT).show();
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                tx_staticbyte10.setText(""+"0x"+Integer.toHexString((util.byteStaticNvMethod10() & 0xFF)));
                 break;
             case R.id.btn_staticbyte11:
+                Toast.makeText(getApplicationContext(), "native byteStaticNvMethod11 JNI be called", Toast.LENGTH_SHORT).show();
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                byte byte11s_value = (byte)0xDD;
+                tx_staticbyte11.setText(""+"0x"+Integer.toHexString((util.byteStaticNvMethod11(byte11s_value) & 0xFF)));
                 break;
 
             //==================================== byte - end
@@ -77,21 +146,56 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             //  ==================================== char Begin
             case R.id.btn_char00:
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                char old_char =util.getCharValue();
+                util.charNvMethod00();
+                char new_char = util.getCharValue();
+                tx_char00.setText("old:"+old_char+" new:"+new_char);
 
                 break;
             case R.id.btn_char01:
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                char char01_value = 'A';
+                util.charNvMethod01(char01_value);
+                tx_char01.setText(""+util.getCharValue());
                 break;
             case R.id.btn_char10:
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                tx_char10.setText(""+util.charNvMethod10());
                 break;
             case R.id.btn_char11:
+                char char11_value = 'C';
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                tx_char11.setText(""+util.charNvMethod11(char11_value));
                 break;
             case R.id.btn_staticchar00:
+                Toast.makeText(getApplicationContext(), "native charStaticNvMethod00 JNI be called", Toast.LENGTH_SHORT).show();
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+
+                char old_charValue00s =util.getCharStaticValue();
+                util.charStaticNvMethod00();
+                char new_charValue00s = util.getCharStaticValue();
+                tx_staticchar00.setText(" old:"+old_charValue00s+" ==new:"+new_charValue00s);
+
+
                 break;
             case R.id.btn_staticchar01:
+                Toast.makeText(getApplicationContext(), " native charStaticNvMethod01 JNI be called ", Toast.LENGTH_SHORT).show();
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                char char01s_value = 'B';
+                util.charStaticNvMethod01(char01s_value);
+                tx_staticchar01.setText("charStaticValue="+ util.getCharStaticValue());
                 break;
             case R.id.btn_staticchar10:
+                Toast.makeText(getApplicationContext(), " native charStaticNvMethod10 JNI be called", Toast.LENGTH_SHORT).show();
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                tx_staticchar10.setText(""+util.charStaticNvMethod10());
                 break;
             case R.id.btn_staticchar11:
+                Toast.makeText(getApplicationContext(), "native charStaticNvMethod11 JNI be called", Toast.LENGTH_SHORT).show();
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                char char11s_value = 'D';
+                tx_staticchar11.setText(""+util.charStaticNvMethod11(char11s_value));
                 break;
 
             //==================================== char - end
@@ -100,67 +204,167 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             //  ==================================== short Begin
             case R.id.btn_short00:
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                short old_short =util.getShortValue();
+                util.shortNvMethod00();
+                short new_short = util.getShortValue();
+                tx_short00.setText("old:"+old_short+" new:"+new_short);
 
                 break;
             case R.id.btn_short01:
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                short short01_value = 10;
+                util.shortNvMethod01(short01_value);
+                tx_short01.setText(""+util.getShortValue());
                 break;
             case R.id.btn_short10:
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                tx_short10.setText(""+util.shortNvMethod10());
                 break;
             case R.id.btn_short11:
+                short short11_value = 11;
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                tx_short11.setText(""+util.shortNvMethod11(short11_value));
                 break;
             case R.id.btn_staticshort00:
+                Toast.makeText(getApplicationContext(), "native shortStaticNvMethod00 JNI be called", Toast.LENGTH_SHORT).show();
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+
+                short old_shortValue00s =util.getShortStaticValue();
+                util.shortStaticNvMethod00();
+                short new_shortValue00s = util.getShortStaticValue();
+                tx_staticshort00.setText(" old:"+old_shortValue00s+" ==new:"+new_shortValue00s);
+
+
                 break;
             case R.id.btn_staticshort01:
+                Toast.makeText(getApplicationContext(), " native shortStaticNvMethod01 JNI be called ", Toast.LENGTH_SHORT).show();
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                short short01s_value = 13;
+                util.shortStaticNvMethod01(short01s_value);
+                tx_staticshort01.setText("shortStaticValue="+ util.getShortStaticValue());
                 break;
             case R.id.btn_staticshort10:
+                Toast.makeText(getApplicationContext(), " native shortStaticNvMethod10 JNI be called", Toast.LENGTH_SHORT).show();
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                tx_staticshort10.setText(""+util.shortStaticNvMethod10());
                 break;
             case R.id.btn_staticshort11:
+                Toast.makeText(getApplicationContext(), "native shortStaticNvMethod11 JNI be called", Toast.LENGTH_SHORT).show();
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                short short11s_value = 13;
+                tx_staticshort11.setText(""+util.shortStaticNvMethod11(short11s_value));
                 break;
 
             //==================================== short - end
 
 
+
+
             //  ==================================== int Begin
             case R.id.btn_int00:
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                int old_int =util.getIntValue();
+                util.intNvMethod00();
+                int new_int = util.getIntValue();
+                tx_int00.setText("old:"+old_int+" new:"+new_int);
 
                 break;
             case R.id.btn_int01:
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                util.intNvMethod01(1);
+                tx_int01.setText(""+util.getIntValue());
                 break;
             case R.id.btn_int10:
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                tx_int10.setText(""+util.intNvMethod10());
                 break;
             case R.id.btn_int11:
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                tx_int11.setText(""+util.intNvMethod11(11));
                 break;
             case R.id.btn_staticint00:
+                Toast.makeText(getApplicationContext(), "native intStaticNvMethod00 JNI be called", Toast.LENGTH_SHORT).show();
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+
+                int old_intValue00s =util.getIntStaticValue();
+                util.intStaticNvMethod00();
+                int new_intValue00s = util.getIntStaticValue();
+                tx_staticint00.setText(" old:"+old_intValue00s+" ==new:"+new_intValue00s);
+
+
                 break;
             case R.id.btn_staticint01:
+                Toast.makeText(getApplicationContext(), " native intStaticNvMethod01 JNI be called ", Toast.LENGTH_SHORT).show();
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+
+                util.intStaticNvMethod01(100);
+                tx_staticint01.setText("intStaticValue="+ util.getIntStaticValue());
                 break;
             case R.id.btn_staticint10:
+                Toast.makeText(getApplicationContext(), " native intStaticNvMethod10 JNI be called", Toast.LENGTH_SHORT).show();
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                tx_staticint10.setText(""+util.intStaticNvMethod10());
                 break;
             case R.id.btn_staticint11:
+                Toast.makeText(getApplicationContext(), "native intStaticNvMethod11 JNI be called", Toast.LENGTH_SHORT).show();
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                tx_staticint11.setText(""+util.intStaticNvMethod11(200));
                 break;
 
             //==================================== int - end
 
 
 
-
             //  ==================================== long Begin
             case R.id.btn_long00:
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                long old_long =util.getLongValue();
+                util.longNvMethod00();
+                long new_long = util.getLongValue();
+                tx_long00.setText("old:"+old_long+" new:"+new_long);
 
                 break;
             case R.id.btn_long01:
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                util.longNvMethod01(54764);
+                tx_long01.setText(""+util.getLongValue());
                 break;
             case R.id.btn_long10:
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                tx_long10.setText(""+util.longNvMethod10());
                 break;
             case R.id.btn_long11:
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                tx_long11.setText(""+util.longNvMethod11(431));
                 break;
             case R.id.btn_staticlong00:
+                Toast.makeText(getApplicationContext(), "native longStaticNvMethod00 JNI be called", Toast.LENGTH_SHORT).show();
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+
+                long old_longValue00s =util.getLongStaticValue();
+                util.longStaticNvMethod00();
+                long new_longValue00s = util.getLongStaticValue();
+                tx_staticlong00.setText(" old:"+old_longValue00s+" ==new:"+new_longValue00s);
+
+
                 break;
             case R.id.btn_staticlong01:
+                Toast.makeText(getApplicationContext(), " native longStaticNvMethod01 JNI be called ", Toast.LENGTH_SHORT).show();
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+
+                util.longStaticNvMethod01(500);
+                tx_staticlong01.setText("longStaticValue="+ util.getLongStaticValue());
                 break;
             case R.id.btn_staticlong10:
+                Toast.makeText(getApplicationContext(), " native longStaticNvMethod10 JNI be called", Toast.LENGTH_SHORT).show();
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                tx_staticlong10.setText(""+util.longStaticNvMethod10());
                 break;
             case R.id.btn_staticlong11:
+                Toast.makeText(getApplicationContext(), "native longStaticNvMethod11 JNI be called", Toast.LENGTH_SHORT).show();
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                tx_staticlong11.setText(""+util.longStaticNvMethod11(700));
                 break;
 
             //==================================== long - end
@@ -168,21 +372,53 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             //  ==================================== float Begin
             case R.id.btn_float00:
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                float old_float =util.getFloatValue();
+                util.floatNvMethod00();
+                float new_float = util.getFloatValue();
+                tx_float00.setText("old:"+old_float+" new:"+new_float);
 
                 break;
             case R.id.btn_float01:
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                util.floatNvMethod01(50);
+                tx_float01.setText(""+util.getFloatValue());
                 break;
             case R.id.btn_float10:
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                tx_float10.setText(""+util.floatNvMethod10());
                 break;
             case R.id.btn_float11:
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                tx_float11.setText(""+util.floatNvMethod11(300));
                 break;
             case R.id.btn_staticfloat00:
+                Toast.makeText(getApplicationContext(), "native floatStaticNvMethod00 JNI be called", Toast.LENGTH_SHORT).show();
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+
+                float old_floatValue00s =util.getFloatStaticValue();
+                util.floatStaticNvMethod00();
+                float new_floatValue00s = util.getFloatStaticValue();
+                tx_staticfloat00.setText(" old:"+old_floatValue00s+" ==new:"+new_floatValue00s);
+
+
                 break;
             case R.id.btn_staticfloat01:
+                Toast.makeText(getApplicationContext(), " native floatStaticNvMethod01 JNI be called ", Toast.LENGTH_SHORT).show();
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+
+                util.floatStaticNvMethod01(200);
+                tx_staticfloat01.setText("floatStaticValue="+ util.getFloatStaticValue());
                 break;
             case R.id.btn_staticfloat10:
+                Toast.makeText(getApplicationContext(), " native floatStaticNvMethod10 JNI be called", Toast.LENGTH_SHORT).show();
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                tx_staticfloat10.setText(""+util.floatStaticNvMethod10());
                 break;
             case R.id.btn_staticfloat11:
+                Toast.makeText(getApplicationContext(), "native floatStaticNvMethod11 JNI be called", Toast.LENGTH_SHORT).show();
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                tx_staticfloat11.setText(""+util.floatStaticNvMethod11(800));
                 break;
 
             //==================================== float - end
@@ -191,21 +427,53 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             //  ==================================== double Begin
             case R.id.btn_double00:
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                double old_double =util.getDoubleValue();
+                util.doubleNvMethod00();
+                double new_double = util.getDoubleValue();
+                tx_double00.setText("old:"+old_double+" new:"+new_double);
 
                 break;
             case R.id.btn_double01:
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                util.doubleNvMethod01(1);
+                tx_double01.setText(""+util.getDoubleValue());
                 break;
             case R.id.btn_double10:
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                tx_double10.setText(""+util.doubleNvMethod10());
                 break;
             case R.id.btn_double11:
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                tx_double11.setText(""+util.doubleNvMethod11(11));
                 break;
             case R.id.btn_staticdouble00:
+                Toast.makeText(getApplicationContext(), "native doubleStaticNvMethod00 JNI be called", Toast.LENGTH_SHORT).show();
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+
+                double old_doubleValue00s =util.getDoubleStaticValue();
+                util.doubleStaticNvMethod00();
+                double new_doubleValue00s = util.getDoubleStaticValue();
+                tx_staticdouble00.setText(" old:"+old_doubleValue00s+" ==new:"+new_doubleValue00s);
+
+
                 break;
             case R.id.btn_staticdouble01:
+                Toast.makeText(getApplicationContext(), " native doubleStaticNvMethod01 JNI be called ", Toast.LENGTH_SHORT).show();
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+
+                util.doubleStaticNvMethod01(100);
+                tx_staticdouble01.setText("doubleStaticValue="+ util.getDoubleStaticValue());
                 break;
             case R.id.btn_staticdouble10:
+                Toast.makeText(getApplicationContext(), " native doubleStaticNvMethod10 JNI be called", Toast.LENGTH_SHORT).show();
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                tx_staticdouble10.setText(""+util.doubleStaticNvMethod10());
                 break;
             case R.id.btn_staticdouble11:
+                Toast.makeText(getApplicationContext(), "native doubleStaticNvMethod11 JNI be called", Toast.LENGTH_SHORT).show();
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                tx_staticdouble11.setText(""+util.doubleStaticNvMethod11(200));
                 break;
 
             //==================================== double - end
@@ -236,10 +504,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //  ==================================== String Begin
             case R.id.btn_string00:
                 // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
-                String old =util.getStringValue();
+                String old_string =util.getStringValue();
                 util.stringNvMethod00();
-                String newValue = util.getStringValue();
-                tx_string00.setText("old:"+old+" new:"+newValue);
+                String new_string = util.getStringValue();
+                tx_string00.setText("old:"+old_string+" new:"+new_string);
 
                 break;
             case R.id.btn_string01:
@@ -259,10 +527,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Toast.makeText(getApplicationContext(), "native stringStaticNvMethod00 JNI be called", Toast.LENGTH_SHORT).show();
                 // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
 
-                String oldValue_00s =util.getStringStaticValue();
+                String old_stringValue_00s =util.getStringStaticValue();
                 util.stringStaticNvMethod00();
-                String newValue_00s = util.getStringStaticValue();
-                tx_staticstring00.setText(" old:"+oldValue_00s+" ==new:"+newValue_00s);
+                String new_stringValue_00s = util.getStringStaticValue();
+                tx_staticstring00.setText(" old:"+old_stringValue_00s+" ==new:"+new_stringValue_00s);
 
 
                 break;
@@ -676,7 +944,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn_staticstring01.setOnClickListener(this);
         btn_staticstring10.setOnClickListener(this);
         btn_staticstring11.setOnClickListener(this);
-       // ================String   End  Init
+        // ================String   End  Init
 
 
         // ================listobject   Begin Init

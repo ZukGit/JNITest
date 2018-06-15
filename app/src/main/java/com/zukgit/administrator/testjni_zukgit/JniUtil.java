@@ -15,14 +15,6 @@ public class JniUtil {
 
 
     //------------------- Object Property
-    public boolean booleanValue;
-    public byte byteValue;
-    public char charValue;
-    public short shortValue;
-    public int intValue;
-    public long longValue;
-    public float floatValue;
-    public double doubleValue;
     public Object objectValue;
 
 
@@ -38,7 +30,7 @@ public class JniUtil {
         byteValue = 0x02;
         charValue = 'b';
         shortValue = 2;
-        intValue = 200;
+        intValue = 0;
         longValue = 20000;
         floatValue = 6.28f;
         doubleValue = 6.2883826;
@@ -60,6 +52,589 @@ public class JniUtil {
 
 
     }
+
+
+
+
+
+    //==============================boolean Begin ================================
+
+    public boolean booleanValue;
+    public static boolean booleanStaticValue;
+
+    // boolean Native  Method
+    public native void booleanNvMethod00();
+    public native void booleanNvMethod01( boolean booleanValue);
+    public native boolean booleanNvMethod10();
+    public native boolean booleanNvMethod11( boolean booleanValue);
+
+
+    // boolean  Class  Static Method
+    public static native  void booleanStaticNvMethod00();
+    public static native void  booleanStaticNvMethod01( boolean booleanValue);
+    public static native boolean booleanStaticNvMethod10();
+    public static native boolean booleanStaticNvMethod11( boolean booleanValue);
+
+    public void callbyJNIboolean00(){
+        android.util.Log.i("zukgit"," Java@@callbyJNIboolean00() call by JNI ");
+        Toast.makeText(mContext.getApplicationContext(), "callbyJNIboolean00() call by JNI", Toast.LENGTH_SHORT).show();
+    }
+
+
+    public void callbyJNIboolean01(boolean booleanValue){
+        android.util.Log.i("zukgit"," callbyJNIboolean01() call by JNI boolean param="+booleanValue);
+        Toast.makeText(mContext.getApplicationContext(), " Java@@ccallbyJNIboolean01() call by JNI boolean param="+booleanValue, Toast.LENGTH_SHORT).show();
+        this.booleanValue = booleanValue;
+    }
+
+    public boolean  callbyJNIboolean10() {
+        android.util.Log.i("zukgit","Java@@callbyJNIboolean10() call by JNI ");
+        Toast.makeText(mContext.getApplicationContext(), "callbyJNIboolean10() call by JNI", Toast.LENGTH_SHORT).show();
+        this.booleanValue = true;
+        return this.booleanValue;
+    }
+
+    public boolean  callbyJNIboolean11( boolean booleanValue) {
+        android.util.Log.i("zukgit","Java@@callbyJNIboolean10() call by JNI boolean param= "+booleanValue);
+        android.util.Log.i("zukgit","Java@@callbyJNIboolean10() call by JNI booleanValue= "+ this.booleanValue);
+        Toast.makeText(mContext.getApplicationContext(), "callbyJNIboolean11() call by JNI boolean param="+booleanValue, Toast.LENGTH_SHORT).show();
+        this.booleanValue = booleanValue;
+        return this.booleanValue;
+    }
+
+
+    public static  void callbyJNIStaticboolean00() {
+
+        android.util.Log.i("zukgit","Java@@callbyJNIStaticboolean00() call by JNIStatic ");
+    }
+
+    public static void callbyJNIStaticboolean01( boolean booleanValue) {
+
+        android.util.Log.i("zukgit","Java@@callbyJNIStaticboolean01() call by JNIStatic boolean param="+booleanValue);
+
+        booleanStaticValue = booleanValue;
+    }
+
+    public static  boolean callbyJNIStaticboolean10() {
+        android.util.Log.i("zukgit"," Java@@callbyJNIStaticboolean10() call by JNIStatic booleanStaticValue="+ booleanStaticValue);
+        booleanStaticValue = false;
+        return booleanStaticValue;
+    }
+
+    public static boolean  callbyJNIStaticboolean11( boolean booleanValue) {
+        android.util.Log.i("zukgit"," Java@@callbyJNIStaticboolean11() call by JNIStatic param booleanValue ="+ booleanValue);
+        android.util.Log.i("zukgit"," Java@@callbyJNIStaticboolean11() call by JNIStatic booleanStaticValue ="+ booleanStaticValue);
+        booleanStaticValue = booleanValue;
+        return  booleanStaticValue;
+    }
+
+    //==============================boolean End ================================
+
+
+    //==============================byte Begin ================================
+
+    public byte byteValue;
+    public static byte byteStaticValue;
+
+    // byte Native  Method
+    public native void byteNvMethod00();
+    public native void byteNvMethod01( byte byteValue);
+    public native byte byteNvMethod10();
+    public native byte byteNvMethod11( byte byteValue);
+
+
+    // byte  Class  Static Method
+    public static native  void byteStaticNvMethod00();
+    public static native void  byteStaticNvMethod01( byte byteValue);
+    public static native byte byteStaticNvMethod10();
+    public static native byte byteStaticNvMethod11( byte byteValue);
+
+    public void callbyJNIbyte00(){
+        android.util.Log.i("zukgit"," Java@@callbyJNIbyte00() call by JNI ");
+        Toast.makeText(mContext.getApplicationContext(), "callbyJNIbyte00() call by JNI", Toast.LENGTH_SHORT).show();
+    }
+
+
+    public void callbyJNIbyte01(byte byteValue){
+        android.util.Log.i("zukgit"," callbyJNIbyte01() call by JNI byte param="+"0x"+Integer.toHexString((byteValue & 0xFF)));
+        Toast.makeText(mContext.getApplicationContext(), " Java@@ccallbyJNIbyte01() call by JNI byte param="+"0x"+Integer.toHexString((byteValue & 0xFF)), Toast.LENGTH_SHORT).show();
+        this.byteValue = byteValue;
+    }
+
+    public byte  callbyJNIbyte10() {
+        android.util.Log.i("zukgit","Java@@callbyJNIbyte10() call by JNI ");
+        Toast.makeText(mContext.getApplicationContext(), "callbyJNIbyte10() call by JNI", Toast.LENGTH_SHORT).show();
+        this.byteValue = (byte)0x2F;
+        return this.byteValue;
+    }
+
+    public byte  callbyJNIbyte11( byte byteValue) {
+        android.util.Log.i("zukgit","Java@@callbyJNIbyte10() call by JNI byte param= "+"0x"+Integer.toHexString((byteValue & 0xFF)));
+        android.util.Log.i("zukgit","Java@@callbyJNIbyte10() call by JNI byteValue= "+"0x"+Integer.toHexString((this.byteValue & 0xFF)));
+        Toast.makeText(mContext.getApplicationContext(), "callbyJNIbyte11() call by JNI byte param="+"0x"+Integer.toHexString((byteValue & 0xFF)), Toast.LENGTH_SHORT).show();
+        this.byteValue = byteValue;
+        return this.byteValue;
+    }
+
+
+    public static  void callbyJNIStaticbyte00() {
+
+        android.util.Log.i("zukgit","Java@@callbyJNIStaticbyte00() call by JNIStatic ");
+    }
+
+    public static void callbyJNIStaticbyte01( byte byteValue) {
+
+        android.util.Log.i("zukgit","Java@@callbyJNIStaticbyte01() call by JNIStatic byte param="+"0x"+Integer.toHexString((byteValue & 0xFF)));
+
+        byteStaticValue = byteValue;
+    }
+
+    public static  byte callbyJNIStaticbyte10() {
+        android.util.Log.i("zukgit"," Java@@callbyJNIStaticbyte10() call by JNIStatic byteStaticValue="+ "0x"+Integer.toHexString((byteStaticValue & 0xFF)));
+        byteStaticValue = (byte)0x0A;
+        return byteStaticValue;
+    }
+
+    public static byte  callbyJNIStaticbyte11( byte byteValue) {
+        android.util.Log.i("zukgit"," Java@@callbyJNIStaticbyte11() call by JNIStatic param byteValue ="+ "0x"+Integer.toHexString((byteValue & 0xFF)));
+        android.util.Log.i("zukgit"," Java@@callbyJNIStaticbyte11() call by JNIStatic byteStaticValue ="+ "0x"+Integer.toHexString((byteStaticValue & 0xFF)));
+        byteStaticValue = byteValue;
+        return  byteStaticValue;
+    }
+
+
+    //==============================byte End ================================
+
+    //==============================char Begin ================================
+
+    public char charValue;
+    public static char charStaticValue;
+
+    // char Native  Method
+    public native void charNvMethod00();
+    public native void charNvMethod01( char charValue);
+    public native char charNvMethod10();
+    public native char charNvMethod11( char charValue);
+
+
+    // char  Class  Static Method
+    public static native  void charStaticNvMethod00();
+    public static native void  charStaticNvMethod01( char charValue);
+    public static native char charStaticNvMethod10();
+    public static native char charStaticNvMethod11( char charValue);
+
+    public void callbyJNIchar00(){
+        android.util.Log.i("zukgit"," Java@@callbyJNIchar00() call by JNI ");
+        Toast.makeText(mContext.getApplicationContext(), "callbyJNIchar00() call by JNI", Toast.LENGTH_SHORT).show();
+    }
+
+
+    public void callbyJNIchar01(char charValue){
+        android.util.Log.i("zukgit"," callbyJNIchar01() call by JNI char param="+charValue);
+        Toast.makeText(mContext.getApplicationContext(), " Java@@ccallbyJNIchar01() call by JNI char param="+charValue, Toast.LENGTH_SHORT).show();
+        this.charValue = charValue;
+    }
+
+    public char  callbyJNIchar10() {
+        android.util.Log.i("zukgit","Java@@callbyJNIchar10() call by JNI ");
+        Toast.makeText(mContext.getApplicationContext(), "callbyJNIchar10() call by JNI", Toast.LENGTH_SHORT).show();
+        this.charValue = 'H';
+        return this.charValue;
+    }
+
+    public char  callbyJNIchar11( char charValue) {
+        android.util.Log.i("zukgit","Java@@callbyJNIchar10() call by JNI char param= "+charValue);
+        android.util.Log.i("zukgit","Java@@callbyJNIchar10() call by JNI charValue= "+ this.charValue);
+        Toast.makeText(mContext.getApplicationContext(), "callbyJNIchar11() call by JNI char param="+charValue, Toast.LENGTH_SHORT).show();
+        this.charValue = charValue;
+        return this.charValue;
+    }
+
+
+    public static  void callbyJNIStaticchar00() {
+
+        android.util.Log.i("zukgit","Java@@callbyJNIStaticchar00() call by JNIStatic ");
+    }
+
+    public static void callbyJNIStaticchar01( char charValue) {
+
+        android.util.Log.i("zukgit","Java@@callbyJNIStaticchar01() call by JNIStatic char param="+charValue);
+
+        charStaticValue = charValue;
+    }
+
+    public static  char callbyJNIStaticchar10() {
+        android.util.Log.i("zukgit"," Java@@callbyJNIStaticchar10() call by JNIStatic charStaticValue="+ charStaticValue);
+        charStaticValue = 'Z';
+        return charStaticValue;
+    }
+
+    public static char  callbyJNIStaticchar11( char charValue) {
+        android.util.Log.i("zukgit"," Java@@callbyJNIStaticchar11() call by JNIStatic param charValue ="+ charValue);
+        android.util.Log.i("zukgit"," Java@@callbyJNIStaticchar11() call by JNIStatic charStaticValue ="+ charStaticValue);
+        charStaticValue = charValue;
+        return  charStaticValue;
+    }
+
+
+    //==============================char End ================================
+
+    //==============================short Begin ================================
+
+    public short shortValue;
+    public static short shortStaticValue;
+
+    // short Native  Method
+    public native void shortNvMethod00();
+    public native void shortNvMethod01( short shortValue);
+    public native short shortNvMethod10();
+    public native short shortNvMethod11( short shortValue);
+
+
+    // short  Class  Static Method
+    public static native  void shortStaticNvMethod00();
+    public static native void  shortStaticNvMethod01( short shortValue);
+    public static native short shortStaticNvMethod10();
+    public static native short shortStaticNvMethod11( short shortValue);
+
+    public void callbyJNIshort00(){
+        android.util.Log.i("zukgit"," Java@@callbyJNIshort00() call by JNI ");
+        Toast.makeText(mContext.getApplicationContext(), "callbyJNIshort00() call by JNI", Toast.LENGTH_SHORT).show();
+    }
+
+
+    public void callbyJNIshort01(short shortValue){
+        android.util.Log.i("zukgit"," callbyJNIshort01() call by JNI short param="+shortValue);
+        Toast.makeText(mContext.getApplicationContext(), " Java@@ccallbyJNIshort01() call by JNI short param="+shortValue, Toast.LENGTH_SHORT).show();
+        this.shortValue = shortValue;
+    }
+
+    public short  callbyJNIshort10() {
+        android.util.Log.i("zukgit","Java@@callbyJNIshort10() call by JNI ");
+        Toast.makeText(mContext.getApplicationContext(), "callbyJNIshort10() call by JNI", Toast.LENGTH_SHORT).show();
+        return (short)(this.shortValue + 10);
+    }
+
+    public short  callbyJNIshort11( short shortValue) {
+        android.util.Log.i("zukgit","Java@@callbyJNIshort10() call by JNI short param= "+shortValue);
+        Toast.makeText(mContext.getApplicationContext(), "callbyJNIshort11() call by JNI short param="+shortValue, Toast.LENGTH_SHORT).show();
+        short value = (short)(shortValue+this.shortValue);
+        return value;
+    }
+
+
+    public static  void callbyJNIStaticshort00() {
+
+        android.util.Log.i("zukgit","Java@@callbyJNIStaticshort00() call by JNIStatic ");
+    }
+
+    public static void callbyJNIStaticshort01( short shortValue) {
+
+        android.util.Log.i("zukgit","Java@@callbyJNIStaticshort01() call by JNIStatic short param="+shortValue);
+
+        shortStaticValue = shortValue;
+    }
+
+    public static  short callbyJNIStaticshort10() {
+        android.util.Log.i("zukgit"," Java@@callbyJNIStaticshort10() call by JNIStatic");
+        shortStaticValue = (short)(shortStaticValue + 11);
+        return shortStaticValue;
+    }
+
+    public static short  callbyJNIStaticshort11( short shortValue) {
+        android.util.Log.i("zukgit"," Java@@callbyJNIStaticshort11() call by JNIStatic");
+        return  (short)(shortValue+ shortStaticValue);
+    }
+
+
+    //==============================short End ================================
+
+
+
+    //==============================int Begin ================================
+
+    public int intValue;
+    public static int intStaticValue;
+
+    // int Native  Method
+    public native void intNvMethod00();
+    public native void intNvMethod01( int intValue);
+    public native int intNvMethod10();
+    public native int intNvMethod11( int intValue);
+
+
+    // int  Class  Static Method
+    public static native  void intStaticNvMethod00();
+    public static native void  intStaticNvMethod01( int intValue);
+    public static native int intStaticNvMethod10();
+    public static native int intStaticNvMethod11( int intValue);
+
+    public void callbyJNIint00(){
+        android.util.Log.i("zukgit"," Java@@callbyJNIint00() call by JNI ");
+        Toast.makeText(mContext.getApplicationContext(), "callbyJNIint00() call by JNI", Toast.LENGTH_SHORT).show();
+    }
+
+
+    public void callbyJNIint01(int intValue){
+        android.util.Log.i("zukgit"," callbyJNIint01() call by JNI int param="+intValue);
+        Toast.makeText(mContext.getApplicationContext(), " Java@@ccallbyJNIint01() call by JNI int param="+intValue, Toast.LENGTH_SHORT).show();
+        this.intValue = intValue;
+    }
+
+    public int  callbyJNIint10() {
+        android.util.Log.i("zukgit","Java@@callbyJNIint10() call by JNI ");
+        Toast.makeText(mContext.getApplicationContext(), "callbyJNIint10() call by JNI", Toast.LENGTH_SHORT).show();
+        return this.intValue + 100;
+    }
+
+    public int  callbyJNIint11( int intValue) {
+        android.util.Log.i("zukgit","Java@@callbyJNIint10() call by JNI int param= "+intValue);
+        Toast.makeText(mContext.getApplicationContext(), "callbyJNIint11() call by JNI int param="+intValue, Toast.LENGTH_SHORT).show();
+        int value = intValue+this.intValue;
+        return value;
+    }
+
+
+    public static  void callbyJNIStaticint00() {
+
+        android.util.Log.i("zukgit","Java@@callbyJNIStaticint00() call by JNIStatic ");
+    }
+
+    public static void callbyJNIStaticint01( int intValue) {
+
+        android.util.Log.i("zukgit","Java@@callbyJNIStaticint01() call by JNIStatic int param="+intValue);
+
+        intStaticValue = intValue;
+    }
+
+    public static  int callbyJNIStaticint10() {
+        android.util.Log.i("zukgit"," Java@@callbyJNIStaticint10() call by JNIStatic");
+        intStaticValue = intStaticValue + 100;
+        return intStaticValue;
+    }
+
+    public static int  callbyJNIStaticint11( int intValue) {
+        android.util.Log.i("zukgit"," Java@@callbyJNIStaticint11() call by JNIStatic");
+        return  intValue+ intStaticValue;
+    }
+
+
+    //==============================int End ================================
+
+
+
+    //==============================long Begin ================================
+
+    public long longValue;
+    public static long longStaticValue;
+
+    // long Native  Method
+    public native void longNvMethod00();
+    public native void longNvMethod01( long longValue);
+    public native long longNvMethod10();
+    public native long longNvMethod11( long longValue);
+
+
+    // long  Class  Static Method
+    public static native  void longStaticNvMethod00();
+    public static native void  longStaticNvMethod01( long longValue);
+    public static native long longStaticNvMethod10();
+    public static native long longStaticNvMethod11( long longValue);
+
+    public void callbyJNIlong00(){
+        android.util.Log.i("zukgit"," Java@@callbyJNIlong00() call by JNI ");
+        Toast.makeText(mContext.getApplicationContext(), "callbyJNIlong00() call by JNI", Toast.LENGTH_SHORT).show();
+    }
+
+
+    public void callbyJNIlong01(long longValue){
+        android.util.Log.i("zukgit"," callbyJNIlong01() call by JNI long param="+longValue);
+        Toast.makeText(mContext.getApplicationContext(), " Java@@ccallbyJNIlong01() call by JNI long param="+longValue, Toast.LENGTH_SHORT).show();
+        this.longValue = longValue;
+    }
+
+    public long  callbyJNIlong10() {
+        android.util.Log.i("zukgit","Java@@callbyJNIlong10() call by JNI ");
+        Toast.makeText(mContext.getApplicationContext(), "callbyJNIlong10() call by JNI", Toast.LENGTH_SHORT).show();
+        return this.longValue + 100;
+    }
+
+    public long  callbyJNIlong11( long longValue) {
+        android.util.Log.i("zukgit","Java@@callbyJNIlong10() call by JNI long param= "+longValue);
+        Toast.makeText(mContext.getApplicationContext(), "callbyJNIlong11() call by JNI long param="+longValue, Toast.LENGTH_SHORT).show();
+        long value = longValue+this.longValue;
+        return value;
+    }
+
+
+    public static  void callbyJNIStaticlong00() {
+
+        android.util.Log.i("zukgit","Java@@callbyJNIStaticlong00() call by JNIStatic ");
+    }
+
+    public static void callbyJNIStaticlong01( long longValue) {
+
+        android.util.Log.i("zukgit","Java@@callbyJNIStaticlong01() call by JNIStatic long param="+longValue);
+
+        longStaticValue = longValue;
+    }
+
+    public static  long callbyJNIStaticlong10() {
+        android.util.Log.i("zukgit"," Java@@callbyJNIStaticlong10() call by JNIStatic");
+        longStaticValue = longStaticValue + 100;
+        return longStaticValue;
+    }
+
+    public static long  callbyJNIStaticlong11( long longValue) {
+        android.util.Log.i("zukgit"," Java@@callbyJNIStaticlong11() call by JNIStatic");
+        return  longValue+ longStaticValue;
+    }
+
+
+    //==============================long End ================================
+
+    //==============================float Begin ================================
+
+    public float floatValue;
+    public static float floatStaticValue;
+
+    // float Native  Method
+    public native void floatNvMethod00();
+    public native void floatNvMethod01( float floatValue);
+    public native float floatNvMethod10();
+    public native float floatNvMethod11( float floatValue);
+
+
+    // float  Class  Static Method
+    public static native  void floatStaticNvMethod00();
+    public static native void  floatStaticNvMethod01( float floatValue);
+    public static native float floatStaticNvMethod10();
+    public static native float floatStaticNvMethod11( float floatValue);
+
+    public void callbyJNIfloat00(){
+        android.util.Log.i("zukgit"," Java@@callbyJNIfloat00() call by JNI ");
+        Toast.makeText(mContext.getApplicationContext(), "callbyJNIfloat00() call by JNI", Toast.LENGTH_SHORT).show();
+    }
+
+
+    public void callbyJNIfloat01(float floatValue){
+        android.util.Log.i("zukgit"," callbyJNIfloat01() call by JNI float param="+floatValue);
+        Toast.makeText(mContext.getApplicationContext(), " Java@@ccallbyJNIfloat01() call by JNI float param="+floatValue, Toast.LENGTH_SHORT).show();
+        this.floatValue = floatValue;
+    }
+
+    public float  callbyJNIfloat10() {
+        android.util.Log.i("zukgit","Java@@callbyJNIfloat10() call by JNI ");
+        Toast.makeText(mContext.getApplicationContext(), "callbyJNIfloat10() call by JNI", Toast.LENGTH_SHORT).show();
+        return this.floatValue + 100;
+    }
+
+    public float  callbyJNIfloat11( float floatValue) {
+        android.util.Log.i("zukgit","Java@@callbyJNIfloat10() call by JNI float param= "+floatValue);
+        Toast.makeText(mContext.getApplicationContext(), "callbyJNIfloat11() call by JNI float param="+floatValue, Toast.LENGTH_SHORT).show();
+        float value = floatValue+this.floatValue;
+        return value;
+    }
+
+
+    public static  void callbyJNIStaticfloat00() {
+
+        android.util.Log.i("zukgit","Java@@callbyJNIStaticfloat00() call by JNIStatic ");
+    }
+
+    public static void callbyJNIStaticfloat01( float floatValue) {
+
+        android.util.Log.i("zukgit","Java@@callbyJNIStaticfloat01() call by JNIStatic float param="+floatValue);
+
+        floatStaticValue = floatValue;
+    }
+
+    public static  float callbyJNIStaticfloat10() {
+        android.util.Log.i("zukgit"," Java@@callbyJNIStaticfloat10() call by JNIStatic");
+        floatStaticValue = floatStaticValue + 100;
+        return floatStaticValue;
+    }
+
+    public static float  callbyJNIStaticfloat11( float floatValue) {
+        android.util.Log.i("zukgit"," Java@@callbyJNIStaticfloat11() call by JNIStatic");
+        return  floatValue+ floatStaticValue;
+    }
+
+
+    //==============================float End ================================
+
+    //==============================double Begin ================================
+
+    public double doubleValue;
+    public static double doubleStaticValue;
+
+    // double Native  Method
+    public native void doubleNvMethod00();
+    public native void doubleNvMethod01( double doubleValue);
+    public native double doubleNvMethod10();
+    public native double doubleNvMethod11( double doubleValue);
+
+
+    // double  Class  Static Method
+    public static native  void doubleStaticNvMethod00();
+    public static native void  doubleStaticNvMethod01( double doubleValue);
+    public static native double doubleStaticNvMethod10();
+    public static native double doubleStaticNvMethod11( double doubleValue);
+
+    public void callbyJNIdouble00(){
+        android.util.Log.i("zukgit"," Java@@callbyJNIdouble00() call by JNI ");
+        Toast.makeText(mContext.getApplicationContext(), "callbyJNIdouble00() call by JNI", Toast.LENGTH_SHORT).show();
+    }
+
+
+    public void callbyJNIdouble01(double doubleValue){
+        android.util.Log.i("zukgit"," callbyJNIdouble01() call by JNI double param="+doubleValue);
+        Toast.makeText(mContext.getApplicationContext(), " Java@@ccallbyJNIdouble01() call by JNI double param="+doubleValue, Toast.LENGTH_SHORT).show();
+        this.doubleValue = doubleValue;
+    }
+
+    public double  callbyJNIdouble10() {
+        android.util.Log.i("zukgit","Java@@callbyJNIdouble10() call by JNI ");
+        Toast.makeText(mContext.getApplicationContext(), "callbyJNIdouble10() call by JNI", Toast.LENGTH_SHORT).show();
+        return this.doubleValue + 100;
+    }
+
+    public double  callbyJNIdouble11( double doubleValue) {
+        android.util.Log.i("zukgit","Java@@callbyJNIdouble10() call by JNI double param= "+doubleValue);
+        Toast.makeText(mContext.getApplicationContext(), "callbyJNIdouble11() call by JNI double param="+doubleValue, Toast.LENGTH_SHORT).show();
+        double value = doubleValue+this.doubleValue;
+        return value;
+    }
+
+
+    public static  void callbyJNIStaticdouble00() {
+
+        android.util.Log.i("zukgit","Java@@callbyJNIStaticdouble00() call by JNIStatic ");
+    }
+
+    public static void callbyJNIStaticdouble01( double doubleValue) {
+
+        android.util.Log.i("zukgit","Java@@callbyJNIStaticdouble01() call by JNIStatic double param="+doubleValue);
+
+        doubleStaticValue = doubleValue;
+    }
+
+    public static  double callbyJNIStaticdouble10() {
+        android.util.Log.i("zukgit"," Java@@callbyJNIStaticdouble10() call by JNIStatic");
+        doubleStaticValue = doubleStaticValue + 100;
+        return doubleStaticValue;
+    }
+
+    public static double  callbyJNIStaticdouble11( double doubleValue) {
+        android.util.Log.i("zukgit"," Java@@callbyJNIStaticdouble11() call by JNIStatic");
+        return  doubleValue+ doubleStaticValue;
+    }
+
+
+    //==============================double End ================================
+
+
+
 
 //==============================String Begin ================================
 
@@ -307,14 +882,8 @@ public class JniUtil {
     //========================Class Begin===================================
 
     //------------------- Class Property
-    public static boolean booleanStaticValue;
-    public static byte byteStaticValue;
-    public static char charStaticValue;
-    public static short shortStaticValue;
-    public static int intStaticValue;
-    public static long longStaticValue;
-    public static float floatStaticValue;
-    public static double doubleStaticValue;
+
+
     public static Object objectStaticValue;
 
 
@@ -508,4 +1077,3 @@ public class JniUtil {
             long longValue, float floatValue, double doubleValue,
             ArrayList<Object> objectListValue ,   ArrayList<String> stringListValue, ArrayMap<String,String> stringMapValue);
 }
-
