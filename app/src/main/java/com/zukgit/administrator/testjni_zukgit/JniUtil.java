@@ -13,6 +13,50 @@ public class JniUtil {
         System.loadLibrary("zukgit");
     }
 
+    @Override
+    public String toString() {
+        return "JniUtil{" +
+
+                "booleanValue=" + booleanValue + "\n"+
+                "booleanStaticValue=" + booleanStaticValue +"\n"+
+                 "\n"+
+                "byteValue=" + byteValue +"\n"+
+                "byteStaticValue=" + byteStaticValue +"\n"+
+                "\n"+
+                "charValue=" + charValue +"\n"+
+                "charStaticValue=" + charStaticValue +"\n"+
+                "\n"+
+                "shortValue=" + shortValue +"\n"+
+                "shortStaticValue=" + shortStaticValue +"\n"+
+                "\n"+
+                "intValue=" + intValue +"\n"+
+                "intStaticValue=" + intStaticValue +"\n"+
+                "\n"+
+                "longValue=" + longValue +"\n"+
+                "longStaticValue=" + longStaticValue +"\n"+
+                "\n"+
+                "floatValue=" + floatValue +"\n"+
+                "floatStaticValue=" + floatStaticValue +"\n"+
+                "\n"+
+                "doubleValue=" + doubleValue +"\n"+
+                "doubleStaticValue=" + doubleStaticValue +"\n"+
+                "\n"+
+                "stringValue='" + stringValue +"\n"+
+                "stringStaticValue='" + stringStaticValue +"\n"+
+                "\n"+
+                "objectValue=" + objectValue +"\n"+
+                "objectStaticValue=" + objectStaticValue +"\n"+
+                "\n"+
+                "objectListValue=" + objectListValue +"\n"+
+                "objectListStaticValue=" + objectListStaticValue +"\n"+
+                "\n"+
+                "stringListValue=" + stringListValue +"\n"+
+                "stringListStaticValue=" + stringListStaticValue +"\n"+
+                "\n"+
+                "stringMapValue=" + stringMapValue +"\n"+
+                "stringMapStaticValue=" + stringMapStaticValue + '\'' +
+                '}';
+    }
 
     //------------------- Object Property
     public Object objectValue;
