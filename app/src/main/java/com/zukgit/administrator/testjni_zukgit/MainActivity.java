@@ -9,7 +9,8 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import android.util.ArrayMap;
+import java.util.*;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -45,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 AlertDialog alertDialog = builder.create();
 
                 alertDialog.show();
-                WindowManager.LayoutParams  lp= alertDialog.getWindow().getAttributes();
+                WindowManager.LayoutParams lp = alertDialog.getWindow().getAttributes();
 
                 DisplayMetrics dm = new DisplayMetrics();
                 dm = getResources().getDisplayMetrics();
@@ -54,10 +55,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 int screenWidth = dm.widthPixels; // 屏幕宽（像素，如：3200px）
                 int screenHeight = dm.heightPixels; // 屏幕高（像素，如：1280px）
 
-                lp.width= (int)(screenWidth * 0.9); //定义宽度
-                lp.height=(int)(screenHeight * 0.9);;//定义高度
+                lp.width = (int) (screenWidth * 0.9); //定义宽度
+                lp.height = (int) (screenHeight * 0.9);
+                ;//定义高度
                 alertDialog.getWindow().setAttributes(lp);
-
 
 
                 break;
@@ -115,7 +116,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 util.byteNvMethod00();
                 byte new_byte = util.getByteValue();
                 tx_byte00.setText("old:" + "0x" + Integer.toHexString((old_byte & 0xFF)) + " new:" + "0x" + Integer.toHexString((new_byte & 0xFF)));
-
 
 
                 break;
@@ -499,21 +499,54 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             //  ==================================== Object Begin
             case R.id.btn_Object00:
-
+                Bean old_bean_00 = util.getBeanObjectValue();
+                util.beanObjectNvMethod00();
+                Bean new_bean_00 = util.getBeanObjectValue();
+                tx_Object00.setText(" new:" + new_bean_00 + "old:" + old_bean_00);
                 break;
             case R.id.btn_Object01:
+
+                Bean bean_01 = new Bean(200, "onClick1");
+
+                util.callbyJNIbeanObject01(bean_01);
+                tx_Object01.setText("" + util.getListobjectValue());
+
+
                 break;
             case R.id.btn_Object10:
+                tx_Object10.setText("" + util.callbyJNIbeanObject10());
                 break;
+
             case R.id.btn_Object11:
+
+                Bean bean_11 = new Bean(300, "onClick300");
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                tx_Object11.setText("" + util.callbyJNIbeanObject11(bean_11));
                 break;
+
             case R.id.btn_staticObject00:
+                Bean old_bean_00_s = util.getBeanObjectStaticValue();
+                util.beanObjectStaticNvMethod00();
+                Bean new_bean_00_s = util.getBeanObjectStaticValue();
+                tx_staticObject00.setText(" new:" + new_bean_00_s + "old:" + old_bean_00_s);
                 break;
             case R.id.btn_staticObject01:
+
+                Bean bean_01_s = new Bean(300, "static-onClick300");
+
+                util.beanObjectStaticNvMethod01(bean_01_s);
+                tx_staticObject01.setText("" + util.getBeanObjectStaticValue());
+
                 break;
             case R.id.btn_staticObject10:
+                tx_staticObject10.setText("" + util.beanObjectStaticNvMethod10());
                 break;
             case R.id.btn_staticObject11:
+
+                Bean bean_11_s = new Bean(500, "static-onClick300");
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                tx_staticObject11.setText("" + util.beanObjectStaticNvMethod11(bean_11_s));
+
                 break;
 
             //==================================== Object - end
@@ -572,73 +605,207 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //==================================== String - end
 
 
-            //  ==================================== listobject Begin
+            //  ==================================== listobject  Array<Bean> Begin
             case R.id.btn_listobject00:
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                ArrayList<Bean> old_listobject = util.getListobjectValue();
+                util.listobjectNvMethod00();
+                ArrayList<Bean> new_listobject = util.getListobjectValue();
+                tx_listobject00.setText(" new:" + new_listobject + "old:" + old_listobject);
 
                 break;
             case R.id.btn_listobject01:
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                ArrayList<Bean> listobject01_value = new ArrayList<Bean>();
+                listobject01_value.add(new Bean(1, "onclick1"));
+                listobject01_value.add(new Bean(2, "onclick2"));
+                listobject01_value.add(new Bean(3, "onclick3"));
+                util.listobjectNvMethod01(listobject01_value);
+                tx_listobject01.setText("" + util.getListobjectValue());
                 break;
             case R.id.btn_listobject10:
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                tx_listobject10.setText("" + util.listobjectNvMethod10());
                 break;
             case R.id.btn_listobject11:
+                ArrayList<Bean> listobject11_value = new ArrayList<Bean>();
+                listobject11_value.add(new Bean(1, "onClick1_define"));
+                listobject11_value.add(new Bean(2, "onClick2_define"));
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                tx_listobject11.setText("" + util.listobjectNvMethod11(listobject11_value));
                 break;
             case R.id.btn_staticlistobject00:
+                Toast.makeText(getApplicationContext(), "native listobjectStaticNvMethod00 JNI be called", Toast.LENGTH_SHORT).show();
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+
+                ArrayList<Bean> old_listobject_s = util.getListobjectStaticValue();
+                util.listobjectStaticNvMethod00();
+                ArrayList<Bean> new_listobject_s = util.getListobjectStaticValue();
+                tx_staticlistobject00.setText(" static new:" + new_listobject_s + "static old:" + old_listobject_s);
+
+
                 break;
             case R.id.btn_staticlistobject01:
+                Toast.makeText(getApplicationContext(), " native listobjectStaticNvMethod01 JNI be called ", Toast.LENGTH_SHORT).show();
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+
+                ArrayList<Bean> listobject01s_value = new ArrayList<Bean>();
+                listobject01s_value.add(new Bean(1, "onclick1"));
+                listobject01s_value.add(new Bean(2, "onclick2"));
+                util.listobjectStaticNvMethod01(listobject01s_value);
+                tx_staticlistobject01.setText("listobjectStaticValue=" + util.getListobjectStaticValue());
                 break;
             case R.id.btn_staticlistobject10:
+                Toast.makeText(getApplicationContext(), " native listobjectStaticNvMethod10 JNI be called", Toast.LENGTH_SHORT).show();
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                tx_staticlistobject10.setText("" + util.listobjectStaticNvMethod10());
                 break;
             case R.id.btn_staticlistobject11:
+                Toast.makeText(getApplicationContext(), "native listobjectStaticNvMethod11 JNI be called", Toast.LENGTH_SHORT).show();
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                ArrayList<Bean> listobject11s_value = new ArrayList<Bean>();
+                listobject11s_value.add(new Bean(1, "onclick1"));
+                listobject11s_value.add(new Bean(2, "onclick2"));
+                tx_staticlistobject11.setText("" + util.listobjectStaticNvMethod11(listobject11s_value));
                 break;
 
-            //==================================== listobject - end
+            //====================================  listobject  Array<Bean> End
 
 
-            //  ==================================== liststring Begin
+            //  ==================================== liststring  Array<String> Begin
             case R.id.btn_liststring00:
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                ArrayList<String> old_liststring = util.getliststringValue();
+                util.liststringNvMethod00();
+                ArrayList<String> new_liststring = util.getliststringValue();
+                tx_liststring00.setText(" new:" + new_liststring + "old:" + old_liststring);
 
                 break;
             case R.id.btn_liststring01:
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                ArrayList<String> liststring01_value = new ArrayList<String>();
+                liststring01_value.add(new String("onclick1_str"));
+                liststring01_value.add(new String("onclick2_str"));
+                liststring01_value.add(new String("onclick3_str"));
+                util.liststringNvMethod01(liststring01_value);
+                tx_liststring01.setText("" + util.getliststringValue());
                 break;
             case R.id.btn_liststring10:
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                tx_liststring10.setText("" + util.liststringNvMethod10());
                 break;
             case R.id.btn_liststring11:
+                ArrayList<String> liststring11_value = new ArrayList<String>();
+                liststring11_value.add(new String("onClick1_define_str"));
+                liststring11_value.add(new String("onClick2_define_str"));
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                tx_liststring11.setText("" + util.liststringNvMethod11(liststring11_value));
                 break;
             case R.id.btn_staticliststring00:
+                Toast.makeText(getApplicationContext(), "native liststringStaticNvMethod00 JNI be called", Toast.LENGTH_SHORT).show();
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+
+                ArrayList<String> old_liststring_s = util.getliststringStaticValue();
+                util.liststringStaticNvMethod00();
+                ArrayList<String> new_liststring_s = util.getliststringStaticValue();
+                tx_staticliststring00.setText(" static new:" + new_liststring_s + "static old:" + old_liststring_s);
+
+
                 break;
             case R.id.btn_staticliststring01:
+                Toast.makeText(getApplicationContext(), " native liststringStaticNvMethod01 JNI be called ", Toast.LENGTH_SHORT).show();
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+
+                ArrayList<String> liststring01s_value = new ArrayList<String>();
+                liststring01s_value.add(new String("onclick1_str"));
+                liststring01s_value.add(new String("onclick2_str"));
+                util.liststringStaticNvMethod01(liststring01s_value);
+                tx_staticliststring01.setText("liststringStaticValue=" + util.getliststringStaticValue());
                 break;
             case R.id.btn_staticliststring10:
+                Toast.makeText(getApplicationContext(), " native liststringStaticNvMethod10 JNI be called", Toast.LENGTH_SHORT).show();
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                tx_staticliststring10.setText("" + util.liststringStaticNvMethod10());
                 break;
             case R.id.btn_staticliststring11:
+                Toast.makeText(getApplicationContext(), "native liststringStaticNvMethod11 JNI be called", Toast.LENGTH_SHORT).show();
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                ArrayList<String> liststring11s_value = new ArrayList<String>();
+                liststring11s_value.add(new String("onclick1_str_11"));
+                liststring11s_value.add(new String("onclick2_str_11"));
+                tx_staticliststring11.setText("" + util.liststringStaticNvMethod11(liststring11s_value));
                 break;
+            //  ==================================== liststring  Array<String> End
 
-            //==================================== liststring - end
 
-            //  ==================================== mapstring Begin
+            //  ==================================== mapstring  Array<String> Begin
             case R.id.btn_mapstring00:
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                ArrayMap<String, Bean> old_mapstring = util.getmapstringValue();
+                util.mapstringNvMethod00();
+                ArrayMap<String, Bean> new_mapstring = util.getmapstringValue();
+                tx_mapstring00.setText(" new:" + util.toArrayMapString(new_mapstring) + "old:" + util.toArrayMapString(old_mapstring));
 
                 break;
             case R.id.btn_mapstring01:
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                ArrayMap<String, Bean> mapstring01_value = new ArrayMap<String, Bean>();
+                mapstring01_value.put(new String("01_object_1"), new Bean(1, "onclick_add_1"));
+                mapstring01_value.put(new String("01_object_2"), new Bean(1, "onclick_add_2"));
+                util.mapstringNvMethod01(mapstring01_value);
+                tx_mapstring01.setText("" +  util.toArrayMapString(util.getmapstringValue()) );
                 break;
             case R.id.btn_mapstring10:
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                tx_mapstring10.setText("" + util.toArrayMapString(util.mapstringNvMethod10()) );
                 break;
             case R.id.btn_mapstring11:
+                ArrayMap<String, Bean> mapstring11_value = new ArrayMap<String, Bean>();
+                mapstring11_value.put(new String("11_object_1_click"), new Bean(11, "onclick_add_1"));
+                mapstring11_value.put(new String("11_object_2_click"), new Bean(11, "onclick_add_2"));
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                tx_mapstring11.setText("" + util.toArrayMapString(util.mapstringNvMethod11(mapstring11_value)));
                 break;
             case R.id.btn_staticmapstring00:
+                Toast.makeText(getApplicationContext(), "native mapstringStaticNvMethod00 JNI be called", Toast.LENGTH_SHORT).show();
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+
+                ArrayMap<String, Bean> old_mapstring_s = util.getmapstringStaticValue();
+                util.mapstringStaticNvMethod00();
+                ArrayMap<String, Bean> new_mapstring_s = util.getmapstringStaticValue();
+                tx_staticmapstring00.setText(" new:" + util.toArrayMapString(new_mapstring_s) + "old:" +  util.toArrayMapString(old_mapstring_s));
+
                 break;
             case R.id.btn_staticmapstring01:
+                Toast.makeText(getApplicationContext(), " native mapstringStaticNvMethod01 JNI be called ", Toast.LENGTH_SHORT).show();
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+
+                ArrayMap<String, Bean> mapstring01s_value = new ArrayMap<String, Bean>();
+                mapstring01s_value.put(new String("01_static_1"), new Bean(1, "onclick_add_1"));
+                mapstring01s_value.put(new String("01_static_2"), new Bean(1, "onclick_add_2"));
+                util.mapstringStaticNvMethod01(mapstring01s_value);
+                tx_staticmapstring01.setText("mapstringStaticValue=" + util.toArrayMapString(util.getmapstringStaticValue()));
                 break;
             case R.id.btn_staticmapstring10:
+                Toast.makeText(getApplicationContext(), " native mapstringStaticNvMethod10 JNI be called", Toast.LENGTH_SHORT).show();
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                tx_staticmapstring10.setText("" + util.toArrayMapString(util.mapstringStaticNvMethod10()));
                 break;
             case R.id.btn_staticmapstring11:
+                Toast.makeText(getApplicationContext(), "native mapstringStaticNvMethod11 JNI be called", Toast.LENGTH_SHORT).show();
+                // 0-0 无参数无返回值【通用】     0-1 无返回值 有参数【】       1-0  有返回值 无参数 【】      1-1  有返回值 有参数【】
+                ArrayMap<String, Bean> mapstring11s_value = new ArrayMap<String, Bean>();
+                mapstring11s_value.put(new String("11_static_1"), new Bean(11, "onclick_add_1"));
+                mapstring11s_value.put(new String("11_static_2"), new Bean(11, "onclick_add_2"));
+                tx_staticmapstring11.setText("" + util.toArrayMapString(util.mapstringStaticNvMethod11(mapstring11s_value)));
                 break;
+            //  ==================================== mapstring  Array<String> End
 
             //==================================== mapstring - end
 
         }
 
-
+        android.util.Log.i("zukgit", util.toString());
 
     }
 

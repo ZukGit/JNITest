@@ -694,6 +694,23 @@ Java_com_zukgit_administrator_testjni_1zukgit_JniUtil_shortStaticNvMethod11
 
 
 /************************************int_Begin*************************************/
+
+
+
+/*
+JNIEXPORT jint JNICALL  Java_IntArray_sumArray(JNIEnv *env, jobject obj, jintArray arr)   int数组  jintArray
+{
+     jint buf[10];
+     jint i, sum = 0;
+     (*env)->GetIntArrayRegion(env, arr, 0, 10, buf);
+
+    for (i = 0; i < 10; i++) {
+         sum += buf[i];
+     }
+     return sum;
+}
+*/
+
 // 静态方法和对象方法的不同就在于
 // 实例对象方法JNI方法的第二个参数为 jobject(JNIEnv *env, jobject jobj)
 // 静态方法 JNI方法 第二个参数为 jclass   (JNIEnv *env, jclass jcls);
@@ -1361,6 +1378,288 @@ Java_com_zukgit_administrator_testjni_1zukgit_JniUtil_doubleStaticNvMethod11
 /************************************Double-End*************************************/
 
 
+/************************************Object Bean Begin*************************************/
+// 静态方法和对象方法的不同就在于
+// 实例对象方法JNI方法的第二个参数为 jobject(JNIEnv *env, jobject jobj)
+// 静态方法 JNI方法 第二个参数为 jclass   (JNIEnv *env, jclass jcls);
+JNIEXPORT void JNICALL Java_com_zukgit_administrator_testjni_1zukgit_JniUtil_beanObjectNvMethod00
+        (JNIEnv *env, jobject jobj) {
+
+    jclass jcla = (*env)->GetObjectClass(env, jobj);
+
+    jfieldID fid = (*env)->GetFieldID(env, jcla, "beanObjectValue", "Lcom/zukgit/administrator/testjni_zukgit/Bean;");
+
+    jobject j_bean = (*env)->GetObjectField(env, jobj, fid);
+
+    jclass j_bean_cla = (*env)->GetObjectClass(env, j_bean);
+
+    jfieldID jbean_int_fid = (*env)->GetFieldID(env, j_bean_cla, "num", "I");
+
+    jfieldID jbean_string_fid = (*env)->GetFieldID(env, j_bean_cla, "str", "Ljava/lang/String;");
+    jstring j_bean_str = (*env)->GetObjectField(env, j_bean, jbean_string_fid);
+    jint j_bean_int = (*env)->GetIntField(env, j_bean, jbean_int_fid);
+    int c_bean_int = (int) j_bean_int;
+    char *c_str = (*env)->GetStringUTFChars(env, j_bean_str, 0);  // 读取到 stringValue的值
+
+
+    LOGI("@@JNI beanObjectNvMethod00  Bean int=%d    str=%s", c_bean_int ,c_str);
+
+    // 创建新的 bean 对象
+    jclass jbeanClass =  (*env)->FindClass(env,"com/zukgit/administrator/testjni_zukgit/Bean");
+    jmethodID construct_bean = (*env)->GetMethodID(env,jbeanClass,"<init>","()V");
+    jobject beanObject =  (*env)->NewObject(env,jbeanClass,construct_bean);
+    jclass temp = (*env)->GetObjectClass(env, beanObject);
+    jfieldID intFieldID_bean = (*env)->GetFieldID(env,temp,"num","I"); // 获得属性ID
+    jfieldID strFieldID_bean = (*env)->GetFieldID(env,temp,"str","Ljava/lang/String;"); // 获得属性ID
+    int num_bean = 111;
+    (*env)->SetIntField(env,beanObject, intFieldID_bean,num_bean );
+    (*env)->SetObjectField(env,beanObject, strFieldID_bean,(*env)->NewStringUTF(env, "JNI_beanObjectNvMethod00_add"));
+    (*env)->SetObjectField(env, jobj, fid, beanObject);
+
+    jmethodID mid = (*env)->GetMethodID(env, jcla, "callbyJNIbeanObject00", "()V");
+    (*env)->CallVoidMethod(env, jobj, mid); // 调用 Java的Object 函数   void callbyJNIString00()
+
+    return;
+}
+
+
+JNIEXPORT void JNICALL Java_com_zukgit_administrator_testjni_1zukgit_JniUtil_beanObjectNvMethod01
+        (JNIEnv *env, jobject jobj ,jobject jbean ) {
+
+    jclass j_bean_cla = (*env)->GetObjectClass(env, jbean);
+
+    jfieldID jbean_int_fid = (*env)->GetFieldID(env, j_bean_cla, "num", "I");
+    jfieldID jbean_string_fid = (*env)->GetFieldID(env, j_bean_cla, "str", "Ljava/lang/String;");
+
+
+
+    jstring j_bean_str = (*env)->GetObjectField(env, jbean, jbean_string_fid);
+    jint j_bean_int = (*env)->GetIntField(env, jbean, jbean_int_fid);
+
+
+    int c_bean_int = (int) j_bean_int;
+    char *c_str = (*env)->GetStringUTFChars(env, j_bean_str, 0);  // 读取到 stringValue的值
+
+
+    LOGI("@@JNI beanObjectNvMethod01  Bean int=%d    str=%s", c_bean_int ,c_str);
+
+
+    (*env)->SetIntField(env,jbean, jbean_int_fid,200 );
+    (*env)->SetObjectField(env,jbean, j_bean_str,(*env)->NewStringUTF(env, "JNI_beanObjectNvMethod01_add"));
+
+
+
+
+    jmethodID mid = (*env)->GetMethodID(env, jobj, "callbyJNIbeanObject01", "(Lcom/zukgit/administrator/testjni_zukgit/Bean;)V");
+    (*env)->CallVoidMethod(env, jobj, mid,jbean); // 调用 Java的Object 函数   void callbyJNIString00()
+    return;
+
+
+}
+
+
+
+
+
+
+
+
+JNIEXPORT jobject JNICALL Java_com_zukgit_administrator_testjni_1zukgit_JniUtil_beanObjectNvMethod10
+        (JNIEnv *env, jobject jobj ) {
+
+    jmethodID mid = (*env)->GetMethodID(env, jobj, "callbyJNIbeanObject10", "()Lcom/zukgit/administrator/testjni_zukgit/Bean;");
+
+    LOGI("@@JNI beanObjectNvMethod10 CallVoidMethod---callbyJNIbeanObject10 ");
+
+    return (*env)->CallObjectMethod(env, jobj, mid);
+
+}
+
+
+
+JNIEXPORT jobject JNICALL Java_com_zukgit_administrator_testjni_1zukgit_JniUtil_beanObjectNvMethod11
+        (JNIEnv *env, jobject jobj , jobject jbean) {
+
+    jclass jcla = (*env)->GetObjectClass(env, jobj);
+
+    jfieldID fid = (*env)->GetFieldID(env, jcla, "beanObjectValue", "Lcom/zukgit/administrator/testjni_zukgit/Bean;");
+
+    jobject j_bean = (*env)->GetObjectField(env, jobj, fid);
+
+    jclass j_bean_cla = (*env)->GetObjectClass(env, j_bean);
+
+    jfieldID jbean_int_fid = (*env)->GetFieldID(env, j_bean_cla, "num", "I");
+
+    jfieldID jbean_string_fid = (*env)->GetFieldID(env, j_bean_cla, "str", "Ljava/lang/String;");
+    jstring j_bean_str = (*env)->GetObjectField(env, j_bean, jbean_string_fid);
+    jint j_bean_int = (*env)->GetIntField(env, j_bean, jbean_int_fid);
+    int c_bean_int = (int) j_bean_int;
+    char *c_str = (*env)->GetStringUTFChars(env, j_bean_str, 0);  // 读取到 stringValue的值
+
+
+    LOGI("@@JNI beanObjectNvMethod11  Bean int=%d    str=%s", c_bean_int ,c_str);
+
+    // 创建新的 bean 对象
+    jclass jbeanClass =  (*env)->FindClass(env,"com/zukgit/administrator/testjni_zukgit/Bean");
+    jmethodID construct_bean = (*env)->GetMethodID(env,jbeanClass,"<init>","()V");
+    jobject beanObject =  (*env)->NewObject(env,jbeanClass,construct_bean);
+    jclass temp = (*env)->GetObjectClass(env, beanObject);
+    jfieldID intFieldID_bean = (*env)->GetFieldID(env,temp,"num","I"); // 获得属性ID
+    jfieldID strFieldID_bean = (*env)->GetFieldID(env,temp,"str","Ljava/lang/String;"); // 获得属性ID
+    int num_bean = 333;
+    (*env)->SetIntField(env,beanObject, intFieldID_bean,num_bean );
+    (*env)->SetObjectField(env, jobj, fid, beanObject);
+
+    jmethodID mid = (*env)->GetMethodID(env, jcla, "callbyJNIbeanObject11", "(Lcom/zukgit/administrator/testjni_zukgit/Bean;)Lcom/zukgit/administrator/testjni_zukgit/Bean;");
+    (*env)->CallObjectMethod(env, jobj, mid); // 调用 Java的Object 函数   void callbyJNIString00()
+
+}
+
+//-----------Static
+
+JNIEXPORT void JNICALL Java_com_zukgit_administrator_testjni_1zukgit_JniUtil_beanObjectStaticNvMethod00
+        (JNIEnv *env, jclass jcla) {
+
+    // jclass jcla = (*env)->GetObjectClass(env, jobj);
+
+    jfieldID fid = (*env)->GetStaticFieldID(env, jcla, "beanObjectStaticValue", "Lcom/zukgit/administrator/testjni_zukgit/Bean;");
+
+    jobject j_bean = (*env)->GetStaticObjectField(env, jcla, fid);
+
+    jclass j_bean_cla = (*env)->GetObjectClass(env, j_bean);
+
+    jfieldID jbean_int_fid = (*env)->GetFieldID(env, j_bean_cla, "num", "I");
+
+    jfieldID jbean_string_fid = (*env)->GetFieldID(env, j_bean_cla, "str", "Ljava/lang/String;");
+    jstring j_bean_str = (*env)->GetObjectField(env, j_bean, jbean_string_fid);
+    jint j_bean_int = (*env)->GetIntField(env, j_bean, jbean_int_fid);
+    int c_bean_int = (int) j_bean_int;
+    char *c_str = (*env)->GetStringUTFChars(env, j_bean_str, 0);  // 读取到 stringValue的值
+
+
+    LOGI("@@JNI beanObjectStaticNvMethod00  Bean int=%d    str=%s", c_bean_int ,c_str);
+
+    // 创建新的 bean 对象
+    jclass jbeanClass =  (*env)->FindClass(env,"com/zukgit/administrator/testjni_zukgit/Bean");
+    jmethodID construct_bean = (*env)->GetMethodID(env,jbeanClass,"<init>","()V");
+    jobject beanObject =  (*env)->NewObject(env,jbeanClass,construct_bean);
+    jclass temp = (*env)->GetObjectClass(env, beanObject);
+    jfieldID intFieldID_bean = (*env)->GetFieldID(env,temp,"num","I"); // 获得属性ID
+    jfieldID strFieldID_bean = (*env)->GetFieldID(env,temp,"str","Ljava/lang/String;"); // 获得属性ID
+    int num_bean = 777;
+    (*env)->SetIntField(env,beanObject, intFieldID_bean,num_bean );
+    (*env)->SetObjectField(env,beanObject, strFieldID_bean,(*env)->NewStringUTF(env, "JNI_beanObjectStaticNvMethod00_add"));
+    (*env)->SetStaticObjectField(env, jcla, fid, beanObject);
+
+    jmethodID mid = (*env)->GetStaticMethodID(env, jcla, "callbyJNIStaticbeanObject00", "()V");
+    (*env)->CallStaticVoidMethod(env, jcla, mid); // 调用 Java的Object 函数   void callbyJNIString00()
+
+    return;
+}
+
+
+JNIEXPORT void JNICALL Java_com_zukgit_administrator_testjni_1zukgit_JniUtil_beanObjectStaticNvMethod01
+        (JNIEnv *env, jclass jcla ,jobject jbean ) {
+
+    jclass j_bean_cla = (*env)->GetObjectClass(env, jbean);
+
+    jfieldID jbean_int_fid = (*env)->GetFieldID(env, j_bean_cla, "num", "I");
+    jfieldID jbean_string_fid = (*env)->GetFieldID(env, j_bean_cla, "str", "Ljava/lang/String;");
+
+    LOGI("Log00");
+
+    jstring j_bean_str = (*env)->GetObjectField(env, jbean, jbean_string_fid);
+    jint j_bean_int = (*env)->GetIntField(env, jbean, jbean_int_fid);
+
+    LOGI("Log01");
+    int c_bean_int = (int) j_bean_int;
+    char *c_str = (*env)->GetStringUTFChars(env, j_bean_str, 0);  // 读取到 stringValue的值
+
+
+    LOGI("@@JNI beanObjectStaticNvMethod01  Bean int=%d    str=%s", c_bean_int ,c_str);
+
+    LOGI("Log02");
+    (*env)->SetIntField(env,jbean, jbean_int_fid,888 );
+    LOGI("Log03");
+    (*env)->SetObjectField(env,jbean, jbean_string_fid,(*env)->NewStringUTF(env, "JNI_beanObjectStaticNvMethod01_add"));
+
+
+
+    LOGI("Log04");
+    jmethodID mid = (*env)->GetStaticMethodID(env, jcla, "callbyJNIStaticbeanObject01", "(Lcom/zukgit/administrator/testjni_zukgit/Bean;)V");
+    LOGI("Log05");
+    (*env)->CallStaticVoidMethod(env, jcla, mid,jbean); // 调用 Java的Object 函数   void callbyJNIString00()
+    LOGI("Log06");
+    return;
+
+
+}
+
+
+
+
+
+
+
+
+JNIEXPORT jobject JNICALL Java_com_zukgit_administrator_testjni_1zukgit_JniUtil_beanObjectStaticNvMethod10
+        (JNIEnv *env, jclass jcla ) {
+
+    jmethodID mid = (*env)->GetStaticMethodID(env, jcla, "callbyJNIStaticbeanObject10", "()Lcom/zukgit/administrator/testjni_zukgit/Bean;");
+
+    LOGI("@@JNI beanObjectStaticNvMethod10 CallVoidMethod---callbyJNIbeanObject10 ");
+
+    return (*env)->CallStaticObjectMethod(env, jcla, mid);
+
+}
+
+
+
+JNIEXPORT jobject JNICALL Java_com_zukgit_administrator_testjni_1zukgit_JniUtil_beanObjectStaticNvMethod11
+        (JNIEnv *env, jclass jcla , jobject jbean) {
+
+    // jclass jcla = (*env)->GetObjectClass(env, jobj);
+
+    jfieldID fid = (*env)->GetStaticFieldID(env, jcla, "beanObjectStaticValue", "Lcom/zukgit/administrator/testjni_zukgit/Bean;");
+
+    jobject j_bean = (*env)->GetStaticObjectField(env, jcla, fid);
+
+    jclass j_bean_cla = (*env)->GetObjectClass(env, j_bean);
+    LOGI("Log00");
+    jfieldID jbean_int_fid = (*env)->GetFieldID(env, j_bean_cla, "num", "I");
+
+    jfieldID jbean_string_fid = (*env)->GetFieldID(env, j_bean_cla, "str", "Ljava/lang/String;");
+    jstring j_bean_str = (*env)->GetObjectField(env, j_bean, jbean_string_fid);
+    jint j_bean_int = (*env)->GetIntField(env, j_bean, jbean_int_fid);
+    int c_bean_int = (int) j_bean_int;
+    char *c_str = (*env)->GetStringUTFChars(env, j_bean_str, 0);  // 读取到 stringValue的值
+
+    LOGI("Log01");
+    LOGI("@@JNI beanObjectStaticNvMethod11  Bean int=%d    str=%s", c_bean_int ,c_str);
+
+    // 创建新的 bean 对象
+    jclass jbeanClass =  (*env)->FindClass(env,"com/zukgit/administrator/testjni_zukgit/Bean");
+    jmethodID construct_bean = (*env)->GetMethodID(env,jbeanClass,"<init>","()V");
+    jobject beanObject =  (*env)->NewObject(env,jbeanClass,construct_bean);
+    LOGI("Log02");
+    jclass temp = (*env)->GetObjectClass(env, beanObject);
+    jfieldID intFieldID_bean = (*env)->GetFieldID(env,temp,"num","I"); // 获得属性ID
+    jfieldID strFieldID_bean = (*env)->GetFieldID(env,temp,"str","Ljava/lang/String;"); // 获得属性ID
+    int num_bean = 999;
+    (*env)->SetIntField(env,beanObject, intFieldID_bean,num_bean );
+    (*env)->SetStaticObjectField(env, jcla, fid, beanObject);
+    LOGI("Log03");
+    jmethodID mid = (*env)->GetStaticMethodID(env, jcla, "callbyJNIStaticbeanObject11", "(Lcom/zukgit/administrator/testjni_zukgit/Bean;)Lcom/zukgit/administrator/testjni_zukgit/Bean;");
+    LOGI("Log04");
+    return (*env)->CallStaticObjectMethod(env, jcla, mid,beanObject); // 调用 Java的Object 函数   void callbyJNIString00()
+
+}
+
+
+
+/************************************Object Bean End*************************************/
+
+
 
 /************************************String_Begin*************************************/
 // 静态方法和对象方法的不同就在于
@@ -1563,8 +1862,1479 @@ Java_com_zukgit_administrator_testjni_1zukgit_JniUtil_stringStaticNvMethod11
 
     return (*env)->NewStringUTF(env, txt1);
 }
-/************************************Java-End*************************************/
+/************************************String - End*************************************/
 
+
+
+/************************************Array<Bean>_Begin  Array<Object>*************************************/
+// 静态方法和对象方法的不同就在于
+// 实例对象方法JNI方法的第二个参数为 jobject(JNIEnv *env, jobject jobj)
+// 静态方法 JNI方法 第二个参数为 jclass   (JNIEnv *env, jclass jcls);
+JNIEXPORT void JNICALL Java_com_zukgit_administrator_testjni_1zukgit_JniUtil_listobjectNvMethod00
+        (JNIEnv *env, jobject jobj) {
+
+    jclass jcla = (*env)->GetObjectClass(env, jobj);
+
+    jfieldID fid = (*env)->GetFieldID(env, jcla, "listobjectValue", "Ljava/util/ArrayList;"); // 访问java层的 ArrayList<Bean>
+
+
+    jobject  jlistobjectValue = (*env)->GetObjectField(env, jobj, fid);
+
+    if(jlistobjectValue == NULL)
+    {
+        return  ;
+    }
+
+    int i;
+    jclass cls_arraylist = (*env)->GetObjectClass(env,jlistobjectValue);
+    jmethodID arraylist_get = (*env)->GetMethodID(env,cls_arraylist,"get","(I)Ljava/lang/Object;");
+    jmethodID arraylist_size = (*env)->GetMethodID(env,cls_arraylist,"size","()I");
+    jint len = (*env)->CallIntMethod(env,jlistobjectValue,arraylist_size);
+    for(i=0;i<len;i++){
+        jobject obj_bean = (*env)->CallObjectMethod(env,jlistobjectValue,arraylist_get,i);
+        jclass cls_bean = (*env)->GetObjectClass(env,obj_bean);
+
+
+        jfieldID intFieldID = (*env)->GetFieldID(env,cls_bean,"num","I"); // 获得属性ID
+        jfieldID strFieldID = (*env)->GetFieldID(env,cls_bean,"str","Ljava/lang/String;"); // 获得属性ID
+
+        jint intValue= (*env)->GetIntField(env,obj_bean , intFieldID );//获得属性值
+        jstring jstr= (*env)->GetObjectField(env,obj_bean ,strFieldID );//获得属性值
+
+        int c_num = (int) intValue;
+        char *c_str = (*env)->GetStringUTFChars(env, jstr, 0);  // 读取到 stringValue的值
+        LOGI("@@JNI get ArrayList<Bean>-%d ===intValue:%d , str:%s",i  ,c_num , c_str);
+    }
+    // jlistobjectValue    jobject  jlistobjectValue = (*env)->GetObjectField(env, jobj, fid);
+    jclass jbeanClass =  (*env)->FindClass(env,"com/zukgit/administrator/testjni_zukgit/Bean");
+    jmethodID construct_bean = (*env)->GetMethodID(env,jbeanClass,"<init>","()V");
+    jmethodID arraylist_add = (*env)->GetMethodID(env,cls_arraylist,"add","(Ljava/lang/Object;)Z");
+    jobject beanObject ;
+    jclass jcla_bean;
+    jfieldID intFieldID_bean;
+    jfieldID strFieldID_bean;
+    for(i=0;i<5;i++){
+        beanObject = (*env)->NewObject(env,jbeanClass,construct_bean);
+        jclass temp = (*env)->GetObjectClass(env, beanObject);
+        jcla_bean = (jclass)(*env)->NewGlobalRef(env,temp);
+        intFieldID_bean = (*env)->GetFieldID(env,jcla_bean,"num","I"); // 获得属性ID
+        strFieldID_bean = (*env)->GetFieldID(env,jcla_bean,"str","Ljava/lang/String;"); // 获得属性ID
+        int num_bean = i +100;
+        (*env)->SetIntField(env,beanObject, intFieldID_bean,num_bean );
+        (*env)->SetObjectField(env,beanObject, strFieldID_bean,(*env)->NewStringUTF(env, "JNI_add"));
+        (*env)->CallBooleanMethod(env,jlistobjectValue,arraylist_add,beanObject);
+
+    }
+
+    (*env)->SetObjectField(env, jobj, fid, jlistobjectValue);  // 在JNI中设置 java 层listobjectValue新的值
+
+    jmethodID mid = (*env)->GetMethodID(env, jcla, "callbyJNIlistobject00", "()V");
+    (*env)->CallVoidMethod(env, jobj, mid); // 调用 Java的Object 函数   void callbyJNIlistobject00()
+    LOGI("@@JNI listobjectNvMethod00 CallVoidMethod---callbyJNIlistobject00 ");
+    return;
+}
+
+
+
+
+JNIEXPORT void JNICALL Java_com_zukgit_administrator_testjni_1zukgit_JniUtil_listobjectNvMethod01
+        (JNIEnv *env, jobject jobj, jobject listobjectValue) {
+
+    jclass jcla = (*env)->GetObjectClass(env, jobj); // Jutil_Class
+
+
+    if(listobjectValue == NULL)
+    {
+        return  ;
+    }
+
+    int i;
+    jclass cls_arraylist = (*env)->GetObjectClass(env,listobjectValue);
+    jmethodID arraylist_get = (*env)->GetMethodID(env,cls_arraylist,"get","(I)Ljava/lang/Object;");
+    jmethodID arraylist_size = (*env)->GetMethodID(env,cls_arraylist,"size","()I");
+    jint len = (*env)->CallIntMethod(env,listobjectValue,arraylist_size);
+
+
+    for(i=0;i<len;i++){
+        jobject obj_bean = (*env)->CallObjectMethod(env,listobjectValue,arraylist_get,i);
+        jclass cls_bean = (*env)->GetObjectClass(env,obj_bean);
+
+
+        jfieldID intFieldID = (*env)->GetFieldID(env,cls_bean,"num","I"); // 获得属性ID
+        jfieldID strFieldID = (*env)->GetFieldID(env,cls_bean,"str","Ljava/lang/String;"); // 获得属性ID
+
+        jint intValue= (*env)->GetIntField(env,obj_bean , intFieldID );//获得属性值
+        jstring jstr= (*env)->GetObjectField(env,obj_bean ,strFieldID );//获得属性值
+
+        int c_num = (int) intValue;
+        char *c_str = (*env)->GetStringUTFChars(env, jstr, 0);  // 读取到 stringValue的值
+        LOGI("@@JNI get ArrayList<Bean>-%d ===intValue:%d , str:%s",i  ,c_num , c_str);
+    }
+
+    jfieldID fid = (*env)->GetFieldID(env, jcla, "listobjectValue", "Ljava/util/ArrayList;"); // 访问java层的 ArrayList<Bean>
+    (*env)->SetObjectField(env, jobj, fid, listobjectValue);  // 在JNI中设置 java 层listobjectValue新的值
+
+
+    jmethodID mid = (*env)->GetMethodID(env, jcla, "callbyJNIlistobject01", "(Ljava/util/ArrayList;)V");
+    (*env)->CallVoidMethod(env, jobj, mid, listobjectValue); // 调用 Java的Object 函数   void callbyJNIlistobject00()
+    LOGI("@@JNI listobjectNvMethod01 CallVoidMethod---callbyJNIlistobject01 ");
+
+    return;
+}
+
+
+
+
+
+
+JNIEXPORT jobject JNICALL Java_com_zukgit_administrator_testjni_1zukgit_JniUtil_listobjectNvMethod10
+        (JNIEnv *env, jobject jobj ) {
+
+    jclass jcla = (*env)->GetObjectClass(env, jobj); // Jutil_Class
+    jmethodID mid = (*env)->GetMethodID(env, jcla, "callbyJNIlistobject10", "()Ljava/util/ArrayList;");
+
+    LOGI("@@JNI listobjectNvMethod10 CallVoidMethod---callbyJNIlistobject10 ");
+
+    return (*env)->CallObjectMethod(env, jobj, mid);
+
+}
+
+
+JNIEXPORT jobject JNICALL Java_com_zukgit_administrator_testjni_1zukgit_JniUtil_listobjectNvMethod11
+        (JNIEnv *env, jobject jobj ,jobject jlistobjectValue) {
+
+    jclass jcla = (*env)->GetObjectClass(env, jobj); // Jutil_Class
+    LOGI("@@JNI listobjectNvMethod11 CallVoidMethod---callbyJNIlistobject11------Begin ");
+    jmethodID mid = (*env)->GetMethodID(env, jcla, "callbyJNIlistobject11", "(Ljava/util/ArrayList;)Ljava/util/ArrayList;");
+
+
+
+    int i;
+    jclass cls_arraylist = (*env)->GetObjectClass(env,jlistobjectValue);
+    jmethodID arraylist_get = (*env)->GetMethodID(env,cls_arraylist,"get","(I)Ljava/lang/Object;");
+    jmethodID arraylist_size = (*env)->GetMethodID(env,cls_arraylist,"size","()I");
+    jint len = (*env)->CallIntMethod(env,jlistobjectValue,arraylist_size);
+
+    for(i=0;i<len;i++){
+        jobject obj_bean = (*env)->CallObjectMethod(env,jlistobjectValue,arraylist_get,i);
+        jclass cls_bean = (*env)->GetObjectClass(env,obj_bean);
+
+
+        jfieldID intFieldID = (*env)->GetFieldID(env,cls_bean,"num","I"); // 获得属性ID
+        jfieldID strFieldID = (*env)->GetFieldID(env,cls_bean,"str","Ljava/lang/String;"); // 获得属性ID
+
+        jint intValue= (*env)->GetIntField(env,obj_bean , intFieldID );//获得属性值
+        jstring jstr= (*env)->GetObjectField(env,obj_bean ,strFieldID );//获得属性值
+
+        int c_num = (int) intValue;
+        char *c_str = (*env)->GetStringUTFChars(env, jstr, 0);  // 读取到 stringValue的值
+        LOGI("@@JNI  listobjectNvMethod11 get ArrayList<Bean>-%d ===intValue:%d , str:%s",i  ,c_num , c_str);
+    }
+
+
+    jclass jbeanClass =  (*env)->FindClass(env,"com/zukgit/administrator/testjni_zukgit/Bean");
+    jmethodID construct_bean = (*env)->GetMethodID(env,jbeanClass,"<init>","()V");
+    jmethodID arraylist_add = (*env)->GetMethodID(env,cls_arraylist,"add","(Ljava/lang/Object;)Z");
+    jobject beanObject ;
+    jclass jcla_bean;
+    jfieldID intFieldID_bean;
+    jfieldID strFieldID_bean;
+    for(i=0;i<2;i++){
+        beanObject = (*env)->NewObject(env,jbeanClass,construct_bean);
+        jclass jcla_bean = (*env)->GetObjectClass(env, beanObject);
+        //jcla_bean = (jclass)(*env)->NewGlobalRef(env,temp);
+        intFieldID_bean = (*env)->GetFieldID(env,jcla_bean,"num","I"); // 获得属性ID
+        strFieldID_bean = (*env)->GetFieldID(env,jcla_bean,"str","Ljava/lang/String;"); // 获得属性ID
+        int num_bean = i +1000;
+        (*env)->SetIntField(env,beanObject, intFieldID_bean,num_bean );
+        (*env)->SetObjectField(env,beanObject, strFieldID_bean,(*env)->NewStringUTF(env, "JNI11_add"));
+        (*env)->CallBooleanMethod(env,jlistobjectValue,arraylist_add,beanObject);
+
+    }
+
+
+    LOGI("@@JNI listobjectNvMethod11 CallVoidMethod---callbyJNIlistobject11------End ");
+    return (*env)->CallObjectMethod(env, jobj, mid,jlistobjectValue);
+
+}
+
+
+
+//----------------Static Array<Bean>
+JNIEXPORT void JNICALL Java_com_zukgit_administrator_testjni_1zukgit_JniUtil_listobjectStaticNvMethod00
+        (JNIEnv *env, jclass jcla) {
+
+    // jclass jcla = (*env)->GetObjectClass(env, jobj);
+
+    jfieldID fid = (*env)->GetStaticFieldID(env, jcla, "listobjectStaticValue", "Ljava/util/ArrayList;"); // 访问java层的 ArrayList<Bean>
+
+
+    jobject  jlistobjectValue = (*env)->GetStaticObjectField(env, jcla, fid);
+
+    if(jlistobjectValue == NULL)
+    {
+        return  ;
+    }
+
+    int i;
+    jclass cls_arraylist = (*env)->GetObjectClass(env,jlistobjectValue);
+    jmethodID arraylist_get = (*env)->GetMethodID(env,cls_arraylist,"get","(I)Ljava/lang/Object;");
+    jmethodID arraylist_size = (*env)->GetMethodID(env,cls_arraylist,"size","()I");
+    jint len = (*env)->CallIntMethod(env,jlistobjectValue,arraylist_size);
+    for(i=0;i<len;i++){
+        jobject obj_bean = (*env)->CallObjectMethod(env,jlistobjectValue,arraylist_get,i);
+        jclass cls_bean = (*env)->GetObjectClass(env,obj_bean);
+
+
+        jfieldID intFieldID = (*env)->GetFieldID(env,cls_bean,"num","I"); // 获得属性ID
+        jfieldID strFieldID = (*env)->GetFieldID(env,cls_bean,"str","Ljava/lang/String;"); // 获得属性ID
+
+        jint intValue= (*env)->GetIntField(env,obj_bean , intFieldID );//获得属性值
+        jstring jstr= (*env)->GetObjectField(env,obj_bean ,strFieldID );//获得属性值
+
+        int c_num = (int) intValue;
+        char *c_str = (*env)->GetStringUTFChars(env, jstr, 0);  // 读取到 stringValue的值
+        LOGI("@@JNI listobjectStaticNvMethod00 get ArrayList<Bean>-%d ===intValue:%d , str:%s",i  ,c_num , c_str);
+    }
+    // jlistobjectValue    jobject  jlistobjectValue = (*env)->GetObjectField(env, jobj, fid);
+    jclass jbeanClass =  (*env)->FindClass(env,"com/zukgit/administrator/testjni_zukgit/Bean");
+    jmethodID construct_bean = (*env)->GetMethodID(env,jbeanClass,"<init>","()V");
+    jmethodID arraylist_add = (*env)->GetMethodID(env,cls_arraylist,"add","(Ljava/lang/Object;)Z");
+    jobject beanObject ;
+    jclass jcla_bean;
+    jfieldID intFieldID_bean;
+    jfieldID strFieldID_bean;
+    for(i=0;i<2;i++){
+        beanObject = (*env)->NewObject(env,jbeanClass,construct_bean);
+        jclass temp = (*env)->GetObjectClass(env, beanObject);
+        jcla_bean = (jclass)(*env)->NewGlobalRef(env,temp);
+        intFieldID_bean = (*env)->GetFieldID(env,jcla_bean,"num","I"); // 获得属性ID
+        strFieldID_bean = (*env)->GetFieldID(env,jcla_bean,"str","Ljava/lang/String;"); // 获得属性ID
+        int num_bean = i +100;
+        (*env)->SetIntField(env,beanObject, intFieldID_bean,num_bean );
+        (*env)->SetObjectField(env,beanObject, strFieldID_bean,(*env)->NewStringUTF(env, "JNI_Static_add"));
+        (*env)->CallBooleanMethod(env,jlistobjectValue,arraylist_add,beanObject);
+
+    }
+
+    (*env)->SetStaticObjectField(env, jcla, fid, jlistobjectValue);  // 在JNI中设置 java 层listobjectValue新的值
+
+    jmethodID mid = (*env)->GetStaticMethodID(env, jcla, "callbyJNIStaticlistobject00", "()V");
+    (*env)->CallStaticVoidMethod(env, jcla, mid); // 调用 Java的Object 函数   void callbyJNIlistobject00()
+    LOGI("@@JNI listobjectStaticNvMethod00 CallVoidMethod---callbyJNIlistStaticobject00 ");
+    return;
+}
+
+
+
+
+JNIEXPORT void JNICALL Java_com_zukgit_administrator_testjni_1zukgit_JniUtil_listobjectStaticNvMethod01
+        (JNIEnv *env, jclass jcla, jobject listobjectValue) {
+
+    if(listobjectValue == NULL)
+    {
+        return  ;
+    }
+
+    int i;
+    jclass cls_arraylist = (*env)->GetObjectClass(env,listobjectValue);
+    jmethodID arraylist_get = (*env)->GetMethodID(env,cls_arraylist,"get","(I)Ljava/lang/Object;");
+    jmethodID arraylist_size = (*env)->GetMethodID(env,cls_arraylist,"size","()I");
+    jint len = (*env)->CallIntMethod(env,listobjectValue,arraylist_size);
+
+
+    for(i=0;i<len;i++){
+        jobject obj_bean = (*env)->CallObjectMethod(env,listobjectValue,arraylist_get,i);
+        jclass cls_bean = (*env)->GetObjectClass(env,obj_bean);
+
+
+        jfieldID intFieldID = (*env)->GetFieldID(env,cls_bean,"num","I"); // 获得属性ID
+        jfieldID strFieldID = (*env)->GetFieldID(env,cls_bean,"str","Ljava/lang/String;"); // 获得属性ID
+
+        jint intValue= (*env)->GetIntField(env,obj_bean , intFieldID );//获得属性值
+        jstring jstr= (*env)->GetObjectField(env,obj_bean ,strFieldID );//获得属性值
+
+        int c_num = (int) intValue;
+        char *c_str = (*env)->GetStringUTFChars(env, jstr, 0);  // 读取到 stringValue的值
+        LOGI("@@JNI listobjectStaticNvMethod01  get ArrayList<Bean>-%d ===intValue:%d , str:%s",i  ,c_num , c_str);
+    }
+
+    jfieldID fid = (*env)->GetStaticFieldID(env, jcla, "listobjectStaticValue", "Ljava/util/ArrayList;"); // 访问java层的 ArrayList<Bean>
+    (*env)->SetStaticObjectField(env, jcla, fid, listobjectValue);  // 在JNI中设置 java 层listobjectValue新的值
+
+
+    jmethodID mid = (*env)->GetStaticMethodID(env, jcla, "callbyJNIStaticlistobject01", "(Ljava/util/ArrayList;)V");
+    (*env)->CallStaticVoidMethod(env, jcla, mid, listobjectValue); // 调用 Java的Object 函数   void callbyJNIlistobject00()
+    LOGI("@@JNI listobjectStaticNvMethod01 CallVoidMethod---callbyJNIlistobject01 ");
+
+    return;
+}
+
+
+
+
+
+
+JNIEXPORT jobject JNICALL Java_com_zukgit_administrator_testjni_1zukgit_JniUtil_listobjectStaticNvMethod10
+        (JNIEnv *env, jclass jcla ) {
+
+    jmethodID mid = (*env)->GetStaticMethodID(env, jcla, "callbyJNIStaticlistobject10", "()Ljava/util/ArrayList;");
+
+    LOGI("@@JNI listobjectStaticNvMethod10 CallVoidMethod---callbyJNIlistobject10 ");
+
+    return (*env)->CallStaticObjectMethod(env, jcla, mid);
+
+}
+
+
+JNIEXPORT jobject JNICALL Java_com_zukgit_administrator_testjni_1zukgit_JniUtil_listobjectStaticNvMethod11
+        (JNIEnv *env, jclass jcla ,jobject jlistobjectValue) {
+
+    LOGI("@@JNI listobjectStaticNvMethod11 CallVoidMethod---callbyJNIlistobject11------Begin ");
+    jmethodID mid = (*env)->GetStaticMethodID(env, jcla, "callbyJNIStaticlistobject11", "(Ljava/util/ArrayList;)Ljava/util/ArrayList;");
+
+
+
+    int i;
+    jclass cls_arraylist = (*env)->GetObjectClass(env,jlistobjectValue);
+    jmethodID arraylist_get = (*env)->GetMethodID(env,cls_arraylist,"get","(I)Ljava/lang/Object;");
+    jmethodID arraylist_size = (*env)->GetMethodID(env,cls_arraylist,"size","()I");
+    jint len = (*env)->CallIntMethod(env,jlistobjectValue,arraylist_size);
+
+    for(i=0;i<len;i++){
+        jobject obj_bean = (*env)->CallObjectMethod(env,jlistobjectValue,arraylist_get,i);
+        jclass cls_bean = (*env)->GetObjectClass(env,obj_bean);
+
+
+        jfieldID intFieldID = (*env)->GetFieldID(env,cls_bean,"num","I"); // 获得属性ID
+        jfieldID strFieldID = (*env)->GetFieldID(env,cls_bean,"str","Ljava/lang/String;"); // 获得属性ID
+
+        jint intValue= (*env)->GetIntField(env,obj_bean , intFieldID );//获得属性值
+        jstring jstr= (*env)->GetObjectField(env,obj_bean ,strFieldID );//获得属性值
+
+        int c_num = (int) intValue;
+        char *c_str = (*env)->GetStringUTFChars(env, jstr, 0);  // 读取到 stringValue的值
+        LOGI("@@JNI  listobjectStaticNvMethod11 get ArrayList<Bean>-%d ===intValue:%d , str:%s",i  ,c_num , c_str);
+    }
+
+
+    jclass jbeanClass =  (*env)->FindClass(env,"com/zukgit/administrator/testjni_zukgit/Bean");
+    jmethodID construct_bean = (*env)->GetMethodID(env,jbeanClass,"<init>","()V");
+    jmethodID arraylist_add = (*env)->GetMethodID(env,cls_arraylist,"add","(Ljava/lang/Object;)Z");
+    jobject beanObject ;
+    jclass jcla_bean;
+    jfieldID intFieldID_bean;
+    jfieldID strFieldID_bean;
+    for(i=0;i<2;i++){
+        beanObject = (*env)->NewObject(env,jbeanClass,construct_bean);
+        jclass jcla_bean = (*env)->GetObjectClass(env, beanObject);
+        //jcla_bean = (jclass)(*env)->NewGlobalRef(env,temp);
+        intFieldID_bean = (*env)->GetFieldID(env,jcla_bean,"num","I"); // 获得属性ID
+        strFieldID_bean = (*env)->GetFieldID(env,jcla_bean,"str","Ljava/lang/String;"); // 获得属性ID
+        int num_bean = i +1000;
+        (*env)->SetIntField(env,beanObject, intFieldID_bean,num_bean );
+        (*env)->SetObjectField(env,beanObject, strFieldID_bean,(*env)->NewStringUTF(env, "JNI11_Static_add"));
+        (*env)->CallBooleanMethod(env,jlistobjectValue,arraylist_add,beanObject);
+
+    }
+
+
+    LOGI("@@JNI listobjectStaticNvMethod11 CallVoidMethod---callbyJNIlistobject11------End ");
+    return (*env)->CallStaticObjectMethod(env, jcla, mid,jlistobjectValue);
+
+}
+
+//==================ArrayList<Bean> ==============End
+
+/************************************Array<String>_Begin*************************************/
+// 静态方法和对象方法的不同就在于
+// 实例对象方法JNI方法的第二个参数为 jobject(JNIEnv *env, jobject jobj)
+// 静态方法 JNI方法 第二个参数为 jclass   (JNIEnv *env, jclass jcls);
+
+JNIEXPORT void JNICALL Java_com_zukgit_administrator_testjni_1zukgit_JniUtil_liststringNvMethod00
+        (JNIEnv *env, jobject jobj) {
+
+    jclass jcla = (*env)->GetObjectClass(env, jobj);
+
+    jfieldID fid = (*env)->GetFieldID(env, jcla, "liststringValue", "Ljava/util/ArrayList;"); // 访问java层的 ArrayList<Bean>
+
+
+    jobject  jlistobjectValue = (*env)->GetObjectField(env, jobj, fid);
+
+    if(jlistobjectValue == NULL)
+    {
+        return  ;
+    }
+
+    int i;
+    jclass cls_arraylist = (*env)->GetObjectClass(env,jlistobjectValue);
+    jmethodID arraylist_get = (*env)->GetMethodID(env,cls_arraylist,"get","(I)Ljava/lang/Object;");
+    jmethodID arraylist_size = (*env)->GetMethodID(env,cls_arraylist,"size","()I");
+    jint len = (*env)->CallIntMethod(env,jlistobjectValue,arraylist_size);
+    for(i=0;i<len;i++){
+        jobject obj_bean = (*env)->CallObjectMethod(env,jlistobjectValue,arraylist_get,i);
+
+        jstring j_str = (jstring) obj_bean;  // 强转   jobject 转为 jstring
+
+        char *c_str = (*env)->GetStringUTFChars(env, j_str, 0);  // 读取到 stringValue的值
+        LOGI("@@JNI get ArrayList<String>-%d ==== str:%s",i   , c_str);
+    }
+
+
+    jstring jstring_value1 =  (*env)->NewStringUTF(env, "Define_C_JNI_listobjectNvMethod00_1");
+    jstring jstring_value2 =  (*env)->NewStringUTF(env, "Define_C_JNI_listobjectNvMethod00_2");
+
+    jmethodID arraylist_add = (*env)->GetMethodID(env,cls_arraylist,"add","(Ljava/lang/Object;)Z");
+
+
+    (*env)->CallBooleanMethod(env,jlistobjectValue,arraylist_add,(jobject)jstring_value1);
+    (*env)->CallBooleanMethod(env,jlistobjectValue,arraylist_add,(jobject)jstring_value2);
+
+    (*env)->SetObjectField(env, jobj, fid, jlistobjectValue);  // 在JNI中设置 java 层listobjectValue新的值
+
+    jmethodID mid = (*env)->GetMethodID(env, jcla, "callbyJNIliststring00", "()V");
+    (*env)->CallVoidMethod(env, jobj, mid); // 调用 Java的Object 函数   void callbyJNIlistobject00()
+    LOGI("@@JNI listobjectNvMethod00 CallVoidMethod---callbyJNIliststring00 ");
+    return;
+}
+
+
+
+
+JNIEXPORT void JNICALL Java_com_zukgit_administrator_testjni_1zukgit_JniUtil_liststringNvMethod01
+        (JNIEnv *env, jobject jobj_jniUtil, jobject liststringValue) {
+
+    jclass jcla_jniUtil = (*env)->GetObjectClass(env, jobj_jniUtil); // Jutil_Class
+
+
+    if(liststringValue == NULL)
+    {
+        return  ;
+    }
+
+    int i;
+    jclass cls_arraylist = (*env)->GetObjectClass(env,liststringValue);
+    jmethodID arraylist_get = (*env)->GetMethodID(env,cls_arraylist,"get","(I)Ljava/lang/Object;");
+    jmethodID arraylist_size = (*env)->GetMethodID(env,cls_arraylist,"size","()I");
+    jint len = (*env)->CallIntMethod(env,liststringValue,arraylist_size);
+
+
+    for(i=0;i<len;i++){
+        jobject obj_bean = (*env)->CallObjectMethod(env,liststringValue,arraylist_get,i);
+
+        jstring j_str = (jstring) obj_bean;  // 强转   jobject 转为 jstring
+
+        char *c_str = (*env)->GetStringUTFChars(env, j_str, 0);  // 读取到 stringValue的值
+        LOGI("@@JNI get ArrayList<String>-%d ==== str:%s",i   , c_str);
+
+    }
+
+
+    jstring jstring_value1 =  (*env)->NewStringUTF(env, "Define_C_JNI_listobjectNvMethod01_1");
+    jstring jstring_value2 =  (*env)->NewStringUTF(env, "Define_C_JNI_listobjectNvMethod01_2");
+
+    jmethodID arraylist_add = (*env)->GetMethodID(env,cls_arraylist,"add","(Ljava/lang/Object;)Z");
+
+
+    (*env)->CallBooleanMethod(env,liststringValue,arraylist_add,(jobject)jstring_value1);
+    (*env)->CallBooleanMethod(env,liststringValue,arraylist_add,(jobject)jstring_value2);
+
+
+
+    jfieldID fid = (*env)->GetFieldID(env, jcla_jniUtil, "liststringValue", "Ljava/util/ArrayList;"); // 访问java层的 ArrayList<Bean>
+    (*env)->SetObjectField(env, jobj_jniUtil, fid, liststringValue);  // 在JNI中设置 java 层listobjectValue新的值
+
+
+    jmethodID mid = (*env)->GetMethodID(env, jcla_jniUtil, "callbyJNIliststring01", "(Ljava/util/ArrayList;)V");
+    (*env)->CallVoidMethod(env, jobj_jniUtil, mid, liststringValue); // 调用 Java的Object 函数   void callbyJNIlistobject00()
+    LOGI("@@JNI listobjectNvMethod01 CallVoidMethod---callbyJNIlistobject01 ");
+
+    return;
+}
+
+
+
+
+
+
+JNIEXPORT jobject JNICALL Java_com_zukgit_administrator_testjni_1zukgit_JniUtil_liststringNvMethod10
+        (JNIEnv *env, jobject jobj ) {
+
+    jclass jcla = (*env)->GetObjectClass(env, jobj); // Jutil_Class
+    jmethodID mid = (*env)->GetMethodID(env, jcla, "callbyJNIliststring10", "()Ljava/util/ArrayList;");
+
+    LOGI("@@JNI callbyJNIliststring10 CallVoidMethod---callbyJNIliststring10 ");
+
+    return (*env)->CallObjectMethod(env, jobj, mid);
+
+}
+
+
+JNIEXPORT jobject JNICALL Java_com_zukgit_administrator_testjni_1zukgit_JniUtil_liststringNvMethod11
+        (JNIEnv *env, jobject jobj ,jobject jliststringValue) {
+
+    jclass jcla = (*env)->GetObjectClass(env, jobj); // Jutil_Class
+    LOGI("@@JNI listobjectNvMethod11 CallVoidMethod---callbyJNIliststring11------Begin ");
+    jmethodID mid = (*env)->GetMethodID(env, jcla, "callbyJNIlistobject11", "(Ljava/util/ArrayList;)Ljava/util/ArrayList;");
+
+
+
+    int i;
+    jclass cls_arraylist = (*env)->GetObjectClass(env,jliststringValue);
+    jmethodID arraylist_get = (*env)->GetMethodID(env,cls_arraylist,"get","(I)Ljava/lang/Object;");
+    jmethodID arraylist_size = (*env)->GetMethodID(env,cls_arraylist,"size","()I");
+    jint len = (*env)->CallIntMethod(env,jliststringValue,arraylist_size);
+
+    for(i=0;i<len;i++){
+        jobject obj_bean = (*env)->CallObjectMethod(env,jliststringValue,arraylist_get,i);
+
+        jstring j_str = (jstring) obj_bean;  // 强转   jobject 转为 jstring
+
+        char *c_str = (*env)->GetStringUTFChars(env, j_str, 0);  // 读取到 stringValue的值
+        LOGI("@@JNI get ArrayList<String>-%d ==== str:%s",i   , c_str);
+
+    }
+
+
+    jstring jstring_value1 =  (*env)->NewStringUTF(env, "Define_C_JNI_listobjectNvMethod11_1");
+    jstring jstring_value2 =  (*env)->NewStringUTF(env, "Define_C_JNI_listobjectNvMethod11_2");
+
+    jmethodID arraylist_add = (*env)->GetMethodID(env,cls_arraylist,"add","(Ljava/lang/Object;)Z");
+
+
+    (*env)->CallBooleanMethod(env,jliststringValue,arraylist_add,(jobject)jstring_value1);
+    (*env)->CallBooleanMethod(env,jliststringValue,arraylist_add,(jobject)jstring_value2);
+
+
+
+    return (*env)->CallObjectMethod(env, jobj, mid,jliststringValue);
+
+}
+
+
+
+//----------------Static Array<Bean>
+JNIEXPORT void JNICALL Java_com_zukgit_administrator_testjni_1zukgit_JniUtil_liststringStaticNvMethod00
+        (JNIEnv *env, jclass jcla) {
+
+    // jclass jcla = (*env)->GetObjectClass(env, jobj);
+
+    jfieldID fid = (*env)->GetStaticFieldID(env, jcla, "liststringStaticValue", "Ljava/util/ArrayList;"); // 访问java层的 ArrayList<Bean>
+
+
+    jobject  jlistobjectValue = (*env)->GetStaticObjectField(env, jcla, fid);
+
+    if(jlistobjectValue == NULL)
+    {
+        return  ;
+    }
+
+    int i;
+    jclass cls_arraylist = (*env)->GetObjectClass(env,jlistobjectValue);
+    jmethodID arraylist_get = (*env)->GetMethodID(env,cls_arraylist,"get","(I)Ljava/lang/Object;");
+    jmethodID arraylist_size = (*env)->GetMethodID(env,cls_arraylist,"size","()I");
+    jint len = (*env)->CallIntMethod(env,jlistobjectValue,arraylist_size);
+    for(i=0;i<len;i++){
+        jobject obj_bean = (*env)->CallObjectMethod(env,jlistobjectValue,arraylist_get,i);
+
+        jstring j_str = (jstring) obj_bean;  // 强转   jobject 转为 jstring
+
+        char *c_str = (*env)->GetStringUTFChars(env, j_str, 0);  // 读取到 stringValue的值
+        LOGI("@@JNI get ArrayList<String>-%d ==== str:%s",i   , c_str);
+    }
+
+
+    jstring jstring_value1 =  (*env)->NewStringUTF(env, "Define_C_JNI_listobjectNvMethod00_1");
+    jstring jstring_value2 =  (*env)->NewStringUTF(env, "Define_C_JNI_listobjectNvMethod00_2");
+
+    jmethodID arraylist_add = (*env)->GetMethodID(env,cls_arraylist,"add","(Ljava/lang/Object;)Z");
+
+
+    (*env)->CallBooleanMethod(env,jlistobjectValue,arraylist_add,(jobject)jstring_value1);
+    (*env)->CallBooleanMethod(env,jlistobjectValue,arraylist_add,(jobject)jstring_value2);
+
+    (*env)->SetStaticObjectField(env, jcla, fid, jlistobjectValue);  // 在JNI中设置 java 层listobjectValue新的值
+
+    jmethodID mid = (*env)->GetStaticMethodID(env, jcla, "callbyJNIStaticliststring00", "()V");
+    (*env)->CallStaticVoidMethod(env, jcla, mid); // 调用 Java的Object 函数   void callbyJNIlistobject00()
+    LOGI("@@JNI listobjectNvMethod00 CallVoidMethod---callbyJNIliststring00 ");
+    return;
+}
+
+
+
+
+JNIEXPORT void JNICALL Java_com_zukgit_administrator_testjni_1zukgit_JniUtil_liststringStaticNvMethod01
+        (JNIEnv *env, jclass jcla, jobject listobjectValue) {
+
+    if(listobjectValue == NULL)
+    {
+        return  ;
+    }
+
+    int i;
+    jclass cls_arraylist = (*env)->GetObjectClass(env,listobjectValue);
+    jmethodID arraylist_get = (*env)->GetMethodID(env,cls_arraylist,"get","(I)Ljava/lang/Object;");
+    jmethodID arraylist_size = (*env)->GetMethodID(env,cls_arraylist,"size","()I");
+    jint len = (*env)->CallIntMethod(env,listobjectValue,arraylist_size);
+
+
+    for(i=0;i<len;i++){
+        jobject obj_bean = (*env)->CallObjectMethod(env,listobjectValue,arraylist_get,i);
+
+        jstring j_str = (jstring) obj_bean;  // 强转   jobject 转为 jstring
+
+        char *c_str = (*env)->GetStringUTFChars(env, j_str, 0);  // 读取到 stringValue的值
+        LOGI("@@JNI get ArrayList<String>-%d ==== str:%s",i   , c_str);
+
+    }
+
+
+    jstring jstring_value1 =  (*env)->NewStringUTF(env, "Define_C_JNI_liststringStaticNvMethod01_1");
+    jstring jstring_value2 =  (*env)->NewStringUTF(env, "Define_C_JNI_liststringStaticNvMethod01_2");
+
+    jmethodID arraylist_add = (*env)->GetMethodID(env,cls_arraylist,"add","(Ljava/lang/Object;)Z");
+
+
+    (*env)->CallBooleanMethod(env,listobjectValue,arraylist_add,(jobject)jstring_value1);
+    (*env)->CallBooleanMethod(env,listobjectValue,arraylist_add,(jobject)jstring_value2);
+
+
+
+
+    jfieldID fid = (*env)->GetStaticFieldID(env, jcla, "liststringStaticValue", "Ljava/util/ArrayList;"); // 访问java层的 ArrayList<Bean>
+    (*env)->SetStaticObjectField(env, jcla, fid, listobjectValue);  // 在JNI中设置 java 层listobjectValue新的值
+
+
+    jmethodID mid = (*env)->GetStaticMethodID(env, jcla, "callbyJNIStaticliststring01", "(Ljava/util/ArrayList;)V");
+    (*env)->CallStaticVoidMethod(env, jcla, mid, listobjectValue); // 调用 Java的Object 函数   void callbyJNIlistobject00()
+    LOGI("@@JNI callbyJNIStaticliststring01 CallVoidMethod---callbyJNIStaticliststring01 ");
+
+    return;
+}
+
+
+
+
+
+
+JNIEXPORT jobject JNICALL Java_com_zukgit_administrator_testjni_1zukgit_JniUtil_liststringStaticNvMethod10
+        (JNIEnv *env, jclass jcla ) {
+
+    jmethodID mid = (*env)->GetStaticMethodID(env, jcla, "callbyJNIStaticliststring10", "()Ljava/util/ArrayList;");
+
+    LOGI("@@JNI listobjectStaticNvMethod10 CallVoidMethod---callbyJNIlistobject10 ");
+
+    return (*env)->CallStaticObjectMethod(env, jcla, mid);
+
+}
+
+
+JNIEXPORT jobject JNICALL Java_com_zukgit_administrator_testjni_1zukgit_JniUtil_liststringStaticNvMethod11
+        (JNIEnv *env, jclass jcla ,jobject jlistobjectValue) {
+
+    jmethodID mid = (*env)->GetStaticMethodID(env, jcla, "callbyJNIStaticliststring11", "(Ljava/util/ArrayList;)Ljava/util/ArrayList;");
+
+
+
+    int i;
+    jclass cls_arraylist = (*env)->GetObjectClass(env,jlistobjectValue);
+    jmethodID arraylist_get = (*env)->GetMethodID(env,cls_arraylist,"get","(I)Ljava/lang/Object;");
+    jmethodID arraylist_size = (*env)->GetMethodID(env,cls_arraylist,"size","()I");
+    jint len = (*env)->CallIntMethod(env,jlistobjectValue,arraylist_size);
+
+    for(i=0;i<len;i++){
+        jobject obj_bean = (*env)->CallObjectMethod(env,jlistobjectValue,arraylist_get,i);
+        jstring j_str = (jstring) obj_bean;  // 强转   jobject 转为 jstring
+
+        char *c_str = (*env)->GetStringUTFChars(env, j_str, 0);  // 读取到 stringValue的值
+        LOGI("@@JNI get ArrayList<String>-%d ==== str:%s",i   , c_str);
+
+    }
+
+    jstring jstring_value1 =  (*env)->NewStringUTF(env, "Define_C_JNI_liststringStaticNvMethod01_1");
+    jstring jstring_value2 =  (*env)->NewStringUTF(env, "Define_C_JNI_liststringStaticNvMethod01_2");
+
+    jmethodID arraylist_add = (*env)->GetMethodID(env,cls_arraylist,"add","(Ljava/lang/Object;)Z");
+
+
+    (*env)->CallBooleanMethod(env,jlistobjectValue,arraylist_add,(jobject)jstring_value1);
+    (*env)->CallBooleanMethod(env,jlistobjectValue,arraylist_add,(jobject)jstring_value2);
+
+    return (*env)->CallStaticObjectMethod(env, jcla, mid,jlistobjectValue);
+
+}
+
+//==============================================ArrayList<String> End=========================================
+
+
+
+/************************************ArrayMap<String ,Bean>   Begin  *************************************/
+// 静态方法和对象方法的不同就在于
+// 实例对象方法JNI方法的第二个参数为 jobject(JNIEnv *env, jobject jobj)
+// 静态方法 JNI方法 第二个参数为 jclass   (JNIEnv *env, jclass jcls);
+/************************************ArrayMap<String ,Bean>   Begin  *************************************/
+// 静态方法和对象方法的不同就在于
+// 实例对象方法JNI方法的第二个参数为 jobject(JNIEnv *env, jobject jobj)
+// 静态方法 JNI方法 第二个参数为 jclass   (JNIEnv *env, jclass jcls);
+JNIEXPORT void JNICALL Java_com_zukgit_administrator_testjni_1zukgit_JniUtil_mapstringNvMethod00
+        (JNIEnv *env, jobject jobj) {
+
+    jclass jcla = (*env)->GetObjectClass(env, jobj);
+
+    jfieldID fid = (*env)->GetFieldID(env, jcla, "mapstringValue", "Landroid/util/ArrayMap;"); // 访问java层的 ArrayList<Bean>
+
+
+    jobject  jmapstringValue = (*env)->GetObjectField(env, jobj, fid);
+
+    if(jmapstringValue == NULL)
+    {
+        return  ;
+    }
+
+    // java.util.Set value = mapstringValue.keySet();  mapstringValue.keySet();//Set<String>
+    // mapstringValue.values();//  Collection<Bean>
+    // mapstringValue.keySet(); // Set<String>
+
+    jclass cls_mapstring = (*env)->GetObjectClass(env,jmapstringValue);
+    // ArrayMap的方法
+    jmethodID mapstring_keyset = (*env)->GetMethodID(env,cls_mapstring,"keySet","()Ljava/util/Set;");
+    jmethodID mapstring_values = (*env)->GetMethodID(env,cls_mapstring,"values","()Ljava/util/Collection;");
+    jmethodID mapstring_get = (*env)->GetMethodID(env,cls_mapstring,"get","(Ljava/lang/Object;)Ljava/lang/Object;");
+    //jmethodID mapstring_put = (*env)->GetMethodID(env,cls_mapstring,"put","(Ljava/lang/String;Lcom/zukgit/administrator/testjni_zukgit/Bean;)Lcom/zukgit/administrator/testjni_zukgit/Bean;");
+    jmethodID mapstring_put = (*env)->GetMethodID(env,cls_mapstring,"put","(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;");
+
+    jobject java_keyset = (*env)->CallObjectMethod(env,jmapstringValue,mapstring_keyset);
+    jobject java_beanvalues_collection = (*env)->CallObjectMethod(env,jmapstringValue,mapstring_values);
+
+    jclass java_keyset_class = (*env)->GetObjectClass(env, java_keyset);
+    jclass java_collection_class = (*env)->GetObjectClass(env, java_beanvalues_collection);
+
+
+    // Collection  的 方法
+    jmethodID collection_iterator = (*env)->GetMethodID(env,java_collection_class,"iterator","()Ljava/util/Iterator;");
+
+    // keyset  的 方法
+    jmethodID set_iterator = (*env)->GetMethodID(env,java_keyset_class,"iterator","()Ljava/util/Iterator;");
+
+    // keyset 的 迭代器jobject
+    jobject keyset_iterator_object = (*env)->CallObjectMethod(env,java_keyset,set_iterator);
+    // keyset 的 对应的 jobject
+    jclass keyset_iterator_class = (*env)->GetObjectClass(env, keyset_iterator_object);
+    // 迭代器的方法
+    jmethodID keyset_iterator_method = (*env)->GetMethodID(env,keyset_iterator_class,"hasNext","()Z");
+    jmethodID keyset_iterator_nexValue = (*env)->GetMethodID(env,keyset_iterator_class,"next","()Ljava/lang/Object;");
+
+    while ((*env)->CallBooleanMethod(env,keyset_iterator_object,keyset_iterator_method)) {  // 读数据ArrayMap数据
+
+        jobject keyset_index = (*env)->CallObjectMethod(env,keyset_iterator_object,keyset_iterator_nexValue);
+        jstring str_index = (jstring) keyset_index;
+
+        // Bean Object
+        jobject java_bean_object = (*env)->CallObjectMethod(env,jmapstringValue,mapstring_get,keyset_index);
+        jclass java_bean_class = (*env)->GetObjectClass(env, java_bean_object);  // Bean Class
+
+        // Bean Class Field
+        jfieldID jbean_int_fid = (*env)->GetFieldID(env, java_bean_class, "num", "I");
+        jfieldID jbean_string_fid = (*env)->GetFieldID(env, java_bean_class, "str", "Ljava/lang/String;");
+
+        jstring j_bean_str = (*env)->GetObjectField(env, java_bean_object, jbean_string_fid);
+        jint j_bean_int = (*env)->GetIntField(env, java_bean_object, jbean_int_fid);
+        int c_bean_int = (int) j_bean_int;
+        char *c_bean_str = (*env)->GetStringUTFChars(env, j_bean_str, 0);  // 读取到 stringValue的值
+
+
+
+        char *c_index_str = (*env)->GetStringUTFChars(env, str_index, 0);  // 读取 ArrayMap<String,Bean>索引
+        LOGI("@@JNI mapstringNvMethod00 get ArrayMap<String,Bean>_keyString = %s Bean(int:%d,str:%s)", c_index_str,c_bean_int,c_bean_str);
+    }
+
+    //  对 ArrayMap添加 Item
+    jstring  add_string_index = (*env)->NewStringUTF(env, "jni_00");
+    jclass jbeanClass =  (*env)->FindClass(env,"com/zukgit/administrator/testjni_zukgit/Bean");
+    jmethodID construct_bean = (*env)->GetMethodID(env,jbeanClass,"<init>","()V");
+
+    jobject beanObject =  (*env)->NewObject(env,jbeanClass,construct_bean);
+    jclass temp = (*env)->GetObjectClass(env, beanObject);
+    jfieldID intFieldID_bean = (*env)->GetFieldID(env,temp,"num","I"); // 获得属性ID
+    jfieldID strFieldID_bean = (*env)->GetFieldID(env,temp,"str","Ljava/lang/String;"); // 获得属性ID
+    int num_bean = 123;
+    (*env)->SetIntField(env,beanObject, intFieldID_bean,num_bean );
+    (*env)->SetObjectField(env,beanObject, strFieldID_bean,(*env)->NewStringUTF(env, "jni_bean_123"));
+    (*env)->CallObjectMethod(env,jmapstringValue,mapstring_put,add_string_index,beanObject);
+    (*env)->SetObjectField(env, jobj, fid, jmapstringValue); // 设置 Java 层面的 ArrayMap
+
+
+    jmethodID mid = (*env)->GetMethodID(env, jcla, "callbyJNImapstring00", "()V");
+    (*env)->CallVoidMethod(env, jobj, mid); // 调用 Java的Object 函数   void callbyJNIlistobject00()
+    LOGI("@@JNI mapstringNvMethod00 CallVoidMethod---mapstringNvMethod00");
+
+
+    return ;
+}
+
+
+
+
+
+JNIEXPORT void JNICALL Java_com_zukgit_administrator_testjni_1zukgit_JniUtil_mapstringNvMethod01
+        (JNIEnv *env, jobject jobj , jobject arraymap ) {
+
+    jclass jcla = (*env)->GetObjectClass(env, jobj);
+
+    jfieldID fid = (*env)->GetFieldID(env, jcla, "mapstringValue", "Landroid/util/ArrayMap;"); // 访问java层的 ArrayList<Bean>
+
+    jobject jmapstringValue = arraymap;
+    if(jmapstringValue == NULL)
+    {
+        return  ;
+    }
+
+    // java.util.Set value = mapstringValue.keySet();  mapstringValue.keySet();//Set<String>
+    // mapstringValue.values();//  Collection<Bean>
+    // mapstringValue.keySet(); // Set<String>
+
+    jclass cls_mapstring = (*env)->GetObjectClass(env,jmapstringValue);
+    // ArrayMap的方法
+    jmethodID mapstring_keyset = (*env)->GetMethodID(env,cls_mapstring,"keySet","()Ljava/util/Set;");
+    jmethodID mapstring_values = (*env)->GetMethodID(env,cls_mapstring,"values","()Ljava/util/Collection;");
+    jmethodID mapstring_get = (*env)->GetMethodID(env,cls_mapstring,"get","(Ljava/lang/Object;)Ljava/lang/Object;");
+    //jmethodID mapstring_put = (*env)->GetMethodID(env,cls_mapstring,"put","(Ljava/lang/String;Lcom/zukgit/administrator/testjni_zukgit/Bean;)Lcom/zukgit/administrator/testjni_zukgit/Bean;");
+    jmethodID mapstring_put = (*env)->GetMethodID(env,cls_mapstring,"put","(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;");
+
+    jobject java_keyset = (*env)->CallObjectMethod(env,jmapstringValue,mapstring_keyset);
+    jobject java_beanvalues_collection = (*env)->CallObjectMethod(env,jmapstringValue,mapstring_values);
+
+    jclass java_keyset_class = (*env)->GetObjectClass(env, java_keyset);
+    jclass java_collection_class = (*env)->GetObjectClass(env, java_beanvalues_collection);
+
+
+    // Collection  的 方法
+    jmethodID collection_iterator = (*env)->GetMethodID(env,java_collection_class,"iterator","()Ljava/util/Iterator;");
+
+    // keyset  的 方法
+    jmethodID set_iterator = (*env)->GetMethodID(env,java_keyset_class,"iterator","()Ljava/util/Iterator;");
+
+    // keyset 的 迭代器jobject
+    jobject keyset_iterator_object = (*env)->CallObjectMethod(env,java_keyset,set_iterator);
+    // keyset 的 对应的 jobject
+    jclass keyset_iterator_class = (*env)->GetObjectClass(env, keyset_iterator_object);
+    // 迭代器的方法
+    jmethodID keyset_iterator_method = (*env)->GetMethodID(env,keyset_iterator_class,"hasNext","()Z");
+    jmethodID keyset_iterator_nexValue = (*env)->GetMethodID(env,keyset_iterator_class,"next","()Ljava/lang/Object;");
+
+    while ((*env)->CallBooleanMethod(env,keyset_iterator_object,keyset_iterator_method)) {  // 读数据ArrayMap数据
+
+        jobject keyset_index = (*env)->CallObjectMethod(env,keyset_iterator_object,keyset_iterator_nexValue);
+        jstring str_index = (jstring) keyset_index;
+
+        // Bean Object
+        jobject java_bean_object = (*env)->CallObjectMethod(env,jmapstringValue,mapstring_get,keyset_index);
+        jclass java_bean_class = (*env)->GetObjectClass(env, java_bean_object);  // Bean Class
+
+        // Bean Class Field
+        jfieldID jbean_int_fid = (*env)->GetFieldID(env, java_bean_class, "num", "I");
+        jfieldID jbean_string_fid = (*env)->GetFieldID(env, java_bean_class, "str", "Ljava/lang/String;");
+
+        jstring j_bean_str = (*env)->GetObjectField(env, java_bean_object, jbean_string_fid);
+        jint j_bean_int = (*env)->GetIntField(env, java_bean_object, jbean_int_fid);
+        int c_bean_int = (int) j_bean_int;
+        char *c_bean_str = (*env)->GetStringUTFChars(env, j_bean_str, 0);  // 读取到 stringValue的值
+
+
+
+        char *c_index_str = (*env)->GetStringUTFChars(env, str_index, 0);  // 读取 ArrayMap<String,Bean>索引
+        LOGI("@@JNI mapstringNvMethod01 get ArrayMap<String,Bean>_keyString = %s Bean(int:%d,str:%s)", c_index_str,c_bean_int,c_bean_str);
+    }
+
+    //  对 ArrayMap添加 Item
+    jstring  add_string_index = (*env)->NewStringUTF(env, "jni_01");
+    jclass jbeanClass =  (*env)->FindClass(env,"com/zukgit/administrator/testjni_zukgit/Bean");
+    jmethodID construct_bean = (*env)->GetMethodID(env,jbeanClass,"<init>","()V");
+
+    jobject beanObject =  (*env)->NewObject(env,jbeanClass,construct_bean);
+    jclass temp = (*env)->GetObjectClass(env, beanObject);
+    jfieldID intFieldID_bean = (*env)->GetFieldID(env,temp,"num","I"); // 获得属性ID
+    jfieldID strFieldID_bean = (*env)->GetFieldID(env,temp,"str","Ljava/lang/String;"); // 获得属性ID
+    int num_bean = 167;
+    (*env)->SetIntField(env,beanObject, intFieldID_bean,num_bean );
+    (*env)->SetObjectField(env,beanObject, strFieldID_bean,(*env)->NewStringUTF(env, "jni_bean_method01"));
+    (*env)->CallObjectMethod(env,jmapstringValue,mapstring_put,add_string_index,beanObject);
+    //(*env)->SetObjectField(env, jobj, fid, jmapstringValue); // 设置 Java 层面的 ArrayMap
+
+
+    jmethodID mid = (*env)->GetMethodID(env, jcla, "callbyJNImapstring01", "(Landroid/util/ArrayMap;)V");
+    (*env)->CallVoidMethod(env, jobj, mid,jmapstringValue); // 调用 Java的Object 函数   void callbyJNIlistobject00()
+    LOGI("@@JNI mapstringNvMethod01 CallVoidMethod---mapstringNvMethod01");
+
+
+    return ;
+}
+
+
+
+
+
+JNIEXPORT jobject JNICALL Java_com_zukgit_administrator_testjni_1zukgit_JniUtil_mapstringNvMethod10
+        (JNIEnv *env, jobject jobj  ) {
+
+    jclass jcla = (*env)->GetObjectClass(env, jobj);
+
+    jfieldID fid = (*env)->GetFieldID(env, jcla, "mapstringValue", "Landroid/util/ArrayMap;"); // 访问java层的 ArrayList<Bean>
+
+    jobject  jmapstringValue = (*env)->GetObjectField(env, jobj, fid);
+    if(jmapstringValue == NULL)
+    {
+        return  NULL;
+    }
+
+    // java.util.Set value = mapstringValue.keySet();  mapstringValue.keySet();//Set<String>
+    // mapstringValue.values();//  Collection<Bean>
+    // mapstringValue.keySet(); // Set<String>
+
+    jclass cls_mapstring = (*env)->GetObjectClass(env,jmapstringValue);
+    // ArrayMap的方法
+    jmethodID mapstring_keyset = (*env)->GetMethodID(env,cls_mapstring,"keySet","()Ljava/util/Set;");
+    jmethodID mapstring_values = (*env)->GetMethodID(env,cls_mapstring,"values","()Ljava/util/Collection;");
+    jmethodID mapstring_get = (*env)->GetMethodID(env,cls_mapstring,"get","(Ljava/lang/Object;)Ljava/lang/Object;");
+    //jmethodID mapstring_put = (*env)->GetMethodID(env,cls_mapstring,"put","(Ljava/lang/String;Lcom/zukgit/administrator/testjni_zukgit/Bean;)Lcom/zukgit/administrator/testjni_zukgit/Bean;");
+    jmethodID mapstring_put = (*env)->GetMethodID(env,cls_mapstring,"put","(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;");
+
+    jobject java_keyset = (*env)->CallObjectMethod(env,jmapstringValue,mapstring_keyset);
+    jobject java_beanvalues_collection = (*env)->CallObjectMethod(env,jmapstringValue,mapstring_values);
+
+    jclass java_keyset_class = (*env)->GetObjectClass(env, java_keyset);
+    jclass java_collection_class = (*env)->GetObjectClass(env, java_beanvalues_collection);
+
+
+    // Collection  的 方法
+    jmethodID collection_iterator = (*env)->GetMethodID(env,java_collection_class,"iterator","()Ljava/util/Iterator;");
+
+    // keyset  的 方法
+    jmethodID set_iterator = (*env)->GetMethodID(env,java_keyset_class,"iterator","()Ljava/util/Iterator;");
+
+    // keyset 的 迭代器jobject
+    jobject keyset_iterator_object = (*env)->CallObjectMethod(env,java_keyset,set_iterator);
+    // keyset 的 对应的 jobject
+    jclass keyset_iterator_class = (*env)->GetObjectClass(env, keyset_iterator_object);
+    // 迭代器的方法
+    jmethodID keyset_iterator_method = (*env)->GetMethodID(env,keyset_iterator_class,"hasNext","()Z");
+    jmethodID keyset_iterator_nexValue = (*env)->GetMethodID(env,keyset_iterator_class,"next","()Ljava/lang/Object;");
+
+    while ((*env)->CallBooleanMethod(env,keyset_iterator_object,keyset_iterator_method)) {  // 读数据ArrayMap数据
+
+        jobject keyset_index = (*env)->CallObjectMethod(env,keyset_iterator_object,keyset_iterator_nexValue);
+        jstring str_index = (jstring) keyset_index;
+
+        // Bean Object
+        jobject java_bean_object = (*env)->CallObjectMethod(env,jmapstringValue,mapstring_get,keyset_index);
+        jclass java_bean_class = (*env)->GetObjectClass(env, java_bean_object);  // Bean Class
+
+        // Bean Class Field
+        jfieldID jbean_int_fid = (*env)->GetFieldID(env, java_bean_class, "num", "I");
+        jfieldID jbean_string_fid = (*env)->GetFieldID(env, java_bean_class, "str", "Ljava/lang/String;");
+
+        jstring j_bean_str = (*env)->GetObjectField(env, java_bean_object, jbean_string_fid);
+        jint j_bean_int = (*env)->GetIntField(env, java_bean_object, jbean_int_fid);
+        int c_bean_int = (int) j_bean_int;
+        char *c_bean_str = (*env)->GetStringUTFChars(env, j_bean_str, 0);  // 读取到 stringValue的值
+
+
+
+        char *c_index_str = (*env)->GetStringUTFChars(env, str_index, 0);  // 读取 ArrayMap<String,Bean>索引
+        LOGI("@@JNI mapstringNvMethod10 get ArrayMap<String,Bean>_keyString = %s Bean(int:%d,str:%s)", c_index_str,c_bean_int,c_bean_str);
+    }
+
+    //   01method 只调用 JNI的   callbyJNImapstring10 方法
+
+
+    jmethodID mid = (*env)->GetMethodID(env, jcla, "callbyJNImapstring10", "()Landroid/util/ArrayMap;");
+
+    LOGI("@@JNI mapstringNvMethod10 CallVoidMethod---mapstringNvMethod10");
+
+
+    return  (*env)->CallObjectMethod(env, jobj, mid); // 调用 Java的Object 函数   void callbyJNIlistobject00() ;
+}
+
+
+
+
+
+
+
+
+JNIEXPORT jobject JNICALL Java_com_zukgit_administrator_testjni_1zukgit_JniUtil_mapstringNvMethod11
+        (JNIEnv *env, jobject jobj , jobject arraymap ) {
+
+    jclass jcla = (*env)->GetObjectClass(env, jobj);
+
+    jfieldID fid = (*env)->GetFieldID(env, jcla, "mapstringValue", "Landroid/util/ArrayMap;"); // 访问java层的 ArrayList<Bean>
+
+    jobject jmapstringValue = arraymap;
+    if(jmapstringValue == NULL)
+    {
+        return NULL ;
+    }
+
+    // java.util.Set value = mapstringValue.keySet();  mapstringValue.keySet();//Set<String>
+    // mapstringValue.values();//  Collection<Bean>
+    // mapstringValue.keySet(); // Set<String>
+
+    jclass cls_mapstring = (*env)->GetObjectClass(env,jmapstringValue);
+    // ArrayMap的方法
+    jmethodID mapstring_keyset = (*env)->GetMethodID(env,cls_mapstring,"keySet","()Ljava/util/Set;");
+    jmethodID mapstring_values = (*env)->GetMethodID(env,cls_mapstring,"values","()Ljava/util/Collection;");
+    jmethodID mapstring_get = (*env)->GetMethodID(env,cls_mapstring,"get","(Ljava/lang/Object;)Ljava/lang/Object;");
+    //jmethodID mapstring_put = (*env)->GetMethodID(env,cls_mapstring,"put","(Ljava/lang/String;Lcom/zukgit/administrator/testjni_zukgit/Bean;)Lcom/zukgit/administrator/testjni_zukgit/Bean;");
+    jmethodID mapstring_put = (*env)->GetMethodID(env,cls_mapstring,"put","(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;");
+
+    jobject java_keyset = (*env)->CallObjectMethod(env,jmapstringValue,mapstring_keyset);
+    jobject java_beanvalues_collection = (*env)->CallObjectMethod(env,jmapstringValue,mapstring_values);
+
+    jclass java_keyset_class = (*env)->GetObjectClass(env, java_keyset);
+    jclass java_collection_class = (*env)->GetObjectClass(env, java_beanvalues_collection);
+
+
+    // Collection  的 方法
+    jmethodID collection_iterator = (*env)->GetMethodID(env,java_collection_class,"iterator","()Ljava/util/Iterator;");
+
+    // keyset  的 方法
+    jmethodID set_iterator = (*env)->GetMethodID(env,java_keyset_class,"iterator","()Ljava/util/Iterator;");
+
+    // keyset 的 迭代器jobject
+    jobject keyset_iterator_object = (*env)->CallObjectMethod(env,java_keyset,set_iterator);
+    // keyset 的 对应的 jobject
+    jclass keyset_iterator_class = (*env)->GetObjectClass(env, keyset_iterator_object);
+    // 迭代器的方法
+    jmethodID keyset_iterator_method = (*env)->GetMethodID(env,keyset_iterator_class,"hasNext","()Z");
+    jmethodID keyset_iterator_nexValue = (*env)->GetMethodID(env,keyset_iterator_class,"next","()Ljava/lang/Object;");
+
+    while ((*env)->CallBooleanMethod(env,keyset_iterator_object,keyset_iterator_method)) {  // 读数据ArrayMap数据
+
+        jobject keyset_index = (*env)->CallObjectMethod(env,keyset_iterator_object,keyset_iterator_nexValue);
+        jstring str_index = (jstring) keyset_index;
+
+        // Bean Object
+        jobject java_bean_object = (*env)->CallObjectMethod(env,jmapstringValue,mapstring_get,keyset_index);
+        jclass java_bean_class = (*env)->GetObjectClass(env, java_bean_object);  // Bean Class
+
+        // Bean Class Field
+        jfieldID jbean_int_fid = (*env)->GetFieldID(env, java_bean_class, "num", "I");
+        jfieldID jbean_string_fid = (*env)->GetFieldID(env, java_bean_class, "str", "Ljava/lang/String;");
+
+        jstring j_bean_str = (*env)->GetObjectField(env, java_bean_object, jbean_string_fid);
+        jint j_bean_int = (*env)->GetIntField(env, java_bean_object, jbean_int_fid);
+        int c_bean_int = (int) j_bean_int;
+        char *c_bean_str = (*env)->GetStringUTFChars(env, j_bean_str, 0);  // 读取到 stringValue的值
+
+
+
+        char *c_index_str = (*env)->GetStringUTFChars(env, str_index, 0);  // 读取 ArrayMap<String,Bean>索引
+        LOGI("@@JNI mapstringNvMethod11 get ArrayMap<String,Bean>_keyString = %s Bean(int:%d,str:%s)", c_index_str,c_bean_int,c_bean_str);
+    }
+
+    //  对 ArrayMap添加 Item
+    jstring  add_string_index = (*env)->NewStringUTF(env, "jni_11");
+    jclass jbeanClass =  (*env)->FindClass(env,"com/zukgit/administrator/testjni_zukgit/Bean");
+    jmethodID construct_bean = (*env)->GetMethodID(env,jbeanClass,"<init>","()V");
+
+    jobject beanObject =  (*env)->NewObject(env,jbeanClass,construct_bean);
+    jclass temp = (*env)->GetObjectClass(env, beanObject);
+    jfieldID intFieldID_bean = (*env)->GetFieldID(env,temp,"num","I"); // 获得属性ID
+    jfieldID strFieldID_bean = (*env)->GetFieldID(env,temp,"str","Ljava/lang/String;"); // 获得属性ID
+    int num_bean = 999;
+    (*env)->SetIntField(env,beanObject, intFieldID_bean,num_bean );
+    (*env)->SetObjectField(env,beanObject, strFieldID_bean,(*env)->NewStringUTF(env, "jni_bean_method11"));
+    (*env)->CallObjectMethod(env,jmapstringValue,mapstring_put,add_string_index,beanObject);
+    //(*env)->SetObjectField(env, jobj, fid, jmapstringValue); // 设置 Java 层面的 ArrayMap
+
+
+    jmethodID mid = (*env)->GetMethodID(env, jcla, "callbyJNImapstring11", "(Landroid/util/ArrayMap;)Landroid/util/ArrayMap;");
+
+    LOGI("@@JNI mapstringNvMethod11 CallVoidMethod---mapstringNvMethod11");
+
+
+    return   (*env)->CallObjectMethod(env, jobj, mid,jmapstringValue); // 调用 Java的Object 函数   void callbyJNIlistobject11()
+}
+
+//---------------------Static
+
+JNIEXPORT void JNICALL Java_com_zukgit_administrator_testjni_1zukgit_JniUtil_mapstringStaticNvMethod00
+        (JNIEnv *env, jclass jcla) {
+
+    jfieldID fid = (*env)->GetStaticFieldID(env, jcla, "mapstringStaticValue", "Landroid/util/ArrayMap;"); // 访问java层的 ArrayList<Bean>
+
+
+    jobject  jmapstringValue = (*env)->GetStaticObjectField(env, jcla, fid);
+
+    if(jmapstringValue == NULL)
+    {
+        return  ;
+    }
+
+    // java.util.Set value = mapstringValue.keySet();  mapstringValue.keySet();//Set<String>
+    // mapstringValue.values();//  Collection<Bean>
+    // mapstringValue.keySet(); // Set<String>
+
+    jclass cls_mapstring = (*env)->GetObjectClass(env,jmapstringValue);
+    // ArrayMap的方法
+    jmethodID mapstring_keyset = (*env)->GetMethodID(env,cls_mapstring,"keySet","()Ljava/util/Set;");
+    jmethodID mapstring_values = (*env)->GetMethodID(env,cls_mapstring,"values","()Ljava/util/Collection;");
+    jmethodID mapstring_get = (*env)->GetMethodID(env,cls_mapstring,"get","(Ljava/lang/Object;)Ljava/lang/Object;");
+    //jmethodID mapstring_put = (*env)->GetMethodID(env,cls_mapstring,"put","(Ljava/lang/String;Lcom/zukgit/administrator/testjni_zukgit/Bean;)Lcom/zukgit/administrator/testjni_zukgit/Bean;");
+    jmethodID mapstring_put = (*env)->GetMethodID(env,cls_mapstring,"put","(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;");
+
+    jobject java_keyset = (*env)->CallObjectMethod(env,jmapstringValue,mapstring_keyset);
+    jobject java_beanvalues_collection = (*env)->CallObjectMethod(env,jmapstringValue,mapstring_values);
+
+    jclass java_keyset_class = (*env)->GetObjectClass(env, java_keyset);
+    jclass java_collection_class = (*env)->GetObjectClass(env, java_beanvalues_collection);
+
+
+    // Collection  的 方法
+    jmethodID collection_iterator = (*env)->GetMethodID(env,java_collection_class,"iterator","()Ljava/util/Iterator;");
+
+    // keyset  的 方法
+    jmethodID set_iterator = (*env)->GetMethodID(env,java_keyset_class,"iterator","()Ljava/util/Iterator;");
+
+    // keyset 的 迭代器jobject
+    jobject keyset_iterator_object = (*env)->CallObjectMethod(env,java_keyset,set_iterator);
+    // keyset 的 对应的 jobject
+    jclass keyset_iterator_class = (*env)->GetObjectClass(env, keyset_iterator_object);
+    // 迭代器的方法
+    jmethodID keyset_iterator_method = (*env)->GetMethodID(env,keyset_iterator_class,"hasNext","()Z");
+    jmethodID keyset_iterator_nexValue = (*env)->GetMethodID(env,keyset_iterator_class,"next","()Ljava/lang/Object;");
+
+    while ((*env)->CallBooleanMethod(env,keyset_iterator_object,keyset_iterator_method)) {  // 读数据ArrayMap数据
+
+        jobject keyset_index = (*env)->CallObjectMethod(env,keyset_iterator_object,keyset_iterator_nexValue);
+        jstring str_index = (jstring) keyset_index;
+
+        // Bean Object
+        jobject java_bean_object = (*env)->CallObjectMethod(env,jmapstringValue,mapstring_get,keyset_index);
+        jclass java_bean_class = (*env)->GetObjectClass(env, java_bean_object);  // Bean Class
+
+        // Bean Class Field
+        jfieldID jbean_int_fid = (*env)->GetFieldID(env, java_bean_class, "num", "I");
+        jfieldID jbean_string_fid = (*env)->GetFieldID(env, java_bean_class, "str", "Ljava/lang/String;");
+
+        jstring j_bean_str = (*env)->GetObjectField(env, java_bean_object, jbean_string_fid);
+        jint j_bean_int = (*env)->GetIntField(env, java_bean_object, jbean_int_fid);
+        int c_bean_int = (int) j_bean_int;
+        char *c_bean_str = (*env)->GetStringUTFChars(env, j_bean_str, 0);  // 读取到 stringValue的值
+
+
+
+        char *c_index_str = (*env)->GetStringUTFChars(env, str_index, 0);  // 读取 ArrayMap<String,Bean>索引
+        LOGI("@@JNI mapstringNvStaticMethod00 get ArrayMap<String,Bean>_keyString = %s Bean(int:%d,str:%s)", c_index_str,c_bean_int,c_bean_str);
+    }
+
+    //  对 ArrayMap添加 Item
+    jstring  add_string_index = (*env)->NewStringUTF(env, "jni_static_00");
+    jclass jbeanClass =  (*env)->FindClass(env,"com/zukgit/administrator/testjni_zukgit/Bean");
+    jmethodID construct_bean = (*env)->GetMethodID(env,jbeanClass,"<init>","()V");
+
+    jobject beanObject =  (*env)->NewObject(env,jbeanClass,construct_bean);
+    jclass temp = (*env)->GetObjectClass(env, beanObject);
+    jfieldID intFieldID_bean = (*env)->GetFieldID(env,temp,"num","I"); // 获得属性ID
+    jfieldID strFieldID_bean = (*env)->GetFieldID(env,temp,"str","Ljava/lang/String;"); // 获得属性ID
+    int num_bean = 1111;
+    (*env)->SetIntField(env,beanObject, intFieldID_bean,num_bean );
+    (*env)->SetObjectField(env,beanObject, strFieldID_bean,(*env)->NewStringUTF(env, "jni_bean_static_1111"));
+    (*env)->CallObjectMethod(env,jmapstringValue,mapstring_put,add_string_index,beanObject);
+    (*env)->SetStaticObjectField(env, jcla, fid, jmapstringValue); // 设置 Java 层面的 ArrayMap
+
+
+    jmethodID mid = (*env)->GetStaticMethodID(env, jcla, "callbyJNIStaticmapstring00", "()V");
+    (*env)->CallStaticVoidMethod(env, jcla, mid); // 调用 Java的Object 函数   void callbyJNIlistobject00()
+    LOGI("@@JNI mapstringNvStaticMethod00 CallVoidMethod---mapstringNvStaticMethod00");
+
+
+    return ;
+}
+
+
+
+
+
+JNIEXPORT void JNICALL Java_com_zukgit_administrator_testjni_1zukgit_JniUtil_mapstringStaticNvMethod01
+        (JNIEnv *env, jclass jcla , jobject arraymap ) {
+
+
+    jfieldID fid = (*env)->GetStaticFieldID(env, jcla, "mapstringStaticValue", "Landroid/util/ArrayMap;"); // 访问java层的 ArrayList<Bean>
+
+    jobject jmapstringValue = arraymap;
+    if(jmapstringValue == NULL)
+    {
+        return  ;
+    }
+
+    // java.util.Set value = mapstringValue.keySet();  mapstringValue.keySet();//Set<String>
+    // mapstringValue.values();//  Collection<Bean>
+    // mapstringValue.keySet(); // Set<String>
+
+    jclass cls_mapstring = (*env)->GetObjectClass(env,jmapstringValue);
+    // ArrayMap的方法
+    jmethodID mapstring_keyset = (*env)->GetMethodID(env,cls_mapstring,"keySet","()Ljava/util/Set;");
+    jmethodID mapstring_values = (*env)->GetMethodID(env,cls_mapstring,"values","()Ljava/util/Collection;");
+    jmethodID mapstring_get = (*env)->GetMethodID(env,cls_mapstring,"get","(Ljava/lang/Object;)Ljava/lang/Object;");
+    //jmethodID mapstring_put = (*env)->GetMethodID(env,cls_mapstring,"put","(Ljava/lang/String;Lcom/zukgit/administrator/testjni_zukgit/Bean;)Lcom/zukgit/administrator/testjni_zukgit/Bean;");
+    jmethodID mapstring_put = (*env)->GetMethodID(env,cls_mapstring,"put","(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;");
+
+    jobject java_keyset = (*env)->CallObjectMethod(env,jmapstringValue,mapstring_keyset);
+    jobject java_beanvalues_collection = (*env)->CallObjectMethod(env,jmapstringValue,mapstring_values);
+
+    jclass java_keyset_class = (*env)->GetObjectClass(env, java_keyset);
+    jclass java_collection_class = (*env)->GetObjectClass(env, java_beanvalues_collection);
+
+
+    // Collection  的 方法
+    jmethodID collection_iterator = (*env)->GetMethodID(env,java_collection_class,"iterator","()Ljava/util/Iterator;");
+
+    // keyset  的 方法
+    jmethodID set_iterator = (*env)->GetMethodID(env,java_keyset_class,"iterator","()Ljava/util/Iterator;");
+
+    // keyset 的 迭代器jobject
+    jobject keyset_iterator_object = (*env)->CallObjectMethod(env,java_keyset,set_iterator);
+    // keyset 的 对应的 jobject
+    jclass keyset_iterator_class = (*env)->GetObjectClass(env, keyset_iterator_object);
+    // 迭代器的方法
+    jmethodID keyset_iterator_method = (*env)->GetMethodID(env,keyset_iterator_class,"hasNext","()Z");
+    jmethodID keyset_iterator_nexValue = (*env)->GetMethodID(env,keyset_iterator_class,"next","()Ljava/lang/Object;");
+
+    while ((*env)->CallBooleanMethod(env,keyset_iterator_object,keyset_iterator_method)) {  // 读数据ArrayMap数据
+
+        jobject keyset_index = (*env)->CallObjectMethod(env,keyset_iterator_object,keyset_iterator_nexValue);
+        jstring str_index = (jstring) keyset_index;
+
+        // Bean Object
+        jobject java_bean_object = (*env)->CallObjectMethod(env,jmapstringValue,mapstring_get,keyset_index);
+        jclass java_bean_class = (*env)->GetObjectClass(env, java_bean_object);  // Bean Class
+
+        // Bean Class Field
+        jfieldID jbean_int_fid = (*env)->GetFieldID(env, java_bean_class, "num", "I");
+        jfieldID jbean_string_fid = (*env)->GetFieldID(env, java_bean_class, "str", "Ljava/lang/String;");
+
+        jstring j_bean_str = (*env)->GetObjectField(env, java_bean_object, jbean_string_fid);
+        jint j_bean_int = (*env)->GetIntField(env, java_bean_object, jbean_int_fid);
+        int c_bean_int = (int) j_bean_int;
+        char *c_bean_str = (*env)->GetStringUTFChars(env, j_bean_str, 0);  // 读取到 stringValue的值
+
+
+
+        char *c_index_str = (*env)->GetStringUTFChars(env, str_index, 0);  // 读取 ArrayMap<String,Bean>索引
+        LOGI("@@JNI mapstringNvMethod10_static get ArrayMap<String,Bean>_keyString = %s Bean(int:%d,str:%s)", c_index_str,c_bean_int,c_bean_str);
+    }
+
+    //  对 ArrayMap添加 Item
+    jstring  add_string_index = (*env)->NewStringUTF(env, "jni_10");
+    jclass jbeanClass =  (*env)->FindClass(env,"com/zukgit/administrator/testjni_zukgit/Bean");
+    jmethodID construct_bean = (*env)->GetMethodID(env,jbeanClass,"<init>","()V");
+
+    jobject beanObject =  (*env)->NewObject(env,jbeanClass,construct_bean);
+    jclass temp = (*env)->GetObjectClass(env, beanObject);
+    jfieldID intFieldID_bean = (*env)->GetFieldID(env,temp,"num","I"); // 获得属性ID
+    jfieldID strFieldID_bean = (*env)->GetFieldID(env,temp,"str","Ljava/lang/String;"); // 获得属性ID
+    int num_bean = 2222;
+    (*env)->SetIntField(env,beanObject, intFieldID_bean,num_bean );
+    (*env)->SetObjectField(env,beanObject, strFieldID_bean,(*env)->NewStringUTF(env, "jni_bean_method10_2222"));
+    (*env)->CallObjectMethod(env,jmapstringValue,mapstring_put,add_string_index,beanObject);
+    //(*env)->SetObjectField(env, jobj, fid, jmapstringValue); // 设置 Java 层面的 ArrayMap
+
+
+    jmethodID mid = (*env)->GetStaticMethodID(env, jcla, "callbyJNIStaticmapstring01", "(Landroid/util/ArrayMap;)V");
+    (*env)->CallStaticVoidMethod(env, jcla, mid,jmapstringValue); // 调用 Java的Object 函数   void callbyJNIlistobject00()
+    LOGI("@@JNI mapstringStaticNvMethod10 CallVoidMethod---mapstringNvStaticMethod10");
+
+
+    return ;
+}
+
+
+
+
+
+
+JNIEXPORT jobject JNICALL Java_com_zukgit_administrator_testjni_1zukgit_JniUtil_mapstringStaticNvMethod10
+        (JNIEnv *env, jclass jcla  ) {
+
+
+    jfieldID fid = (*env)->GetStaticFieldID(env, jcla, "mapstringStaticValue", "Landroid/util/ArrayMap;"); // 访问java层的 ArrayList<Bean>
+
+    jobject  jmapstringValue = (*env)->GetStaticObjectField(env, jcla, fid);
+    if(jmapstringValue == NULL)
+    {
+        return  NULL;
+    }
+
+    // java.util.Set value = mapstringValue.keySet();  mapstringValue.keySet();//Set<String>
+    // mapstringValue.values();//  Collection<Bean>
+    // mapstringValue.keySet(); // Set<String>
+
+    jclass cls_mapstring = (*env)->GetObjectClass(env,jmapstringValue);
+    // ArrayMap的方法
+    jmethodID mapstring_keyset = (*env)->GetMethodID(env,cls_mapstring,"keySet","()Ljava/util/Set;");
+    jmethodID mapstring_values = (*env)->GetMethodID(env,cls_mapstring,"values","()Ljava/util/Collection;");
+    jmethodID mapstring_get = (*env)->GetMethodID(env,cls_mapstring,"get","(Ljava/lang/Object;)Ljava/lang/Object;");
+    //jmethodID mapstring_put = (*env)->GetMethodID(env,cls_mapstring,"put","(Ljava/lang/String;Lcom/zukgit/administrator/testjni_zukgit/Bean;)Lcom/zukgit/administrator/testjni_zukgit/Bean;");
+    jmethodID mapstring_put = (*env)->GetMethodID(env,cls_mapstring,"put","(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;");
+
+    jobject java_keyset = (*env)->CallObjectMethod(env,jmapstringValue,mapstring_keyset);
+    jobject java_beanvalues_collection = (*env)->CallObjectMethod(env,jmapstringValue,mapstring_values);
+
+    jclass java_keyset_class = (*env)->GetObjectClass(env, java_keyset);
+    jclass java_collection_class = (*env)->GetObjectClass(env, java_beanvalues_collection);
+
+
+    // Collection  的 方法
+    jmethodID collection_iterator = (*env)->GetMethodID(env,java_collection_class,"iterator","()Ljava/util/Iterator;");
+
+    // keyset  的 方法
+    jmethodID set_iterator = (*env)->GetMethodID(env,java_keyset_class,"iterator","()Ljava/util/Iterator;");
+
+    // keyset 的 迭代器jobject
+    jobject keyset_iterator_object = (*env)->CallObjectMethod(env,java_keyset,set_iterator);
+    // keyset 的 对应的 jobject
+    jclass keyset_iterator_class = (*env)->GetObjectClass(env, keyset_iterator_object);
+    // 迭代器的方法
+    jmethodID keyset_iterator_method = (*env)->GetMethodID(env,keyset_iterator_class,"hasNext","()Z");
+    jmethodID keyset_iterator_nexValue = (*env)->GetMethodID(env,keyset_iterator_class,"next","()Ljava/lang/Object;");
+
+    while ((*env)->CallBooleanMethod(env,keyset_iterator_object,keyset_iterator_method)) {  // 读数据ArrayMap数据
+
+        jobject keyset_index = (*env)->CallObjectMethod(env,keyset_iterator_object,keyset_iterator_nexValue);
+        jstring str_index = (jstring) keyset_index;
+
+        // Bean Object
+        jobject java_bean_object = (*env)->CallObjectMethod(env,jmapstringValue,mapstring_get,keyset_index);
+        jclass java_bean_class = (*env)->GetObjectClass(env, java_bean_object);  // Bean Class
+
+        // Bean Class Field
+        jfieldID jbean_int_fid = (*env)->GetFieldID(env, java_bean_class, "num", "I");
+        jfieldID jbean_string_fid = (*env)->GetFieldID(env, java_bean_class, "str", "Ljava/lang/String;");
+
+        jstring j_bean_str = (*env)->GetObjectField(env, java_bean_object, jbean_string_fid);
+        jint j_bean_int = (*env)->GetIntField(env, java_bean_object, jbean_int_fid);
+        int c_bean_int = (int) j_bean_int;
+        char *c_bean_str = (*env)->GetStringUTFChars(env, j_bean_str, 0);  // 读取到 stringValue的值
+
+
+
+        char *c_index_str = (*env)->GetStringUTFChars(env, str_index, 0);  // 读取 ArrayMap<String,Bean>索引
+        LOGI("@@JNI mapstringNvMethod10 get ArrayMap<String,Bean>_keyString = %s Bean(int:%d,str:%s)", c_index_str,c_bean_int,c_bean_str);
+    }
+
+    //   01method 只调用 JNI的   callbyJNImapstring10 方法
+
+
+    jmethodID mid = (*env)->GetStaticMethodID(env, jcla, "callbyJNIStaticmapstring10", "()Landroid/util/ArrayMap;");
+
+    LOGI("@@JNI mapstringNvMethod10 CallVoidMethod---mapstringNvMethod10");
+
+
+    return  (*env)->CallStaticObjectMethod(env, jcla, mid); // 调用 Java的Object 函数   void callbyJNIlistobject00() ;
+}
+
+
+
+
+
+
+JNIEXPORT jobject JNICALL Java_com_zukgit_administrator_testjni_1zukgit_JniUtil_mapstringStaticNvMethod11
+        (JNIEnv *env, jclass jcla , jobject arraymap ) {
+
+
+
+    jfieldID fid = (*env)->GetStaticFieldID(env, jcla, "mapstringStaticValue", "Landroid/util/ArrayMap;"); // 访问java层的 ArrayList<Bean>
+
+    jobject jmapstringValue = arraymap;
+    if(jmapstringValue == NULL)
+    {
+        return NULL ;
+    }
+
+    // java.util.Set value = mapstringValue.keySet();  mapstringValue.keySet();//Set<String>
+    // mapstringValue.values();//  Collection<Bean>
+    // mapstringValue.keySet(); // Set<String>
+
+    jclass cls_mapstring = (*env)->GetObjectClass(env,jmapstringValue);
+    // ArrayMap的方法
+    jmethodID mapstring_keyset = (*env)->GetMethodID(env,cls_mapstring,"keySet","()Ljava/util/Set;");
+    jmethodID mapstring_values = (*env)->GetMethodID(env,cls_mapstring,"values","()Ljava/util/Collection;");
+    jmethodID mapstring_get = (*env)->GetMethodID(env,cls_mapstring,"get","(Ljava/lang/Object;)Ljava/lang/Object;");
+    //jmethodID mapstring_put = (*env)->GetMethodID(env,cls_mapstring,"put","(Ljava/lang/String;Lcom/zukgit/administrator/testjni_zukgit/Bean;)Lcom/zukgit/administrator/testjni_zukgit/Bean;");
+    jmethodID mapstring_put = (*env)->GetMethodID(env,cls_mapstring,"put","(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;");
+
+    jobject java_keyset = (*env)->CallObjectMethod(env,jmapstringValue,mapstring_keyset);
+    jobject java_beanvalues_collection = (*env)->CallObjectMethod(env,jmapstringValue,mapstring_values);
+
+    jclass java_keyset_class = (*env)->GetObjectClass(env, java_keyset);
+    jclass java_collection_class = (*env)->GetObjectClass(env, java_beanvalues_collection);
+
+
+    // Collection  的 方法
+    jmethodID collection_iterator = (*env)->GetMethodID(env,java_collection_class,"iterator","()Ljava/util/Iterator;");
+
+    // keyset  的 方法
+    jmethodID set_iterator = (*env)->GetMethodID(env,java_keyset_class,"iterator","()Ljava/util/Iterator;");
+
+    // keyset 的 迭代器jobject
+    jobject keyset_iterator_object = (*env)->CallObjectMethod(env,java_keyset,set_iterator);
+    // keyset 的 对应的 jobject
+    jclass keyset_iterator_class = (*env)->GetObjectClass(env, keyset_iterator_object);
+    // 迭代器的方法
+    jmethodID keyset_iterator_method = (*env)->GetMethodID(env,keyset_iterator_class,"hasNext","()Z");
+    jmethodID keyset_iterator_nexValue = (*env)->GetMethodID(env,keyset_iterator_class,"next","()Ljava/lang/Object;");
+
+    while ((*env)->CallBooleanMethod(env,keyset_iterator_object,keyset_iterator_method)) {  // 读数据ArrayMap数据
+
+        jobject keyset_index = (*env)->CallObjectMethod(env,keyset_iterator_object,keyset_iterator_nexValue);
+        jstring str_index = (jstring) keyset_index;
+
+        // Bean Object
+        jobject java_bean_object = (*env)->CallObjectMethod(env,jmapstringValue,mapstring_get,keyset_index);
+        jclass java_bean_class = (*env)->GetObjectClass(env, java_bean_object);  // Bean Class
+
+        // Bean Class Field
+        jfieldID jbean_int_fid = (*env)->GetFieldID(env, java_bean_class, "num", "I");
+        jfieldID jbean_string_fid = (*env)->GetFieldID(env, java_bean_class, "str", "Ljava/lang/String;");
+
+        jstring j_bean_str = (*env)->GetObjectField(env, java_bean_object, jbean_string_fid);
+        jint j_bean_int = (*env)->GetIntField(env, java_bean_object, jbean_int_fid);
+        int c_bean_int = (int) j_bean_int;
+        char *c_bean_str = (*env)->GetStringUTFChars(env, j_bean_str, 0);  // 读取到 stringValue的值
+
+
+
+        char *c_index_str = (*env)->GetStringUTFChars(env, str_index, 0);  // 读取 ArrayMap<String,Bean>索引
+        LOGI("@@JNI mapstringNvMethod11 get ArrayMap<String,Bean>_keyString = %s Bean(int:%d,str:%s)", c_index_str,c_bean_int,c_bean_str);
+    }
+
+    //  对 ArrayMap添加 Item
+    jstring  add_string_index = (*env)->NewStringUTF(env, "jni_11_static_A");
+    jclass jbeanClass =  (*env)->FindClass(env,"com/zukgit/administrator/testjni_zukgit/Bean");
+    jmethodID construct_bean = (*env)->GetMethodID(env,jbeanClass,"<init>","()V");
+
+    jobject beanObject =  (*env)->NewObject(env,jbeanClass,construct_bean);
+    jclass temp = (*env)->GetObjectClass(env, beanObject);
+    jfieldID intFieldID_bean = (*env)->GetFieldID(env,temp,"num","I"); // 获得属性ID
+    jfieldID strFieldID_bean = (*env)->GetFieldID(env,temp,"str","Ljava/lang/String;"); // 获得属性ID
+    int num_bean = 88888;
+    (*env)->SetIntField(env,beanObject, intFieldID_bean,num_bean );
+    (*env)->SetObjectField(env,beanObject, strFieldID_bean,(*env)->NewStringUTF(env, "jni_bean_method11_static"));
+    (*env)->CallObjectMethod(env,jmapstringValue,mapstring_put,add_string_index,beanObject);
+    //(*env)->SetObjectField(env, jobj, fid, jmapstringValue); // 设置 Java 层面的 ArrayMap
+
+
+    jmethodID mid = (*env)->GetStaticMethodID(env, jcla, "callbyJNIStaticmapstring11", "(Landroid/util/ArrayMap;)Landroid/util/ArrayMap;");
+
+    LOGI("@@JNI mapstringNvMethod11 CallVoidMethod---mapstringNvMethod11");
+
+
+    return   (*env)->CallStaticObjectMethod(env, jcla, mid,jmapstringValue); // 调用 Java的Object 函数   void callbyJNIlistobject11()
+}
+
+//=======================ArrayMap<String ,Bean>   End=================
 JNIEXPORT void JNICALL Java_com_zukgit_administrator_testjni_1zukgit_JniUtil_voidNvMethod
         (JNIEnv *env, jobject obj) {
 
