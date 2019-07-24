@@ -15,7 +15,7 @@
 typedef int64_t __int64;
 #endif
 
-/************************************byte_Begin*************************************/
+/************************************boolean_Begin*************************************/
 // 静态方法和对象方法的不同就在于
 // 实例对象方法JNI方法的第二个参数为 jobject(JNIEnv *env, jobject jobj)
 // 静态方法 JNI方法 第二个参数为 jclass   (JNIEnv *env, jclass jcls);
@@ -2565,18 +2565,15 @@ JNIEXPORT jobject JNICALL Java_com_zukgit_administrator_testjni_1zukgit_JniUtil_
 
 }
 
-//==============================================ArrayList<String> End=========================================
+//==============================================ArrayList<String> End************************
 
 
 
-/************************************ArrayMap<String ,Bean>   Begin  *************************************/
+/************************************ArrayMap<String ,Bean>Begin*************************************/
 // 静态方法和对象方法的不同就在于
 // 实例对象方法JNI方法的第二个参数为 jobject(JNIEnv *env, jobject jobj)
 // 静态方法 JNI方法 第二个参数为 jclass   (JNIEnv *env, jclass jcls);
-/************************************ArrayMap<String ,Bean>   Begin  *************************************/
-// 静态方法和对象方法的不同就在于
-// 实例对象方法JNI方法的第二个参数为 jobject(JNIEnv *env, jobject jobj)
-// 静态方法 JNI方法 第二个参数为 jclass   (JNIEnv *env, jclass jcls);
+
 JNIEXPORT void JNICALL Java_com_zukgit_administrator_testjni_1zukgit_JniUtil_mapstringNvMethod00
         (JNIEnv *env, jobject jobj) {
 
@@ -3334,7 +3331,7 @@ JNIEXPORT jobject JNICALL Java_com_zukgit_administrator_testjni_1zukgit_JniUtil_
     return   (*env)->CallStaticObjectMethod(env, jcla, mid,jmapstringValue); // 调用 Java的Object 函数   void callbyJNIlistobject11()
 }
 
-//=======================ArrayMap<String ,Bean>   End=================
+//=======================ArrayMap<String ,Bean>   End************************
 JNIEXPORT void JNICALL Java_com_zukgit_administrator_testjni_1zukgit_JniUtil_voidNvMethod
         (JNIEnv *env, jobject obj) {
 
